@@ -1,8 +1,8 @@
 # unq-tip-frontend
 
-[![Build Status]()
+[![Build Status](https://travis-ci.org/marchionne-lattenero/unq-tip-frontend.svg?branch=master)](https://travis-ci.org/marchionne-lattenero/unq-tip-frontend)
 
-[![Codacy Badge]()
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1ec6aa52f8f74b2e9f5431301f0c5ef9)](https://www.codacy.com/app/cdmarchionne/unq-tip-frontend?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=marchionne-lattenero/unq-tip-frontend&amp;utm_campaign=Badge_Grade)
 
 [![Heroku]()
 
