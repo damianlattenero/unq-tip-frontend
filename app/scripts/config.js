@@ -2,6 +2,6 @@
 
  angular.module('config', [])
 
-.constant('ENV', {name:'production',apiEndpoint:'http://subi-que-te-llevo-api.herokuapp.com/rest/'})
+.constant('ENV', {name:'development',apiEndpoint:'http://localhost:8080/rest/'})
 
 ;
