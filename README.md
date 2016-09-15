@@ -12,11 +12,13 @@ version 0.15.1.
 ## Requirements
 Deben ser instalados usando [nvm](https://nodejs.org/en/download/package-manager/)
 
-* Nodejs 4 & npm 3
+Nodejs 4 & npm 3:
+
     $ curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
     $ sudo apt-get install -y nodejs
 
-* ruby ~2.2.3
+ruby ~2.2.3:
+
     $ sudo apt-add-repository ppa:brightbox/ruby-ng
     $ sudo apt-get update
     $ sudo apt-get install ruby2.2 ruby2.2-dev
