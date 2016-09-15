@@ -17,11 +17,7 @@ Nodejs 4 & npm 3:
     $ curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
     $ sudo apt-get install -y nodejs
 
-ruby ~2.2.3:
-
-    $ sudo apt-add-repository ppa:brightbox/ruby-ng
-    $ sudo apt-get update
-    $ sudo apt-get install ruby2.2 ruby2.2-dev
+[ruby ~2.3.1](https://noteits.net/2016/06/10/installing-ruby-2-3-1-on-ubuntu/)
 
 Luego correr:
 
