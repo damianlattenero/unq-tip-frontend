@@ -10,17 +10,22 @@ This project is generated with [yo angular generator](https://github.com/yeoman/
 version 0.15.1.
 
 ## Requirements
-Deben ser instalados usando [nvm](https://github.com/creationix/nvm) y[rbenv](https://github.com/rbenv/rbenv)
+Deben ser instalados usando [nvm](https://nodejs.org/en/download/package-manager/)
 
-* Nodejs 4
-* npm 3
+* Nodejs 4 & npm 3
+    $ curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+    $ sudo apt-get install -y nodejs
+
 * ruby ~2.2.3
+    $ sudo apt-add-repository ppa:brightbox/ruby-ng
+    $ sudo apt-get update
+    $ sudo apt-get install ruby2.2 ruby2.2-dev
 
 Luego correr:
 
-    $ npm upgrade -g npm
-    $ npm install -g grunt-cli bower yo generator-karma generator-angular
-    $ gem install compass
+    $ sudo npm upgrade -g npm
+    $ sudo npm install -g grunt-cli bower yo generator-karma generator-angular
+    $ sudo gem install compass
     $ npm install
     $ bower install
 
