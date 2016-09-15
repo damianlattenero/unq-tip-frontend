@@ -21,9 +21,9 @@ Nodejs 4 & npm 3:
 
 Luego correr:
 
-    $ sudo npm upgrade -g npm
-    $ sudo npm install -g grunt-cli bower yo generator-karma generator-angular
-    $ sudo gem install compass
+    $ npm upgrade -g npm
+    $ npm install -g grunt-cli bower yo generator-karma generator-angular
+    $ gem install compass
     $ npm install
     $ bower install
 
