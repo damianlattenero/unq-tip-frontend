@@ -1,11 +1,7 @@
 <p>Pedidos Pendientes</p>
 <ul>
-  <li>
-    <div class="products">Sandwitch Mila Completo</div>
-    <div class="counter">0</div>
-  </li>
-  <li>
-    <div class="products">Hamburquesa con Queso</div>
-    <div class="counter">0</div>
+  <li ng-repeat="x in products">
+    <div class="products"><h2>{{x.name}}</h2></div>
+    <div class="counter"><h3>Cantidad: {{x.count}}</h3></div>
   </li>
 </ul>
