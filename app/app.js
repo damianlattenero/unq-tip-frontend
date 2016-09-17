@@ -5,7 +5,7 @@ angular.module('myApp', [
   'ngRoute',
   'myApp.view1',
   'myApp.view2',
-  // 'myApp.order',
+  // 'myApp.product',
   'myApp.version'
 ])
   .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
@@ -13,8 +13,8 @@ angular.module('myApp', [
 
     $routeProvider
       .when('/', {
-        templateUrl: 'views/order/order.html',
-        controller: 'OrderCtrl',
+        templateUrl: 'views/product/product.html',
+        controller: 'ProductCtrl',
         controllerAs: 'products'
       })
       .otherwise({redirectTo: '/'});

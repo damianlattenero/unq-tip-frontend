@@ -4,14 +4,14 @@ angular.module('myApp', ['ngRoute'])
 
 /*
  .config(['$routeProvider', function($routeProvider) {
- $routeProvider.when('/order', {
- templateUrl: 'order/order.html',
+ $routeProvider.when('/product', {
+ templateUrl: 'product/product.html',
  controller: 'OrderCtrl'
  });
  }])
  */
 
-  .controller('OrderCtrl', function ($scope, ProductService) {
+  .controller('ProductCtrl', function ($scope, ProductService) {
     $scope.loading = true;
     $scope.products = {};
     ProductService.getAll().then(function (response) {
