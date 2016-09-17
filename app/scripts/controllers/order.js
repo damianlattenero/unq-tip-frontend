@@ -11,7 +11,7 @@ angular.module('myApp', ['ngRoute'])
   }])
 */
 
-  .controller('OrderCtrl', function($scope, ProductService, $routeParams) {
+  .controller('OrderCtrl', function($scope, ProductService) {
     $scope.loading = true;
     $scope.products = {};
     ProductService.getAll().then(function(response) {

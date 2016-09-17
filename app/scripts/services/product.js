@@ -26,6 +26,6 @@ angular.module('myApp')
                 method: 'get',
                 url: ENV.apiEndpoint + 'products/all/'
               });
-            },
+            }
     };
   });

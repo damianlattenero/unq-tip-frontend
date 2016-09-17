@@ -9,10 +9,17 @@
   <title>My AngularJS App</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="bower_components/angular-ui-notification/dist/angular-ui-notification.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
   <link rel="stylesheet" href="app.css">
-  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <!-- endbuild -->
+
 </head>
 <body>
   <ul class="menu">
@@ -28,10 +35,6 @@
   <div ng-view></div>
 
   <div>Angular seed app: v<span app-version></span></div>
-
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
 
   <!-- build:js(.) scripts/vendor.js -->
   <!-- bower:js -->
@@ -53,8 +56,6 @@
   <!-- endbower -->
   <!-- endbuild -->
 
-
-  <!-- Usemin block -->
   <!-- build:js({.tmp,app}) scripts/scripts.js -->
   <script src="app.js"></script>
   <script src="scripts/controllers/order.js"></script>
