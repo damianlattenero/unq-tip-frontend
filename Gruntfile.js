@@ -350,28 +350,25 @@ module.exports = function (grunt) {
     cssmin: {
       dist: {
         files: {
-          '<%= yeoman.dist %>/styles/main.css': [
+          '<%= yeoman.dist %>app.css': [
             '.tmp/styles/{,*/}*.css'
           ]
         }
       }
     },
-    uglify: {
-      options: {
-        mangle: false
-      },
-      dist: {
-        files: {
-          '<%= yeoman.dist %>/scripts/config.js': [
-            '<%= yeoman.dist %>/scripts/config.js'
-          ]
-        }
-      }
-    },
-    concat: {
-      dist: {}
-    },
-
+    //
+    // uglify: {
+    //   dist: {
+    //     files: {
+    //       '<%= yeoman.dist %>/js/scripts.min.js': [
+    //         '<%= yeoman.dist %>/js/scripts.min.js'
+    //       ]
+    //     }
+    //   }
+    // },
+    // concat: {
+    //   dist: {}
+    // },
     imagemin: {
       dist: {
         files: [{
@@ -414,9 +411,10 @@ module.exports = function (grunt) {
     ngtemplates: {
       dist: {
         options: {
-          module: 'angular-seed',
+
+          module: require('./bower.json').name + 'marchionneLatteneroTip',
           htmlmin: '<%= htmlmin.dist.options %>',
-          usemin: 'scripts/config.js'
+          usemin: 'scripts/scripts.js'
         },
         cwd: '<%= yeoman.app %>',
         src: 'views/{,*/}*.html',
@@ -522,6 +520,14 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.registerTask('produce', [
+    'useminPrepare',
+    'concat',
+    'uglify',
+    'cssmin',
+    'usemin'
+  ]);
+
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
@@ -539,10 +545,10 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
+/*  grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
     grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
     grunt.task.run(['serve:' + target]);
-  });
+  });*/
 
   grunt.registerTask('test', [
     'clean:server',
