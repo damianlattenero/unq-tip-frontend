@@ -2,7 +2,7 @@
 
 describe('myApp module', function() {
 
-  beforeEach(module('myApp.order'));
+  beforeEach(module('myApp'));
 
   describe('product controller', function(){
 
