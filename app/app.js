@@ -5,19 +5,19 @@ angular.module('myApp', [
   'ngRoute',
   'myApp.view1',
   'myApp.view2',
+  // 'myApp.order',
   'myApp.version'
 ])
   .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
+    $locationProvider.hashPrefix('!');
 
-  $routeProvider.otherwise({redirectTo: '/view1'});
+    $routeProvider
+      .when('/', {
+        templateUrl: 'views/order/order.html',
+        controller: 'OrderCtrl',
+        controllerAs: 'products'
+      })
+      .otherwise({redirectTo: '/'});
   }])
-
-  .controller('ProductsController', function($scope) {
-    $scope.products = [
-      {name:'Mila Completo', count: 0},
-      {name:'Hamburguesa c/Queso', count: 0}
-    ];
-  })
 ;
 
