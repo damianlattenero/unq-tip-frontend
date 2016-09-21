@@ -29,6 +29,13 @@ module.exports = function (grunt) {
 
   // Define the configuration for all the tasks
   grunt.initConfig({
+    uglify: {
+      my_target: {
+        files: {
+          'dest/output.min.js': ['src/input1.js', 'src/missing_controller.js']
+        }
+      }
+    },
 
     // Project settings
     yeoman: appConfig,
@@ -59,7 +66,7 @@ module.exports = function (grunt) {
         constants: {
           ENV: {
             name: 'production',
-            apiEndpoint: ''
+            apiEndpoint: 'http://localhost:8080/rest/'
           }
         }
       }

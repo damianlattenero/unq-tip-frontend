@@ -1,18 +1,16 @@
-<p>Generar una Orden</p>
-<div ng-app="myApp">
-  <div ng-controller="ProductCtrl">
-    <ul>
-      <li ng-repeat="x in products">
-        <div class="products">{{x.id}}</div>
-        <div class="products"><h2>{{x.name}}</h2></div>
-        <div class="products"><h3>{{x.description}}</h3></div>
-        <span class="actions">
-    <!--
-          <button type="button" ng-click="x.count= x.count + 1">Pedir</button>
-          <button type="button" ng-click="x.count= x.count - 1">Cocinar</button>
-    -->
-        </span>
-      </li>
-    </ul>
-  </div>
+<div class="well">
+  <h2 class="text-center">Productos</h2>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Producto: </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="x in products">
+      <td>{{ x.name }}</td>
+      <td>{{ x.description }}</td>
+    </tr>
+    </tbody>
+  </table>
 </div>
