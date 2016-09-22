@@ -1,10 +1,10 @@
 'use strict';
 /**
  * @ngdoc service
- * @name desappGroupABackendApp.product
+ * @name ar.edu.unq.tip.marchionne-lattenero.product
  * @description
  * # product
- * Service in the desappGroupABackendApp.
+ * Service in the ar.edu.unq.tip.marchionne-lattenero.
  */
 angular.module('myApp')
   .factory('ProductService', function ($http, ENV) {
