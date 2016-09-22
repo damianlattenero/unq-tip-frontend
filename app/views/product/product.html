@@ -17,7 +17,7 @@
           <div class="form-group">
             <label for="idProduct">IdProduct</label>
             <div>
-              <input value="1" ng-model="newFoodOrder.idProduct" class="form-control" id="idProduct">
+              <input value="{{x.id}}" type="number" ng-model="newFoodOrder.idProduct" class="form-control" id="idProduct">
             </div>
           </div>
         </td>
@@ -25,7 +25,7 @@
           <div class="form-group">
             <label for="amount">Amount</label>
             <div>
-              <input value="1" ng-model="newFoodOrder.amount" class="form-control" id="amount">
+              <input value="{{1}}" type="number" ng-model="newFoodOrder.amount" class="form-control" id="amount">
             </div>
           </div>
         </td>

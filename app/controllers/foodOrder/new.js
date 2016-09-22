@@ -14,8 +14,9 @@ angular.module('myApp')
       amount: 0
     };
     $scope.save = function(foodOrder) {
+      foodOrder.idProduct = 1;
+      foodOrder.amount = 1;
 /*
-      foodOrder.idProduct = ProductsCtrl.id;
       foodOrder.amount =
 */
 
