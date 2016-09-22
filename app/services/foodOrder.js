@@ -1,7 +1,7 @@
 'use strict';
 /**
  * @ngdoc service
- * @name tipMarchionneLattenero.foorOrder
+ * @name tipMarchionneLattenero.foodOrder
  * @description
  * # foodOrder
  * Service in the tipMarchionneLattenero.
@@ -12,14 +12,14 @@ angular.module('myApp')
       get: function (id) {
         return $http({
           method: 'get',
-          url: ENV.apiEndpoint + 'foorOrder/' + id
+          url: ENV.apiEndpoint + 'foodOrders/' + id
         });
       },
       save: function (newFoodOrder) {
         return $http({
           method: 'post',
           //dataType: 'json',
-          url: ENV.apiEndpoint + 'foorOrder/create',
+          url: ENV.apiEndpoint + 'foodOrders/create',
           /* params: {
            token: AuthService.getToken()          },*/
           data: newFoodOrder
@@ -28,7 +28,7 @@ angular.module('myApp')
       getAll: function () {
         return $http({
           method: 'get',
-          url: ENV.apiEndpoint + 'foorOrders/all/'
+          url: ENV.apiEndpoint + 'foodOrders/all/'
         });
       },
     };
