@@ -1,10 +1,10 @@
 'use strict';
 /**
  * @ngdoc service
- * @name ar.edu.unq.tip.marchionne-lattenero.foorOrder
+ * @name tipMarchionneLattenero.foorOrder
  * @description
- * # product
- * Service in the ar.edu.unq.tip.marchionne-lattenero.
+ * # foodOrder
+ * Service in the tipMarchionneLattenero.
  */
 angular.module('myApp')
   .factory('FoodOrderService', function ($http, ENV) {

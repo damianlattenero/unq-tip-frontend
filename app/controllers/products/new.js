@@ -1,10 +1,10 @@
 'use strict';
 /**
  * @ngdoc function
- * @name desappGroupABackendApp.controller:ProducCtrl
+ * @name tipMarchionneLattenero.controller:ProducCtrl
  * @description
  * # ProductCtrl
- * Controller of the desappGroupABackendApp
+ * Controller of the tipMarchionneLattenero
  */
 
 angular.module('myApp')

@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name desappGroupABackendApp.controller:VehicleCtrl
+ * @name tipMarchionneLattenero.controller:VehicleCtrl
  * @description
  * # VehicleCtrl
- * Controller of the desappGroupABackendApp
+ * Controller of the tipMarchionneLattenero
  */
 
-//var myApp = angular.module('desappGroupABackendApp', []);
+//var myApp = angular.module('tipMarchionneLattenero', []);
 
 angular.module('myApp')
   .controller('ShowProductCtrl', function($scope, ProductService, $routeParams) {

@@ -2,13 +2,14 @@
 
 /**
  * @ngdoc function
- * @name ar.edu.unq.tip.marchionne-lattenero.controller:ProductCtrl
+ * @name tipMarchionneLattenero.controller:ProductCtrl
  * @description
  * # ProductCtrl
- * Controller of the ar.edu.unq.tip.marchionne-lattenero
+ * Controller of the tipMarchionneLattenero
  */
 
  //var myApp = angular.module('myApp', []);
+//var myApp = angular.module('tipMarchionneLattenero', []);
 
 angular.module('myApp')
   .controller('ProductsCtrl', function($scope, ProductService, $routeParams) {

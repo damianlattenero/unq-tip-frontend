@@ -419,7 +419,7 @@ module.exports = function (grunt) {
       dist: {
         options: {
 
-          module: require('./bower.json').name + 'marchionneLatteneroTip',
+          module: require('./bower.json').name + 'tipMarchionneLattenero',
           htmlmin: '<%= htmlmin.dist.options %>',
           usemin: 'scripts/scripts.js'
         },
