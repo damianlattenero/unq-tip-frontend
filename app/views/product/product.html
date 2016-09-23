@@ -13,39 +13,41 @@
     </thead>
     <tbody>
     <tr ng-repeat="x in products">
-        <td>
-          <div class="form-group">
-            <label for="idProduct">IdProduct</label>
-            <div>
-              <input value="{{x.id}}" type="number" ng-model="newFoodOrder.idProduct" class="form-control" id="idProduct">
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="form-group">
-            <label for="amount">Amount</label>
-            <div>
-              <input value="{{1}}" type="number" ng-model="newFoodOrder.amount" class="form-control" id="amount">
-            </div>
-          </div>
-        </td>
-  <!--
-        <td><input ng-model="newFoodOrder.amount" id="amount" value="1"></td>
-        <td>{{ x.id }}</td>
-  -->
-        <td>{{ x.name }}</td>
-        <td>{{ x.description }}</td>
       <td>
         <div class="form-group">
+          <label for="productName">Food Name</label>
+          <div>
+            <input type="text" ng-model="newFoodOrder.productName" class="form-control" id="productName"> </input>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <label for="productDescription">Description</label>
+          <div>
+            <input type="text" ng-model="newFoodOrder.productDescription" class="form-control" id="productDescription"> </input>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <label for="productAmount">Amount</label>
+          <div>
+            <input value="{{1}}" type="number" ng-model="newFoodOrder.productAmount" class="form-control" id="productAmount"> </input>
+          </div>
+        </div>
+      </td>
+
+      <td>{{ x.productName }}</td>
+      <td>{{ x.description }}</td>
+
+      <td>
+        <div class="form-group" ng-controller="NewFoodOrderCtrl">
           <div>
             <button type="button" name="button" ng-click="save(newFoodOrder)" class="btn">Ordenar</button>
           </div>
         </div>
       </td>
-  <!--
-        <td><button type="button" name="button" ng-click="save(newFoodOrder)" class="btn">{{'Ordenar'}}</button></td>
-        <td><button type="button" name="button" ng-click="save(newFoodOrder(1,-1))" class="btn">{{'Cocinar'}}</button></td>
-  -->
     </tr>
     </tbody>
   </table>

@@ -10,7 +10,7 @@
 angular.module('myApp')
     .controller('NewProductsCtrl', function($scope, ProductService, $window) {
     $scope.newProduct = {
-      name: "",
+      productName: "",
       description: ""
     };
     $scope.save = function(product) {
