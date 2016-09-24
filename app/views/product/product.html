@@ -15,23 +15,15 @@
     <tr ng-repeat="x in products">
       <td>
         <div class="form-group">
-          <label for="productName">Food Name</label>
+          <label for="productId" class="col-sm-2 control-label">Food ID</label>
           <div>
-            <input type="text" ng-model="newFoodOrder.productName" class="form-control" id="productName"> </input>
+            <input value="{{x.id}}" type="number" ng-model="newFoodOrder.productId" class="form-control" id="productId"> </input>
           </div>
         </div>
       </td>
       <td>
         <div class="form-group">
-          <label for="productDescription">Description</label>
-          <div>
-            <input type="text" ng-model="newFoodOrder.productDescription" class="form-control" id="productDescription"> </input>
-          </div>
-        </div>
-      </td>
-      <td>
-        <div class="form-group">
-          <label for="productAmount">Amount</label>
+          <label for="productAmount" class="col-sm-2 control-label">Amount</label>
           <div>
             <input value="{{1}}" type="number" ng-model="newFoodOrder.productAmount" class="form-control" id="productAmount"> </input>
           </div>

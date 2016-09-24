@@ -15,14 +15,14 @@ angular.module('myApp')
           url: ENV.apiEndpoint + 'foodOrders/' + id
         });
       },
-      save: function (newFoodOrder) {
+      save: function (newProduct) {
         return $http({
           method: 'post',
           //dataType: 'json',
-          url: ENV.apiEndpoint + 'foodOrders/create',
+          url: ENV.apiEndpoint + 'foodOrders/create/',
           /* params: {
            token: AuthService.getToken()          },*/
-          data: newFoodOrder
+          data: newProduct
         });
       },
       getAll: function () {

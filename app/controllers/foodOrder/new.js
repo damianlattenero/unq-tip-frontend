@@ -10,11 +10,9 @@
 angular.module('myApp')
     .controller('NewFoodOrderCtrl', function($scope, FoodOrderService, ProductService, $window) {
     $scope.newFoodOrder = {
-      productName: "",
-      productDescription: "",
-      productAmount: 0,
+      productId: 0,
+      productAmount: 0
     };
-
     $scope.save = function(foodOrder) {
       FoodOrderService.save(foodOrder).then(function(response) {
           $window.location.assign('/#/foodOrders/' + response.data.id);
