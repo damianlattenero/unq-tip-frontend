@@ -12,7 +12,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="x in products">
+    <tr ng-repeat="x in products" ng-controller="ProductsCtrl">
       <td>
         <div class="form-group">
           <label for="productId" class="col-sm-2 control-label">Food ID</label>
@@ -30,7 +30,7 @@
         </div>
       </td>
 
-      <td>{{ x.productName }}</td>
+      <td>{{ x.name }}</td>
       <td>{{ x.description }}</td>
 
       <td>

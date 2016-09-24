@@ -10,8 +10,8 @@
 angular.module('myApp')
     .controller('NewFoodOrderCtrl', function($scope, FoodOrderService, ProductService, $window) {
     $scope.newFoodOrder = {
-      productId: 0,
-      productAmount: 0
+      productId: 1,
+      productAmount: 1
     };
     $scope.save = function(foodOrder) {
       FoodOrderService.save(foodOrder).then(function(response) {

@@ -8,7 +8,7 @@
       <th>Descripcion</th>
     </tr>
     </thead>
-    <tbody>
+    <tbody ng-controller="FoodOrderCtrl">
     <tr ng-repeat="x in orders">
       <td>{{ x.productName }}</td>
       <td>{{ x.productDescription }}</td>
