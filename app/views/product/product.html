@@ -1,4 +1,4 @@
-<div class="well">
+<div class="well"  ng-controller="NewFoodOrderCtrl">
   <h2 class="text-center">Productos</h2>
   <table class="table table-striped">
     <thead>
@@ -12,7 +12,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="x in products" ng-controller="ProductsCtrl">
+    <tr ng-repeat="x in products">
       <td>
         <div class="form-group">
           <label for="productId" class="col-sm-2 control-label">Food ID</label>
@@ -34,7 +34,7 @@
       <td>{{ x.description }}</td>
 
       <td>
-        <div class="form-group" ng-controller="NewFoodOrderCtrl">
+        <div class="form-group">
           <div>
             <button type="button" name="button" ng-click="save(newFoodOrder)" class="btn">Ordenar</button>
           </div>

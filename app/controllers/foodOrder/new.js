@@ -8,16 +8,16 @@
  */
 
 angular.module('myApp')
-    .controller('NewFoodOrderCtrl', function($scope, FoodOrderService, ProductService, $window) {
+  .controller('NewFoodOrderCtrl', function ($scope, FoodOrderService, $window) {
     $scope.newFoodOrder = {
-      productId: 1,
-      productAmount: 1
+      productId: 0,
+      productAmount: 0
     };
-    $scope.save = function(foodOrder) {
-      FoodOrderService.save(foodOrder).then(function(response) {
+    $scope.save = function (foodOrder) {
+      FoodOrderService.save(foodOrder).then(function (response) {
           $window.location.assign('/#/foodOrders/' + response.data.id);
         },
-        function(error) {
+        function (error) {
           console.log(error);
         });
     };
