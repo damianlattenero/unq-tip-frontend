@@ -1,4 +1,4 @@
-# unq-tip-frontend
+# Virtual Kiosk (unq-tip-frontend)
 
 [![Build Status](https://travis-ci.org/marchionne-lattenero/unq-tip-frontend.svg?branch=master)](https://travis-ci.org/marchionne-lattenero/unq-tip-frontend)
 
@@ -7,7 +7,7 @@
 [![Heroku]()
 
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.15.1.
+versión 0.15.1.
 
 ## Requirements
 Deben ser instalados usando [nvm](https://nodejs.org/en/download/package-manager/)
@@ -53,3 +53,5 @@ Correr `grunt` para hacer el build y `grunt serve` para vista previa.
 ## Testing
 
 Al correr `grunt test` se ejecutan los test unitarios con karma.
+
+
