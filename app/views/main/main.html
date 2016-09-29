@@ -1,0 +1,38 @@
+<div class="well">
+  <h2 class="text-center">Productos</h2>
+  <form novalidate class="form-horizontal">
+
+    <div ng-repeat="x in allProducts">
+      <div ng-controller="NewFoodOrderCtrl">
+
+        <div class="form-group">
+          <label for="productId" class="col-sm-2 control-label">Food ID</label>
+          <label>
+            <input ng-init="setId(x.id)" required integer ng-model="newFoodOrder.productId" type="number" class="form-control"
+                   id="productId">
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label for="productAmount" class="col-sm-2 control-label">Amount</label>
+          <label>
+            <input value="1" type="number" ng-model="newFoodOrder.productAmount" class="form-control"
+                   id="productAmount">
+          </label>
+        </div>
+
+        <div>{{ x.name }}</div>
+        <div>{{ x.description }}</div>
+
+        <div class="form-group">
+          <div>
+            <button type="button" name="button" ng-click="save(newFoodOrder)" class="btn">Ordenar</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </form>
+
+
+</div>

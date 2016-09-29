@@ -1,23 +1,24 @@
 'use strict';
 /**
  * @ngdoc function
- * @name tipMarchionneLattenero.controller:FoodOrderCtrl
+ * @name tipMarchionneLattenero.controller:MainCtrl
  * @description
- * # FoodOrderCtrl
+ * # MainCtrl
  * Controller of the tipMarchionneLattenero
  */
 
 angular.module('myApp')
-  .controller('NewFoodOrderCtrl', function ($scope, FoodOrderService, $window) {
-    $scope.newFoodOrder = {
-      productId: 0,
-      productAmount: 1
-    };
+  .controller('MainCtrl', function ($scope, FoodOrderService, ProductService, $window) {
+/*
+    $scope.newFoodOrders = [];
+*/
 
-    $scope.setId=function (pId) {
-      $scope.newFoodOrder.productId = pId;
-      $scope.newFoodOrder.productAmount = 1;
-    }
+    ProductService.getAll().then(function (response) {
+      $scope.allProducts = response.data;
+    }, function (error) {
+      console.log(error);
+    });
+
 
     $scope.save = function (foodOrder) {
       FoodOrderService.save(foodOrder).then(function (response) {

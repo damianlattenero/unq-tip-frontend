@@ -7,15 +7,21 @@ angular
     'config'
   ])
   .config(function ($routeProvider) {
-    $routeProvider.when('/', {
-      templateUrl: 'views/product/product.html',
-      controller: 'ProductsCtrl',
-      controllerAs: 'productsCtrl'
-    })
-    $routeProvider.when('/foodOrder', {
-      templateUrl: 'views/foodOrder/foodOrder.html',
-      controller: 'FoodOrderCtrl',
-      controllerAs: 'foodOrderCtrl'
-    })
-  }
-);
+      $routeProvider
+        .when('/', {
+          templateUrl: 'views/main/main.html',
+          controller: 'MainCtrl',
+          controllerAs: 'main'
+        })
+        .when('/products', {
+          templateUrl: 'views/product/product.html',
+          controller: 'ProductsCtrl',
+          controllerAs: 'productsCtrl'
+        })
+        .when('/foodOrder', {
+          templateUrl: 'views/foodOrder/foodOrder.html',
+          controller: 'FoodOrderCtrl',
+          controllerAs: 'foodOrderCtrl'
+        })
+    }
+  );

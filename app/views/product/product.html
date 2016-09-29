@@ -1,45 +1,21 @@
-<div class="well"  ng-controller="NewFoodOrderCtrl">
+<div class="well">
   <h2 class="text-center">Productos</h2>
   <table class="table table-striped">
     <thead>
     <tr>
       <th>Id</th>
-      <th>Cant</th>
       <th>Nombre</th>
       <th>Descripcion</th>
-      <th>Ordenar</th>
-      <th>Cocinar</th>
     </tr>
     </thead>
     <tbody>
     <tr ng-repeat="x in products">
-      <td>
-        <div class="form-group">
-          <label for="productId" class="col-sm-2 control-label">Food ID</label>
-          <div>
-            <input value="{{x.id}}" type="number" ng-model="newFoodOrder.productId" class="form-control" id="productId"> </input>
-          </div>
-        </div>
-      </td>
-      <td>
-        <div class="form-group">
-          <label for="productAmount" class="col-sm-2 control-label">Amount</label>
-          <div>
-            <input value="{{1}}" type="number" ng-model="newFoodOrder.productAmount" class="form-control" id="productAmount"> </input>
-          </div>
-        </div>
-      </td>
 
+
+      <td>{{ x.id }}</td>
       <td>{{ x.name }}</td>
       <td>{{ x.description }}</td>
 
-      <td>
-        <div class="form-group">
-          <div>
-            <button type="button" name="button" ng-click="save(newFoodOrder)" class="btn">Ordenar</button>
-          </div>
-        </div>
-      </td>
     </tr>
     </tbody>
   </table>
