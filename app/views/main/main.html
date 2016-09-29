@@ -1,35 +1,62 @@
 <div class="well">
-  <h2 class="text-center">Productos</h2>
+  <h2 class="text-center">Vista Principal</h2>
+  <h3 class="text-center">Mostrador</h3>
   <form novalidate class="form-horizontal">
 
     <div ng-repeat="x in allProducts">
       <div ng-controller="NewFoodOrderCtrl">
 
-        <div class="form-group">
-          <label for="productId" class="col-sm-2 control-label">Food ID</label>
-          <label>
-            <input ng-init="setId(x.id)" required integer ng-model="newFoodOrder.productId" type="number" class="form-control"
-                   id="productId">
-          </label>
-        </div>
+        <div class="col-md-4">
 
-        <div class="form-group">
-          <label for="productAmount" class="col-sm-2 control-label">Amount</label>
-          <label>
-            <input value="1" type="number" ng-model="newFoodOrder.productAmount" class="form-control"
-                   id="productAmount">
-          </label>
-        </div>
+          <!--Card-->
+          <div class="card card-cascade">
 
-        <div>{{ x.name }}</div>
-        <div>{{ x.description }}</div>
+            <!--Card image-->
+            <div class="view overlay hm-white-slight">
+              <img src="../../assets/images/products/{{x.id}}.png" class="img-fluid" alt="{{x.name}}" style="width: 200px; height: 150px;">
+              <a href="#">
+                <div class="mask"></div>
+              </a>
+            </div>
+            <!--/.Card image-->
 
-        <div class="form-group">
-          <div>
-            <button type="button" name="button" ng-click="save(newFoodOrder)" class="btn">Ordenar</button>
+            <!--Card content-->
+            <div class="card-block text-xs-center">
+              <!--Title-->
+              <h4 class="card-title"><strong>{{x.name}}</strong></h4>
+
+              <!--SubTitle-->
+              <div class="form-group" ng-show="false">
+                <label for="productId" class="col-sm-2 control-label">Food ID</label>
+                <label>
+                  <input ng-init="setId(x.id)" required integer ng-model="newFoodOrder.productId" type="number"
+                         class="form-control"
+                         id="productId">
+                </label>
+              </div>
+              <!--<h5>{{x.id}}</h5>-->
+
+              <p class="card-text">{{x.description}}
+              </p>
+
+              <div class="form-group">
+                <div>
+                  <!--Ordenar-->
+                  <a type="button" name="button" ng-click="orderProduct(newFoodOrder)"
+                     class="btn btn-primary">Ordenar</a>
+                  <!--Cocinar-->
+                  <a type="button" name="button" ng-click="cookProduct(newFoodOrder)"
+                     class="btn btn-secondary">Cocinar</a>
+                </div>
+              </div>
+
+            </div>
+            <!--/.Card content-->
+
           </div>
-        </div>
+          <!--/.Card-->
 
+        </div>
       </div>
     </div>
   </form>

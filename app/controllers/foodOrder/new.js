@@ -11,17 +11,27 @@ angular.module('myApp')
   .controller('NewFoodOrderCtrl', function ($scope, FoodOrderService, $window) {
     $scope.newFoodOrder = {
       productId: 0,
-      productAmount: 1
+      productAmount: 0
     };
 
-    $scope.setId=function (pId) {
-      $scope.newFoodOrder.productId = pId;
-      $scope.newFoodOrder.productAmount = 1;
+    $scope.setId=function (id) {
+      $scope.newFoodOrder.productId = id;
     }
+
+    $scope.orderProduct= function (foodOrder) {
+      foodOrder.productAmount = 1;
+      $scope.save(foodOrder);
+    };
+
+    $scope.cookProduct= function (foodOrder) {
+      foodOrder.productAmount = (-1);
+      $scope.save(foodOrder);
+    };
 
     $scope.save = function (foodOrder) {
       FoodOrderService.save(foodOrder).then(function (response) {
-          $window.location.assign('/#/foodOrders/' + response.data.id);
+          $window.location.assign('/#/foodOrder/');
+          // $window.location.assign('/#/foodOrder/' + response.data.id);
         },
         function (error) {
           console.log(error);

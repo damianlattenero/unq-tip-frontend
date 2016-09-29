@@ -6,10 +6,12 @@
       <th>Id</th>
       <th>Nombre</th>
       <th>Descripcion</th>
+      <th>Cantidad</th>
     </tr>
     </thead>
     <tbody ng-controller="FoodOrderCtrl">
     <tr ng-repeat="x in orders">
+      <td>{{ x.id }}</td>
       <td>{{ x.productName }}</td>
       <td>{{ x.productDescription }}</td>
       <td>{{ x.productAmount }}</td>
