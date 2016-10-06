@@ -30,13 +30,10 @@ angular.module('myApp')
 
     $scope.save = function (foodOrder) {
       FoodOrderService.save(foodOrder).then(function (response) {
-          $window.location.reload();
-          //$window.location.assign('/#/foodOrder/');
-          // $window.location.assign('/#/foodOrder/' + response.data.id);
+          document.getElementById($scope.newFoodOrder.productId + "_pending").innerHTML = response.data.productPending;
         },
         function (error) {
           console.log(error);
         });
     };
-
   });
