@@ -30,7 +30,8 @@ angular.module('myApp')
 
     $scope.save = function (foodOrder) {
       FoodOrderService.save(foodOrder).then(function (response) {
-          $window.location.assign('/#/foodOrder/');
+          $window.location.reload();
+          //$window.location.assign('/#/foodOrder/');
           // $window.location.assign('/#/foodOrder/' + response.data.id);
         },
         function (error) {
