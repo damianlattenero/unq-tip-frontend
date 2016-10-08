@@ -1,15 +1,28 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html lang="es-ar" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="es-ar" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="es-ar" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="es-ar" ng-app="myApp" class="no-js"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
-  <meta name="description" content="">
+  <title>Virtual Kiosk</title>
+  <!-- meta charec set -->
+  <meta charset="utf-8">
+  <!-- Language -->
+  <meta name="language" content="Spanish">
+  <meta name="description" content="Aplicacion para administrar pedidos entre el mostrador y la cocina en un Kiosko">
+  <meta name="keywords" content="Kiosko">
+  <meta name="author" content="Marchionne Cristian &amp; Lattenero Damian">
+  <!-- Mobile Specific Meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Fav Icon -->
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <link rel="icon" href="assets/images/favicon.png" type="image/ico" sizes="16x16">
+  <!-- Search -->
+  <!--<meta name="robots" content="index,follow">-->
+
+
   <!-- build:css(.) styles/vendor.css -->
   <!-- bower:css -->
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
@@ -34,7 +47,6 @@
   <![endif]-->
 
   <div id="errors" class="text-danger"></div>
-  <!--<div id="errors" class="text-danger animated zoomOut"></div>-->
   <div ng-view></div>
 
 <!--
