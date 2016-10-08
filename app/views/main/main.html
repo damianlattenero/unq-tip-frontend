@@ -6,16 +6,13 @@
     <div ng-repeat="x in allProducts">
       <div ng-controller="NewFoodOrderCtrl">
 
-        <div class="col-md-4">
+        <div id="{{x.id}}" class="col-md-4">
 
           <!--Card-->
-          <div class="card card-cascade"
-               style="border-color: black;border: 1px;border-style: solid;text-align: center;">
+          <div class="card card-cascade" style="text-align: center;">
 
             <!--Card image-->
-            <div class="view overlay hm-white-light text-xs-center"
-                 style="height: 100px; width: 100px; margin-left: auto; margin-right: auto;">
-              <!--<div class="view overlay hm-white-slight">-->
+            <div class="view overlay hm-white-light text-xs-center">
               <img src="../../assets/images/products/{{x.id}}.png" class="img-responsive" alt="{{x.name}}">
               <a href="#">
                 <div class="mask"></div>
@@ -32,7 +29,7 @@
               <p class="card-text">{{x.description}}</p>
 
               <!--Info-->
-              <p class="card-text"><strong>Pendientes: <span id="{{x.id}}_pending">{{x.pending}}</span></strong></p>
+              <p class="card-text"><strong>Pendientes: <span class="productPending">{{x.pending}}</span></strong></p>
 
               <div class="form-group">
                 <div ng-show="false">
@@ -46,11 +43,15 @@
 
                 <div class="FoodOrderActions">
                   <!--Ordenar-->
-                  <a type="button" name="button" ng-click="orderProduct(newFoodOrder)"
-                     class="btn btn-primary">Ordenar</a>
+                  <span class="orderProduct">
+                    <a type="button" name="button" ng-click="orderProduct(newFoodOrder)"
+                       class="btn btn-primary">Ordenar</a>
+                  </span>
                   <!--Cocinar-->
-                  <a type="button" name="button" ng-click="cookProduct(newFoodOrder)"
-                     class="btn btn-secondary">Cocinar</a>
+                  <span class="cookProduct">
+                    <a type="button" name="button" ng-click="cookProduct(newFoodOrder)"
+                       class="btn btn-secondary">Cocinar</a>
+                  </span>
                 </div>
               </div>
 
