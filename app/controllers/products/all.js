@@ -15,10 +15,8 @@ angular.module('myApp')
   .controller('ProductsCtrl', function($scope, ProductService, $routeParams) {
     $scope.loading = true;
     $scope.products = [];
-    ProductService.getAll().then(function(response) {
+    ProductService.getAll()
+      .then(function successCallback(response) {
         $scope.products = response.data;
-      },
-      function(error) {
-        console.log(error);
       });
   });

@@ -26,19 +26,6 @@ angular
       })
   })
 
-/*
-  .config(function ($provide) {
-    $provide.decorator("$exceptionHandler", function ($delegate, $injector) {
-        return function (exception, cause) {
-          var $rootScope = $injector.get("$rootScope");
-          $rootScope.addExceptionAlert({message: "Exception", reason: exception});
-          // This represents a custom method that exists within $rootScope
-          $delegate(exception, cause);
-        };
-      }
-    )
-  })
-*/
   //Add Time details for Errors
   .config(['$provide', function ($provide) {
     $provide.decorator('$log', ['$delegate', function ($delegate) {
@@ -49,7 +36,6 @@ angular
         args[0] = [new Date().toString(), ': ', args[0]].join('');
         origError.apply(null, args)
       };
-
       return $delegate;
     }]);
   }])
@@ -65,5 +51,16 @@ angular
   })
   .config(function ($httpProvider) {
     $httpProvider.interceptors.push('errorHttpInterceptor');
-  });
+  })
+
+  //Manage All Errors
+  .factory('$exceptionHandler', ['$log', function ($log) {
+    return function myExceptionHandler(exception) {
+      $log.error(exception);
+      document.getElementById('errors').innerHTML = exception;
+    };
+  }]);
 ;
+
+
+

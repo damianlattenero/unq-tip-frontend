@@ -14,11 +14,9 @@ angular.module('myApp')
       description: ""
     };
     $scope.save = function(product) {
-      ProductService.save(product).then(function(response) {
+      ProductService.save(product)
+        .then(function successCallback(response) {
           $window.location.assign('/#/products/' + response.data.id);
-        },
-        function(error) {
-          console.log(error);
         });
     };
 

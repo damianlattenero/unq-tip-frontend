@@ -15,10 +15,8 @@ angular.module('myApp')
   .controller('FoodOrderCtrl', function($scope, FoodOrderService, $routeParams) {
     $scope.loading = true;
     $scope.orders = [];
-    FoodOrderService.getAll().then(function(response) {
+    FoodOrderService.getAll()
+      .then(function successCallback(response) {
         $scope.orders = response.data;
-      },
-      function(error) {
-        console.log(error);
       });
   });
