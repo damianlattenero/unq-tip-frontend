@@ -3,17 +3,20 @@
   <h3 class="text-center">Mostrador</h3>
   <form novalidate class="form-horizontal">
 
-    <div ng-repeat="x in allProducts">
-      <div ng-controller="NewFoodOrderCtrl">
+    <div ng-controller="MainCtrl as mainCtrl">
+      <a type="button" name="button" ng-click="mainCtrl.getProducts()"
+         class="btn btn-primary">Actualizar Vista</a>
 
-        <div id="{{x.id}}" class="col-md-4">
+      <div ng-repeat="product in mainCtrl.products">
+
+        <div id="{{product.id}}" class="col-md-4">
 
           <!--Card-->
           <div class="card card-cascade" style="text-align: center;">
 
             <!--Card image-->
             <div class="view overlay hm-white-light text-xs-center">
-              <img src="../../assets/images/products/{{x.id}}.png" class="img-responsive" alt="{{x.name}}">
+              <img src="../../assets/images/products/{{product.id}}.png" class="img-responsive" alt="{{product.name}}">
               <a href="/#/foodOrder">
                 <div class="mask"></div>
               </a>
@@ -23,33 +26,25 @@
             <!--Card content-->
             <div class="card-block text-xs-center">
               <!--Title-->
-              <h4 class="card-title"><strong>{{x.name}}</strong></h4>
+              <h4 class="card-title"><strong>{{product.name}}</strong></h4>
 
               <!--SubTitle-->
-              <p class="card-text">{{x.description}}</p>
+              <p class="card-text">{{product.description}}</p>
 
               <!--Info-->
-              <p class="card-text"><strong>Pendientes: <span class="productPending">{{x.pending}}</span></strong></p>
+              <p class="card-text"><strong>Pendientes: <span class="productPending">{{product.pending}}</span></strong>
+              </p>
 
               <div class="form-group">
-                <div ng-show="false">
-                  <label for="productId" class="col-sm-2 control-label">Food ID</label>
-                  <label>
-                    <input ng-init="setId(x.id)" required integer ng-model="newFoodOrder.productId" type="number"
-                           class="form-control"
-                           id="productId">
-                  </label>
-                </div>
-
                 <div class="FoodOrderActions">
                   <!--Ordenar-->
                   <span class="orderProduct">
-                    <a type="button" name="button" ng-click="orderProduct(newFoodOrder)"
+                    <a type="button" name="button" ng-click="mainCtrl.orderProduct(product)"
                        class="btn btn-primary">Ordenar</a>
                   </span>
                   <!--Cocinar-->
                   <span class="cookProduct">
-                    <a type="button" name="button" ng-click="cookProduct(newFoodOrder)"
+                    <a type="button" name="button" ng-click="mainCtrl.cookProduct(product)"
                        class="btn btn-secondary">Cocinar</a>
                   </span>
                 </div>
