@@ -2,8 +2,12 @@
   <h2 class="text-center">Vista Principal</h2>
   <h3 class="text-center">Mostrador</h3>
   <form novalidate class="form-horizontal">
-
     <div ng-controller="MainCtrl as mainCtrl">
+      <!--toggle-->
+      <a class="btn btn-primary pull-right" ng-init="true" ng-class="{true: 'btn-primary', false: 'btn-danger'}[!mainCtrl.vista]"
+         ng-click="mainCtrl.vista = !mainCtrl.vista">{{!mainCtrl.vista && 'Mostrador' || 'Cocina'}} </a>
+
+      <!--boton de actualizar-->
       <a type="button" name="button" ng-click="mainCtrl.getProducts()"
          class="btn btn-primary">Actualizar Vista</a>
 
