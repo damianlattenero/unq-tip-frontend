@@ -8,7 +8,7 @@
  */
 
 angular.module('myApp')
-  .controller('MainCtrl', function ($scope, ProductService, FoodOrderService, $window) {
+  .controller('MainCtrl', function ($scope, $interval, ProductService, FoodOrderService) {
 
     var self = this;
 
@@ -20,6 +20,10 @@ angular.module('myApp')
     }
 
     this.getProducts();
+
+    $interval(function () {
+      self.getProducts();
+    }, 1000);
 
     this.newFoodOrder = {
       productId: 0,
