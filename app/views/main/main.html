@@ -1,11 +1,12 @@
 <div class="well">
-  <h2 class="text-center">Vista Principal</h2>
-  <h3 class="text-center">Mostrador</h3>
   <form novalidate class="form-horizontal">
     <div ng-controller="MainCtrl as mainCtrl">
+      <h2 class="text-center">Vista Principal</h2>
+      <h3 class="text-center">{{mainCtrl.front && 'Mostrador' || 'Cocina'}}</h3>
       <!--toggle-->
-      <a class="btn btn-primary pull-right" ng-init="true" ng-class="{true: 'btn-primary', false: 'btn-danger'}[!mainCtrl.vista]"
-         ng-click="mainCtrl.vista = !mainCtrl.vista">{{!mainCtrl.vista && 'Mostrador' || 'Cocina'}} </a>
+      <a class="btn btn-secondary pull-right" ng-init="true"
+         ng-class="{true: 'btn-primary', false: 'btn-secondary'}[!mainCtrl.front]"
+         ng-click="mainCtrl.front = !mainCtrl.front">Cambiar a {{!mainCtrl.front && 'Mostrador' || 'Cocina'}}</a>
 
       <!--boton de actualizar-->
       <a type="button" name="button" ng-click="mainCtrl.getProducts()"
@@ -42,15 +43,27 @@
               <div class="form-group">
                 <div class="FoodOrderActions">
                   <!--Ordenar-->
-                  <span class="orderProduct">
-                    <a type="button" name="button" ng-click="mainCtrl.orderProduct(product)"
-                       class="btn btn-primary">Ordenar</a>
-                  </span>
+                  <div ng-show="mainCtrl.isFront()">
+                    <span class="orderProduct">
+                      <a type="button" name="button" ng-click="mainCtrl.orderProduct(product)"
+                         class="btn btn-primary">Ordenar</a>
+                    </span>
+                    <span class="cancelOrderProduct">
+                      <a type="button" name="button" ng-click="mainCtrl.cancelOrderProduct(product)"
+                         class="btn btn-danger">Cancelar</a>
+                    </span>
+                  </div>
                   <!--Cocinar-->
-                  <span class="cookProduct">
-                    <a type="button" name="button" ng-click="mainCtrl.cookProduct(product)"
-                       class="btn btn-secondary">Cocinar</a>
-                  </span>
+                  <div ng-show="mainCtrl.isKitchen()">
+                    <span class="cookProduct">
+                      <a type="button" name="button" ng-click="mainCtrl.cookProduct(product)"
+                         class="btn btn-secondary">Cocinar</a>
+                    </span>
+                    <span class="cookProduct">
+                      <a type="button" name="button" ng-click="mainCtrl.cancelCookProduct(product)"
+                         class="btn btn-danger">Cancelar</a>
+                    </span>
+                  </div>
                 </div>
               </div>
 
