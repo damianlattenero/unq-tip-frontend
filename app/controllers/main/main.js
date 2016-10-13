@@ -34,10 +34,17 @@ angular.module('myApp')
       self.save(product, 1);
     };
 
+    this.cancelOrderProduct = function (product) {
+      self.save(product, -1);
+    };
+
     this.cookProduct = function (product) {
       self.save(product, -1);
     };
 
+    this.cancelCookProduct = function (product) {
+      self.save(product, 1);
+    };
 
     this.save = function (product, type) {
       self.newFoodOrder.productId = product.id;
@@ -60,6 +67,16 @@ angular.module('myApp')
         return product.id === productId
       });
       product[0].pending = pending;
+    };
+
+    this.front = true;
+
+    this.isFront = function () {
+      return self.front;
+    };
+
+    this.isKitchen = function () {
+      return !self.front;
     };
 
   });
