@@ -4,13 +4,15 @@
       <h2 class="text-center">Vista Principal</h2>
       <h3 class="text-center">{{mainCtrl.front && 'Mostrador' || 'Cocina'}}</h3>
       <!--toggle-->
-      <a class="btn btn-secondary pull-right" ng-init="true"
-         ng-class="{true: 'btn-primary', false: 'btn-secondary'}[!mainCtrl.front]"
-         ng-click="mainCtrl.front = !mainCtrl.front">Cambiar a {{!mainCtrl.front && 'Mostrador' || 'Cocina'}}</a>
+      <div style="display: inline-block;">
+        <a style="text-align: right;" class="btn btn-secondary pull-right" ng-init="true"
+           ng-class="{true: 'btn-primary', false: 'btn-secondary'}[!mainCtrl.front]"
+           ng-click="mainCtrl.front = !mainCtrl.front">Cambiar a {{!mainCtrl.front && 'Mostrador' || 'Cocina'}}</a>
 
-      <!--boton de actualizar-->
-      <a type="button" name="button" ng-click="mainCtrl.getProducts()"
-         class="btn btn-primary">Actualizar Vista</a>
+        <!--boton de actualizar-->
+        <a ng-hide="true" type="button" name="button" ng-click="mainCtrl.getProducts()"
+           class="btn btn-primary">Actualizar Vista</a>
+      </div>
 
       <div ng-repeat="product in mainCtrl.products">
 
@@ -37,7 +39,7 @@
               <p class="card-text">{{product.description}}</p>
 
               <!--Info-->
-              <p class="card-text"><strong>Pendientes: <span class="productPending">{{product.pending}}</span></strong>
+              <p ng-show="mainCtrl.isKitchen()" class="card-text"><strong>Pendientes: <span class="productPending">{{product.pending}}</span></strong>
               </p>
 
               <div class="form-group">
@@ -50,7 +52,7 @@
                     </span>
                     <span class="cancelOrderProduct">
                       <a type="button" name="button" ng-click="mainCtrl.cancelOrderProduct(product)"
-                         class="btn btn-danger">Cancelar</a>
+                         class="btn btn-danger">Anular</a>
                     </span>
                   </div>
                   <!--Cocinar-->
@@ -61,7 +63,7 @@
                     </span>
                     <span class="cookProduct">
                       <a type="button" name="button" ng-click="mainCtrl.cancelCookProduct(product)"
-                         class="btn btn-danger">Cancelar</a>
+                         class="btn btn-danger">Anular</a>
                     </span>
                   </div>
                 </div>
