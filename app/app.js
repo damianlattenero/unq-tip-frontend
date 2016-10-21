@@ -5,7 +5,9 @@ angular
   .module('myApp', [
     'ngRoute',
     //'ErrorCatcher',
-    'config'
+    'config',
+    'auth0.lock',
+    'angular-jwt'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -24,6 +26,10 @@ angular
         controller: 'FoodOrderCtrl',
         controllerAs: 'foodOrderCtrl'
       })
+      .when('/login', {
+        controller: 'loginController',
+        templateUrl: 'views/login/login.html'
+      });
   })
 
   //Add Time details for Errors
@@ -53,13 +59,26 @@ angular
     $httpProvider.interceptors.push('errorHttpInterceptor');
   })
 
+
   //Manage All Errors
   .factory('$exceptionHandler', ['$log', function ($log) {
     return function myExceptionHandler(exception) {
       $log.error(exception);
       document.getElementById('errors').innerHTML = exception;
     };
-  }]);
+  }])
+  .configure(function config($routeProvider, $httpProvider, lockProvider, jwtOptionsProvider, jwtInterceptorProvider) {
+
+    jwtOptionsProvider.config({
+      tokenGetter: function () {
+        return localStorage.getItem('id_token');
+      }
+    });
+
+    $httpProvider.interceptors.push('jwtInterceptor');
+  })
+
+
 ;
 
 
