@@ -34,7 +34,6 @@
       localStorage.removeItem('profile');
       authManager.unauthenticate();
       userProfile = {};
-      $window.location.reload();
     }
 
     // Set up the logic for when a user authenticates

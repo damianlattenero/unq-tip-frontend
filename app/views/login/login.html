@@ -1,7 +1,8 @@
-<div class="jumbotron">
+<div class="jumbotron" ng-controller="MainCtrl">
   <h2 class="text-center"><img src="https://cdn.auth0.com/styleguide/1.0.0/img/badge.svg"></h2>
   <h2 class="text-center">Login</h2>
   <div class="text-center">
-    <button class="btn btn-primary" ng-click="authService.login()">Log In</button>
+    <button class="btn btn-primary" ng-if="!isAuthenticated" ng-click="authService.login()">Log In</button>
+    <li ng-if="isAuthenticated"><a href="#/" ng-click="authService.logout()">Log Out</a></li>
   </div>
 </div>
