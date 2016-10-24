@@ -10,15 +10,14 @@
 
   function authService($window, $rootScope, lock, authManager) {
 
-    try{
+    try {
       var block = JSON.parse(localStorage.getItem('profile'));
     }
-    catch (err){
+    catch (err) {
       block = {};
     }
 
     var userProfile = block;
-
 
 
     function login() {
@@ -55,11 +54,12 @@
         });
       });
     }
+
     return {
       userProfile: userProfile,
       login: login,
       logout: logout,
       registerAuthenticationListener: registerAuthenticationListener
-  }
+    }
   }
 })();
