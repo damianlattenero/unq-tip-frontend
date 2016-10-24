@@ -6,31 +6,9 @@
     .module('myApp')
     .service('authService', authService);
 
-  authService.$inject = ['$rootScope', 'lock', 'authManager'];
-  /*var lock = new Auth0Lock(
-    'BCL0BYCBdbFUmrJh16lG2CB1MZsxz7ex',
-    'marchionnelattenero.auth0.com',
-    {
-      auth: {
-        redirect: true
-      }
-    }
-  );
-*/
-/*  lock.on("authenticated", function(authResult) {
-    lock.getProfile(authResult.idToken, function(error, profile) {
-      if (error) {
-        // Handle error
-        return;
-      }
+  authService.$inject = ['$window', '$rootScope', 'lock', 'authManager'];
 
-      localStorage.setItem('token', authResult.idToken);
-      localStorage.setItem('profile', JSON.stringify(profile));
-    });
-
-  });*/
-
-  function authService($rootScope, lock, authManager) {
+  function authService($window, $rootScope, lock, authManager) {
 
     var userProfile = JSON.parse(localStorage.getItem('profile')) || {};
 
@@ -48,6 +26,7 @@
       localStorage.removeItem('profile');
       authManager.unauthenticate();
       userProfile = {};
+      $window.location.reload();
     }
 
     // Set up the logic for when a user authenticates
@@ -67,12 +46,11 @@
         });
       });
     }
-
     return {
       userProfile: userProfile,
       login: login,
       logout: logout,
       registerAuthenticationListener: registerAuthenticationListener
-    }
+  }
   }
 })();
