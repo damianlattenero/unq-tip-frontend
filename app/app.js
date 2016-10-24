@@ -1,6 +1,9 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
+
+
+
 angular
   .module('myApp', [
     'ngRoute',
@@ -9,7 +12,13 @@ angular
     'auth0.lock',
     'angular-jwt'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, lockProvider) {
+
+    lockProvider.init({
+      clientID: 'BCL0BYCBdbFUmrJh16lG2CB1MZsxz7ex',
+      domain: 'marchionnelattenero.auth0.com'
+    });
+
     $routeProvider
       .when('/', {
         templateUrl: 'views/main/main.html',
@@ -31,6 +40,17 @@ angular
         templateUrl: 'views/login/login.html'
       });
   })
+
+  /*.config(function config($routeProvider, $httpProvider, lockProvider, jwtOptionsProvider, jwtInterceptorProvider) {
+
+    jwtOptionsProvider.config({
+      tokenGetter: function () {
+        return localStorage.getItem('id_token');
+      }
+    });
+
+    $httpProvider.interceptors.push('jwtInterceptor');
+  })*/
 
   //Add Time details for Errors
   .config(['$provide', function ($provide) {
@@ -60,6 +80,7 @@ angular
   })
 
 
+
   //Manage All Errors
   .factory('$exceptionHandler', ['$log', function ($log) {
     return function myExceptionHandler(exception) {
@@ -67,16 +88,9 @@ angular
       document.getElementById('errors').innerHTML = exception;
     };
   }])
-  .configure(function config($routeProvider, $httpProvider, lockProvider, jwtOptionsProvider, jwtInterceptorProvider) {
 
-    jwtOptionsProvider.config({
-      tokenGetter: function () {
-        return localStorage.getItem('id_token');
-      }
-    });
 
-    $httpProvider.interceptors.push('jwtInterceptor');
-  })
+
 
 
 ;
