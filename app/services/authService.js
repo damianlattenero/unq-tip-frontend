@@ -13,7 +13,10 @@
     var userProfile = JSON.parse(localStorage.getItem('profile')) || {};
 
     function login() {
-      lock.show();
+      lock.show({
+        callbackUrl: '/#/',
+        state: location.href
+      })
     }
 
     // Logging out just requires removing the user's
