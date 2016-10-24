@@ -10,7 +10,16 @@
 
   function authService($window, $rootScope, lock, authManager) {
 
-    var userProfile = JSON.parse(localStorage.getItem('profile')) || {};
+    try{
+      var block = JSON.parse(localStorage.getItem('profile'));
+    }
+    catch (err){
+      block = {};
+    }
+
+    var userProfile = block;
+
+
 
     function login() {
       lock.show({
