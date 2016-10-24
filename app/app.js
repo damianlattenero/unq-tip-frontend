@@ -16,7 +16,8 @@ angular
 
     lockProvider.init({
       clientID: 'BCL0BYCBdbFUmrJh16lG2CB1MZsxz7ex',
-      domain: 'marchionnelattenero.auth0.com'
+      domain: 'marchionnelattenero.auth0.com',
+      callbackURL: 'http://localhost:9000/#/'
     });
 
     $routeProvider
