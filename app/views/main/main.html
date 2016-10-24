@@ -1,5 +1,5 @@
 <div class="well">
-  <form novalidate class="form-horizontal">
+  <form novalidate class="form-horizontal" ng-controller="MainCtrl as mainCtrl">
 
 
     <div class="jumbotron">
@@ -11,10 +11,11 @@
       <div class="text-center" ng-if="isAuthenticated">
         <h2>Welcome, {{ profile.nickname }}</h2>
         <img ng-src="{{ profile.picture }}">
+        <button class="btn btn-primary" ng-click="authService.logout()">Log Out</button>
       </div>
     </div>
 
-    <div ng-controller="MainCtrl as mainCtrl">
+    <div>
       <h2 class="text-center">Vista Principal</h2>
       <h3 class="text-center">{{mainCtrl.front && 'Mostrador' || 'Cocina'}}</h3>
       <!--toggle-->
@@ -47,7 +48,7 @@
             <!--Card content-->
             <div class="card-block text-xs-center">
               <!--Title-->
-              <h4 class="card-title"><strong>{{product.name}}</strong></h4>
+              <h4 class="card-title"><strong>{{product.name}}}</strong></h4>
 
               <!--SubTitle-->
               <p class="card-text">{{product.description}}</p>

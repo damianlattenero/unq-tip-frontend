@@ -3,8 +3,7 @@
 // Declare app level module which depends on views, and components
 
 
-
-angular
+var app = angular
   .module('myApp', [
     'ngRoute',
     //'ErrorCatcher',
@@ -41,17 +40,24 @@ angular
         templateUrl: 'views/login/login.html'
       });
   })
+  .config(function Config($httpProvider, jwtOptionsProvider) {
+    jwtOptionsProvider.config({
+
+
+      whiteListedDomains: ['marchionnelattenero.auth0.com', 'localhost']
+    });
+  })
 
   /*.config(function config($routeProvider, $httpProvider, lockProvider, jwtOptionsProvider, jwtInterceptorProvider) {
 
-    jwtOptionsProvider.config({
-      tokenGetter: function () {
-        return localStorage.getItem('id_token');
-      }
-    });
+   jwtOptionsProvider.config({
+   tokenGetter: function () {
+   return localStorage.getItem('id_token');
+   }
+   });
 
-    $httpProvider.interceptors.push('jwtInterceptor');
-  })*/
+   $httpProvider.interceptors.push('jwtInterceptor');
+   })*/
 
   //Add Time details for Errors
   .config(['$provide', function ($provide) {
@@ -88,13 +94,14 @@ angular
       $log.error(exception);
       document.getElementById('errors').innerHTML = exception;
     };
-  }])
+  }]);
 
+app.run(function(authService) {
 
-
-
-
-;
+  // Put the authService on $rootScope so its methods
+  // can be accessed from the nav bar
+  authService.registerAuthenticationListener();
+});
 
 
 
