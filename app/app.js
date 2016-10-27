@@ -14,6 +14,7 @@ var app = angular
   ])
   .config(function ($routeProvider, lockProvider, $urlRouterProvider) {
 
+
     lockProvider.init({
       clientID: 'BCL0BYCBdbFUmrJh16lG2CB1MZsxz7ex',
       domain: 'marchionnelattenero.auth0.com',
