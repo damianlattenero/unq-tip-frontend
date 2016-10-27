@@ -6,9 +6,18 @@
     .module('myApp')
     .service('authService', authService);
 
-  authService.$inject = ['$window', '$rootScope', 'lock', 'authManager'];
+  authService.$inject = ['$rootScope', 'lock', 'authManager'];
 
-  function authService($window, $rootScope, lock, authManager) {
+  function authService($rootScope, lock, authManager) {
+    var lock = new Auth0Lock(
+      'BCL0BYCBdbFUmrJh16lG2CB1MZsxz7ex',
+      'marchionnelattenero.auth0.com',
+      {
+        auth: {
+          redirect: false
+        }
+      }
+    );
 
     try {
       var block = JSON.parse(localStorage.getItem('profile'));
@@ -20,11 +29,14 @@
     var userProfile = block;
 
 
+
+
     function login() {
-      lock.show({
-        callbackUrl: '/#/main',
-        state: location.href
-      })
+      lock.show();
+      // lock.show({
+      //   callbackUrl: '/#/main',
+      //   state: location.href
+      // })
     }
 
     // Logging out just requires removing the user's

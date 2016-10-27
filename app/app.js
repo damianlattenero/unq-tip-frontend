@@ -9,56 +9,65 @@ var app = angular
     //'ErrorCatcher',
     'config',
     'auth0.lock',
-    'angular-jwt'
+    'angular-jwt',
+    'ui.router'
   ])
-  .config(function ($routeProvider, lockProvider) {
+  .config(function ($routeProvider, lockProvider, $urlRouterProvider) {
 
     lockProvider.init({
       clientID: 'BCL0BYCBdbFUmrJh16lG2CB1MZsxz7ex',
       domain: 'marchionnelattenero.auth0.com',
-      callbackURL: 'http://localhost:9000/#/'
+      callbackURL: 'http://localhost:9000/#/main'
     });
 
     $routeProvider
-      .when('/', {
-        controller: 'loginController',
-        templateUrl: 'views/login/login.html'
+      .when('/login', {
+        controller: 'LoginController',
+        templateUrl: 'views/login/login.html',
+        controllerAs: 'vm',
+        requireAuth: false
       })
       .when('/main', {
+        url: '/main',
         templateUrl: 'views/main/main.html',
         controller: 'MainCtrl',
-        controllerAs: 'main'
+        controllerAs: 'main',
+        requireAuth: true
       })
       .when('/products', {
+        url: '/products',
         templateUrl: 'views/product/product.html',
         controller: 'ProductsCtrl',
-        controllerAs: 'productsCtrl'
+        controllerAs: 'productsCtrl',
+        requireAuth: false
       })
       .when('/foodOrder', {
+        url: '/foodOrder',
         templateUrl: 'views/foodOrder/foodOrder.html',
         controller: 'FoodOrderCtrl',
-        controllerAs: 'foodOrderCtrl'
+        controllerAs: 'foodOrderCtrl',
+        requireAuth: true
       })
-      .otherwise({ redirectTo: '/' });
+      .otherwise({redirectTo: '/login'});
+
+      //$urlRouterProvider.otherwise('/login');
   })
-  .config(function Config($httpProvider, jwtOptionsProvider) {
+  // .config(function Config($httpProvider, jwtOptionsProvider) {
+  .config(function Config($httpProvider, $stateProvider, lockProvider, jwtOptionsProvider) {
+  //.config(function Config($httpProvider, $stateProvider, lockProvider, $urlRouterProvider, jwtOptionsProvider) {
+  //.config(function config($stateProvider, $httpProvider, lockProvider, jwtOptionsProvider, jwtInterceptorProvider) {
     jwtOptionsProvider.config({
-
-
-      whiteListedDomains: ['marchionnelattenero.auth0.com', 'localhost']
+      tokenGetter: function () {
+        return localStorage.getItem('id_token');
+      },
+      whiteListedDomains: ['marchionnelattenero.auth0.com','localhost'],
+      unauthenticatedRedirectPath: '/login'
     });
+
+    // Add the jwtInterceptor to the array of HTTP interceptors
+    // so that JWTs are attached as Authorization headers
+    $httpProvider.interceptors.push('jwtInterceptor');
   })
-
-  /*.config(function config($routeProvider, $httpProvider, lockProvider, jwtOptionsProvider, jwtInterceptorProvider) {
-
-   jwtOptionsProvider.config({
-   tokenGetter: function () {
-   return localStorage.getItem('id_token');
-   }
-   });
-
-   $httpProvider.interceptors.push('jwtInterceptor');
-   })*/
 
   //Add Time details for Errors
   .config(['$provide', function ($provide) {
@@ -97,11 +106,23 @@ var app = angular
     };
   }]);
 
-app.run(function(authService) {
-
+app.run(function($rootScope, authService, lock, authManager) {
   // Put the authService on $rootScope so its methods
   // can be accessed from the nav bar
+  $rootScope.authService = authService;
+
+  // Register the authentication listener that is
+  // set up in auth.service.js
   authService.registerAuthenticationListener();
+
+  // Register the synchronous hash parser
+  // when using UI Router
+  lock.interceptHash()
+
+  // Use the authManager from angular-jwt to check for
+  // the user's authentication state when the page is
+  // refreshed and maintain authentication
+  authManager.checkAuthOnRefresh();
 });
 
 

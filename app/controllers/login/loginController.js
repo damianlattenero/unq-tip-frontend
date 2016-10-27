@@ -4,15 +4,21 @@
 
   angular
     .module('myApp')
-    .controller('loginController', loginController);
+    .controller('LoginController', LoginController);
 
-  loginController.$inject = ['$scope', 'authService'];
+  LoginController.$inject = ['$scope','$location','authService'];
 
-  function loginController($scope, authService) {
+  function LoginController($scope, $location, authService) {
 
-    // Put the authService on $scope to access
-    // the login method in the view
-    $scope.authService = authService;
+    var vm = this;
+    vm.authService = authService;
+
+    $scope.$on('$routeChangeStart', function(angularEvent, newUrl) {
+      // if (newUrl.requiredAuth && (localStorage.getItem('id_token')!='')){
+      if (newUrl.requiredAuth){
+        $location.path("/login");
+      }
+    })
   }
 
 })();
