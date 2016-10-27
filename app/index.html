@@ -45,6 +45,7 @@
         <button class="btn btn-primary log-in" ng-if="!isAuthenticated" ng-click="vm.authService.login()">Log In</button>
         <button class="btn btn-primary log-out" ng-if="isAuthenticated" ng-click="vm.authService.logout()">Log Out</button>
       </li>
+      <li  ng-if="isAuthenticated" > User: {{vm.authService.userProfile.nickname}}</li>
     </ul>
   </div>
   <!--[if lt IE 7]>

@@ -13,12 +13,12 @@
     var vm = this;
     vm.authService = authService;
 
-    $scope.$on('$routeChangeStart', function(angularEvent, newUrl) {
+/*    $scope.$on('$routeChangeStart', function(angularEvent, newUrl) {
       // if (newUrl.requiredAuth && (localStorage.getItem('id_token')!='')){
       if (newUrl.requiredAuth){
         $location.path("/login");
       }
-    })
+    })*/
   }
 
 })();
