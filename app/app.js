@@ -21,6 +21,10 @@ var app = angular
 
     $routeProvider
       .when('/', {
+        controller: 'loginController',
+        templateUrl: 'views/login/login.html'
+      })
+      .when('/main', {
         templateUrl: 'views/main/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main'
@@ -35,10 +39,7 @@ var app = angular
         controller: 'FoodOrderCtrl',
         controllerAs: 'foodOrderCtrl'
       })
-      .when('/login', {
-        controller: 'loginController',
-        templateUrl: 'views/login/login.html'
-      });
+      .otherwise({ redirectTo: '/' });
   })
   .config(function Config($httpProvider, jwtOptionsProvider) {
     jwtOptionsProvider.config({
