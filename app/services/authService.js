@@ -22,7 +22,7 @@
 
     function login() {
       lock.show({
-        callbackUrl: '/#/',
+        callbackUrl: '/#/main',
         state: location.href
       })
     }

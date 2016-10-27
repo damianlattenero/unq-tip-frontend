@@ -40,6 +40,10 @@
     <li><a href="/#/">Vista Principal</a></li>
     <li><a href="/#/products">Productos</a></li>
     <li><a href="/#/foodOrder">Ordenes</a></li>
+    <li class="text-center" ng-controller="loginController">
+      <button class="btn btn-primary log-in" ng-if="!isAuthenticated" ng-click="authService.login()">Log In</button>
+      <button class="btn btn-primary log-out" ng-if="isAuthenticated" ng-click="authService.logout()">Log Out</button>
+    </li>
   </ul>
 
   <!--[if lt IE 7]>
