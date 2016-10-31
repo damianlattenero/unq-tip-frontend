@@ -29,14 +29,14 @@ var app = angular
       .when('/login', {
         controller: 'LoginController',
         templateUrl: 'views/login/login.html',
-        controllerAs: 'vm',
+        controllerAs: 'mainCtrl',
         requireAuth: false
       })
       .when('/main', {
         url: '/main',
         templateUrl: 'views/main/main.html',
         controller: 'MainCtrl',
-        controllerAs: 'main',
+        controllerAs: 'vm',
         requireAuth: true
       })
       .when('/products', {
