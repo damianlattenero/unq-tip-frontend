@@ -27,28 +27,31 @@ angular.module('myApp')
 
     this.newFoodOrder = {
       productId: 0,
-      productAmount: 0
+      productAmount: 0,
+      state: ""
     };
 
-    this.orderProduct = function (product) {
-      self.save(product, 1);
+    this.orderProduct = function (product, user) {
+      self.save(product, 1, "ORDER", user);
     };
 
-    this.cancelOrderProduct = function (product) {
-      self.save(product, -1);
+    this.cancelOrderProduct = function (product, user) {
+      self.save(product, -1, "CANCELORDER", user);
     };
 
-    this.cookProduct = function (product) {
-      self.save(product, -1);
+    this.cookProduct = function (product, user) {
+      self.save(product, -1, "COOKED", user);
     };
 
-    this.cancelCookProduct = function (product) {
-      self.save(product, 1);
+    this.cancelCookProduct = function (product, user) {
+      self.save(product, 1, "CANCELCOOKED", user);
     };
 
-    this.save = function (product, type) {
+    this.save = function (product, type, state, user) {
       self.newFoodOrder.productId = product.id;
       self.newFoodOrder.productAmount = type;
+      self.newFoodOrder.state = state;
+      self.newFoodOrder.user = user;
 
       product.pending += self.newFoodOrder.productAmount;
 

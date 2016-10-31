@@ -49,27 +49,27 @@
               <p ng-show="mainCtrl.isKitchen()" class="card-text"><strong>Pendientes: <span class="productPending">{{product.pending}}</span></strong>
               </p>
 
-              <div class="form-group">
+              <div class="form-group" ng-controller="LoginController as vm">
                 <div class="FoodOrderActions">
                   <!--Ordenar-->
                   <div ng-show="mainCtrl.isFront()">
                     <span class="orderProduct">
-                      <a type="button" name="button" ng-click="mainCtrl.orderProduct(product)"
+                      <a type="button" name="button" ng-click="mainCtrl.orderProduct(product, vm.authService.userProfile.nickname)"
                          class="btn btn-primary">Ordenar</a>
                     </span>
                     <span class="cancelOrderProduct">
-                      <a type="button" name="button" ng-click="mainCtrl.cancelOrderProduct(product)"
+                      <a type="button" name="button" ng-click="mainCtrl.cancelOrderProduct(product, vm.authService.userProfile.nickname)"
                          class="btn btn-danger">Anular</a>
                     </span>
                   </div>
                   <!--Cocinar-->
                   <div ng-show="mainCtrl.isKitchen()">
                     <span class="cookProduct">
-                      <a type="button" name="button" ng-click="mainCtrl.cookProduct(product)"
+                      <a type="button" name="button" ng-click="mainCtrl.cookProduct(product, vm.authService.userProfile.nickname)"
                          class="btn btn-secondary">Cocinar</a>
                     </span>
                     <span class="cookProduct">
-                      <a type="button" name="button" ng-click="mainCtrl.cancelCookProduct(product)"
+                      <a type="button" name="button" ng-click="mainCtrl.cancelCookProduct(product, vm.authService.userProfile.nickname)"
                          class="btn btn-danger">Anular</a>
                     </span>
                   </div>
