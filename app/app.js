@@ -18,7 +18,11 @@ var app = angular
     lockProvider.init({
       clientID: 'BCL0BYCBdbFUmrJh16lG2CB1MZsxz7ex',
       domain: 'marchionnelattenero.auth0.com',
-      callbackURL: 'http://localhost:9000/#/main'
+      options: {
+        auth: {
+          redirect: false
+        }
+      }
     });
 
     $routeProvider
@@ -51,17 +55,17 @@ var app = angular
       })
       .otherwise({redirectTo: '/login'});
 
-      //$urlRouterProvider.otherwise('/login');
+    //$urlRouterProvider.otherwise('/login');
   })
   // .config(function Config($httpProvider, jwtOptionsProvider) {
   .config(function Config($httpProvider, $stateProvider, lockProvider, jwtOptionsProvider) {
-  //.config(function Config($httpProvider, $stateProvider, lockProvider, $urlRouterProvider, jwtOptionsProvider) {
-  //.config(function config($stateProvider, $httpProvider, lockProvider, jwtOptionsProvider, jwtInterceptorProvider) {
+    //.config(function Config($httpProvider, $stateProvider, lockProvider, $urlRouterProvider, jwtOptionsProvider) {
+    //.config(function config($stateProvider, $httpProvider, lockProvider, jwtOptionsProvider, jwtInterceptorProvider) {
     jwtOptionsProvider.config({
       tokenGetter: function () {
         return localStorage.getItem('id_token');
       },
-      whiteListedDomains: ['marchionnelattenero.auth0.com','localhost'],
+      whiteListedDomains: ['marchionnelattenero.auth0.com', 'localhost'],
       unauthenticatedRedirectPath: '/login'
     });
 
@@ -107,7 +111,7 @@ var app = angular
     };
   }]);
 
-app.run(function($rootScope, authService, lock, authManager) {
+app.run(function ($rootScope, authService, lock, authManager) {
   // Put the authService on $rootScope so its methods
   // can be accessed from the nav bar
   $rootScope.authService = authService;
