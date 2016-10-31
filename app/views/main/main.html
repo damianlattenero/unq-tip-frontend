@@ -2,9 +2,9 @@
   <form novalidate class="form-horizontal" ng-controller="MainCtrl as mainCtrl">
 
 
-    <div class="text-center" ng-if="isAuthenticated">
-      <h2>Welcome, {{ profile.nickname }}</h2>
-      <img ng-src="{{ profile.picture }}">
+    <div class="text-center" ng-if="isAuthenticated" ng-controller="LoginController as vm">
+      <h2>Welcome, {{ vm.authService.userProfile.nickname }}</h2>
+      <img ng-src="{{ vm.authService.userProfile.picture }}">
     </div>
 
     <div>
