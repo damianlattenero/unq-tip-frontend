@@ -18,6 +18,7 @@ var app = angular
     lockProvider.init({
       clientID: 'BCL0BYCBdbFUmrJh16lG2CB1MZsxz7ex',
       domain: 'marchionnelattenero.auth0.com',
+      callback: 'http://127.0.0.1:9000/#/main/',
       options: {
         auth: {
           redirect: false
@@ -66,7 +67,8 @@ var app = angular
         return localStorage.getItem('id_token');
       },
       whiteListedDomains: ['marchionnelattenero.auth0.com', 'localhost'],
-      unauthenticatedRedirectPath: '/login'
+      authenticatedRedirectPath: '/#/main',
+      unauthenticatedRedirectPath: '/#/login'
     });
 
     // Add the jwtInterceptor to the array of HTTP interceptors

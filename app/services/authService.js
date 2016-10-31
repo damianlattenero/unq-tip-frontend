@@ -6,9 +6,9 @@
     .module('myApp')
     .service('authService', authService);
 
-  authService.$inject = ['$state', '$rootScope', 'lock', 'authManager'];
+  authService.$inject = ['$route', '$window', '$state', '$rootScope', 'lock', 'authManager', '$location'];
 
-  function authService($state, $rootScope, lock, authManager) {
+  function authService($route, $window, $state, $rootScope, lock, authManager, $location) {
     /*var lock = new Auth0Lock(
      'BCL0BYCBdbFUmrJh16lG2CB1MZsxz7ex',
      'marchionnelattenero.auth0.com',
@@ -31,15 +31,11 @@
 
 
     function login() {
-      lock.show();
-      $state.reload();
-      $state.transitionTo($state.current, $stateParams, {
-        reload: true, inherit: false, notify: true
-      });
-      /*lock.show({
-        callbackUrl: '/main',
-        state: location.href
-      })*/
+
+      lock.show({
+        callbackUrl: '/#/main',
+        state: location.href = '/#/main'
+      })
     }
 
     // Logging out just requires removing the user's
@@ -65,11 +61,7 @@
 
           localStorage.setItem('profile', JSON.stringify(profile));
           $rootScope.$broadcast('userProfileSet', profile);
-          $state.reload();
-          $state.transitionTo($state.current, $stateParams, {
-            reload: true, inherit: false, notify: true
-          });
-          $state.go($state.current, {}, {reload: true});
+
         });
       });
     }
