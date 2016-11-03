@@ -54,6 +54,13 @@ var app = angular
         controllerAs: 'foodOrderCtrl',
         requireAuth: true
       })
+      .when('/foodOrderHistory', {
+        url: '/foodOrderHistory',
+        templateUrl: 'views/foodOrderHistory/foodOrderHistory.html',
+        controller: 'FoodOrderHistoryCtrl',
+        controllerAs: 'foodOrderHistoryCtrl',
+        requireAuth: true
+      })
       .otherwise({redirectTo: '/login'});
 
     //$urlRouterProvider.otherwise('/login');

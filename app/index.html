@@ -41,6 +41,7 @@
       <li><a href="/#/main">Vista Principal</a></li>
       <li><a href="/#/products">Productos</a></li>
       <li><a href="/#/foodOrder">Ordenes</a></li>
+      <li><a href="/#/foodOrderHistory">Historial</a></li>
       <li class="text-center">
         <button class="btn btn-primary log-in" ng-if="!isAuthenticated" ng-click="vm.authService.login(); vm.refresh()">Log In</button>
         <a href="/#/login" class="btn btn-primary log-out" ng-if="isAuthenticated" ng-click="vm.authService.logout()">Log Out</a>
@@ -94,6 +95,8 @@
   <script src="controllers/foodOrder/all.js"></script>
   <script src="controllers/foodOrder/new.js"></script>
   <script src="services/foodOrder.js"></script>
+  <script src="controllers/foodOrderHistory/all.js"></script>
+  <script src="services/foodOrderHistory.js"></script>
   <script src="controllers/login/loginController.js"></script>
   <script src="services/authService.js"></script>
   <script src="controllers/main/main.js"></script>
