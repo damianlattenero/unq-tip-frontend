@@ -31,16 +31,34 @@ angular.module('myApp')
       state: ""
     };
 
+    this.isEnabledOrderProduct = function (product) {
+      //return product[0].hasStock;
+      return true;
+    };
+
     this.orderProduct = function (product, user) {
       self.save(product, 1, "ORDER", user);
+    };
+
+    this.isEnabledCancelOrderProduct = function (product) {
+       return (product.pending > 0);
     };
 
     this.cancelOrderProduct = function (product, user) {
       self.save(product, -1, "CANCELORDER", user);
     };
 
+    this.isEnabledCookProduct = function (product) {
+      return (product.pending > 0);
+    };
+
     this.cookProduct = function (product, user) {
       self.save(product, -1, "COOKED", user);
+    };
+
+    this.isEnabledCancelCookProduct= function (product) {
+      //return product[0].hasStock;
+      return true;
     };
 
     this.cancelCookProduct = function (product, user) {
