@@ -29,37 +29,94 @@
   <link rel="stylesheet" href="bower_components/angular-ui-notification/dist/angular-ui-notification.css" />
   <!-- endbower -->
   <!-- endbuild -->
+
   <!-- build:css(.tmp) styles/main.css -->
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="bower_components/MDBootstrap/css/bootstrap.min.css">
+
+  <!-- Material Design Bootstrap -->
+  <link rel="stylesheet" href="bower_components/MDBootstrap/css/mdb.min.css">
+
+  <!-- Your custom styles (optional) -->
   <link rel="stylesheet" href="app.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/css/mdb.min.css">
   <!-- endbuild -->
 
 </head>
 <body>
-  <div id="toolbar" ng-controller="LoginController as vm">
-    <ul class="menu">
-      <li><a href="/#/main">Vista Principal</a></li>
-      <li><a href="/#/products">Productos</a></li>
-      <li><a href="/#/foodOrder">Ordenes</a></li>
-      <li class="text-center">
-        <button class="btn btn-primary log-in" ng-if="!isAuthenticated" ng-click="vm.authService.login(); vm.refresh()">Log In</button>
-        <a href="/#/login" class="btn btn-primary log-out" ng-if="isAuthenticated" ng-click="vm.authService.logout()">Log Out</a>
-      </li>
-      <li  ng-if="isAuthenticated" > User: {{vm.authService.userProfile.nickname}}</li>
-    </ul>
+  <nav class="navbar navbar-fixed-top navbar-light teal lighten-4" ng-controller="LoginController as vm">
+    <!-- navbar-dark bg-primary -->
+    <!-- navbar-light teal lighten-4 -->
+
+    <!-- Collapse button-->
+    <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapseEx2">
+      <i class="fa fa-bars"></i>
+    </button>
+
+    <div class="container">
+
+      <!--Collapse content-->
+      <div class="collapse navbar-toggleable-xs" id="collapseEx2">
+        <!--Navbar Brand-->
+        <a class="navbar-brand" href="/#/main">
+          <!--<img class="img-responsive" src="../../assets/images/favicon.png">-->
+          <span>Virtual Kiosk</span>
+        </a>
+        <!--Links-->
+        <ul class="nav navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/#/main">Vista Principal</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/#/products">Productos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/#/foodOrder">Ordenes</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="nav-item">
+            <div ng-if="isAuthenticated" > User: {{vm.authService.userProfile.nickname}}</div>
+          </li>
+          <li class="nav-item" ng-if="isAuthenticated" >
+            <a class="btn btn-primary log-out" ng-click="vm.authService.logout()">Log Out</a>
+          </li>
+          <li class="nav-item" ng-if="!isAuthenticated" >
+            <a class="btn btn-primary log-in" ng-click="vm.authService.login()">Log In</a>
+          </li>
+        </ul>
+      </div>
+      <!--/.Collapse content-->
+
+    </div>
+  </nav>
+
+  <div style="margin-top: 5em">
+    <!--
+      <div class="text-center" ng-if="isAuthenticated" ng-controller="LoginController as vm">
+        <h2>Welcome, {{ vm.authService.userProfile.nickname }}</h2>
+        &lt;!&ndash;<div style="max-height: 20em">&ndash;&gt;
+        <div>
+          <img ng-src="{{ vm.authService.userProfile.picture }}">
+        </div>
+      </div>
+    -->
+
+    <!--[if lt IE 7]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div ng-show="errors" id="errors" class="alert alert-danger"></div>
+
+    <div ng-view></div>
+
+    <!--
+      <div>Angular seed app: v<span app-version></span></div>
+    -->
+
   </div>
-  <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
-
-  <div ng-show="errors" id="errors" class="alert alert-danger"></div>
-
-  <div ng-view></div>
-
-<!--
-  <div>Angular seed app: v<span app-version></span></div>
--->
-
   <!-- build:js scripts/vendor.js -->
   <!-- bower:js -->
   <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -80,27 +137,38 @@
   <script src="bower_components/auth0-lock/build/lock.js"></script>
   <script src="bower_components/angular-lock/angular-lock.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/angular-mocks/angular-mocks.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
 
   <!-- build:js({.tmp,app}) scripts/scripts.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/js/mdb.min.js"></script>
+  <!-- JQuery -->
+  <script type="text/javascript" src="bower_components/MDBootstrap/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="bower_components/MDBootstrap/js/tether.min.js"></script>
+
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="bower_components/MDBootstrap/js/bootstrap.min.js"></script>
+
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="bower_components/MDBootstrap/js/mdb.min.js"></script>
+
   <script src="app.js"></script>
   <script src="scripts/config.js"></script>
+  <script src="controllers/foodOrder/all.js"></script>
+  <script src="controllers/foodOrder/new.js"></script>
+  <script src="controllers/login/loginController.js"></script>
+  <script src="controllers/main/main.js"></script>
   <script src="controllers/products/all.js"></script>
   <script src="controllers/products/new.js"></script>
   <script src="controllers/products/show.js"></script>
-  <script src="services/product.js"></script>
-  <script src="controllers/foodOrder/all.js"></script>
-  <script src="controllers/foodOrder/new.js"></script>
-  <script src="services/foodOrder.js"></script>
-  <script src="controllers/login/loginController.js"></script>
   <script src="services/authService.js"></script>
-  <script src="controllers/main/main.js"></script>
+  <script src="services/foodOrder.js"></script>
+  <script src="services/product.js"></script>
   <script src="assets/components/version/version.js"></script>
   <script src="assets/components/version/version-directive.js"></script>
   <script src="assets/components/version/interpolate-filter.js"></script>
-
   <!--endbuild-->
 
 </body>
