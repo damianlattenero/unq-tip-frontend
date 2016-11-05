@@ -39,6 +39,7 @@
 
   <!-- Material Design Bootstrap -->
   <link rel="stylesheet" href="bower_components/MDBootstrap/css/mdb.min.css">
+  <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/css/mdb.min.css">-->
 
   <!-- Your custom styles (optional) -->
   <link rel="stylesheet" href="app.css">
@@ -73,6 +74,12 @@
           <li class="nav-item">
             <a class="nav-link" href="/#/foodOrder">Ordenes</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/#/foodOrderHistory">Historial</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/#/foodOrderClosure">Auditoria</a>
+          </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="nav-item username">
@@ -99,11 +106,9 @@
 
     <div ng-view></div>
 
-    <!--
-      <div>Angular seed app: v<span app-version></span></div>
-    -->
-
+      <!--<div>Angular seed app: v<span app-version></span></div>-->
   </div>
+
   <!-- build:js scripts/vendor.js -->
   <!-- bower:js -->
   <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -145,6 +150,9 @@
   <script src="scripts/config.js"></script>
   <script src="controllers/foodOrder/all.js"></script>
   <script src="controllers/foodOrder/new.js"></script>
+  <script src="controllers/foodOrderHistory/all.js"></script>
+  <script src="controllers/foodOrderClosure/all.js"></script>
+  <script src="controllers/foodOrderClosure/closure.js"></script>
   <script src="controllers/login/loginController.js"></script>
   <script src="controllers/main/main.js"></script>
   <script src="controllers/products/all.js"></script>
@@ -152,6 +160,8 @@
   <script src="controllers/products/show.js"></script>
   <script src="services/authService.js"></script>
   <script src="services/foodOrder.js"></script>
+  <script src="services/foodOrderHistory.js"></script>
+  <script src="services/foodOrderClosure.js"></script>
   <script src="services/product.js"></script>
   <script src="assets/components/version/version.js"></script>
   <script src="assets/components/version/version-directive.js"></script>

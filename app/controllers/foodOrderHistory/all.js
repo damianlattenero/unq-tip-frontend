@@ -2,22 +2,22 @@
 
 /**
  * @ngdoc function
- * @name tipMarchionneLattenero.controller:FoodOrderCtrl
+ * @name tipMarchionneLattenero.controller:FoodOrderHistoryCtrl
  * @description
- * # FoodOrderCtrl
+ * # FoodOrderHistoryCtrl
  * Controller of the tipMarchionneLattenero
  */
-
-//var myApp = angular.module('myApp', []);
-//var myApp = angular.module('tipMarchionneLattenero', []);
 
 angular.module('myApp')
   .controller('FoodOrderHistoryCtrl', function($scope, FoodOrderHistoryService, $routeParams) {
     var self = this;
+
     $scope.loading = true;
+
     self.ordersHistory = [];
     FoodOrderHistoryService.getAll()
       .then(function successCallback(response) {
         self.ordersHistory = response.data;
       });
+
   });

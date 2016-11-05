@@ -1,0 +1,20 @@
+<div class="well">
+  <h2 class="text-center">Cierres</h2>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Usuario</th>
+      <th>Fecha de Cierre</th>
+      <th>Fecha de Ejecucion</th>
+    </tr>
+    </thead>
+    <tbody ng-controller="FoodOrderClosureCtrl">
+    <tr ng-repeat="foodOrderClosure in ordersClosure">
+      <td>{{ foodOrderClosure.id }}</td>
+      <td>{{ foodOrderClosure.momentClosure | date:'dd-MM-yyyy'}}</td><br>
+      <td>{{ foodOrderClosure.moment | date:'dd-MM-yyyy hh:mm:ss'}}</td><br>
+    </tr>
+    </tbody>
+  </table>
+</div>
