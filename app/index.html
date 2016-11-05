@@ -32,7 +32,7 @@
 
   <!-- build:css(.tmp) styles/main.css -->
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">-->
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="bower_components/MDBootstrap/css/bootstrap.min.css">
@@ -47,8 +47,6 @@
 </head>
 <body>
   <nav class="navbar navbar-fixed-top navbar-light teal lighten-4" ng-controller="LoginController as vm">
-    <!-- navbar-dark bg-primary -->
-    <!-- navbar-light teal lighten-4 -->
 
     <!-- Collapse button-->
     <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapseEx2">
@@ -58,14 +56,14 @@
     <div class="container">
 
       <!--Collapse content-->
-      <div class="collapse navbar-toggleable-xs" id="collapseEx2">
+      <div class="navbar-toggleable-xs collapse" id="collapseEx2">
         <!--Navbar Brand-->
         <a class="navbar-brand" href="/#/main">
           <!--<img class="img-responsive" src="../../assets/images/favicon.png">-->
           <span>Virtual Kiosk</span>
         </a>
         <!--Links-->
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav navbar-left navbar-menu">
           <li class="nav-item">
             <a class="nav-link" href="/#/main">Vista Principal</a>
           </li>
@@ -77,14 +75,12 @@
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li class="nav-item">
-            <div ng-if="isAuthenticated" > User: {{vm.authService.userProfile.nickname}}</div>
+          <li class="nav-item username">
+            <div ng-if="isAuthenticated" > {{vm.authService.userProfile.nickname}} </div>
           </li>
-          <li class="nav-item" ng-if="isAuthenticated" >
-            <a class="btn btn-primary log-out" ng-click="vm.authService.logout()">Log Out</a>
-          </li>
-          <li class="nav-item" ng-if="!isAuthenticated" >
-            <a class="btn btn-primary log-in" ng-click="vm.authService.login()">Log In</a>
+          <li class="nav-item active" >
+            <a class="log-out" ng-if="isAuthenticated" ng-click="vm.authService.logout()">Log Out</a>
+            <a class="log-in" ng-if="!isAuthenticated" ng-click="vm.authService.login()">Log In</a>
           </li>
         </ul>
       </div>
@@ -93,16 +89,7 @@
     </div>
   </nav>
 
-  <div style="margin-top: 5em">
-    <!--
-      <div class="text-center" ng-if="isAuthenticated" ng-controller="LoginController as vm">
-        <h2>Welcome, {{ vm.authService.userProfile.nickname }}</h2>
-        &lt;!&ndash;<div style="max-height: 20em">&ndash;&gt;
-        <div>
-          <img ng-src="{{ vm.authService.userProfile.picture }}">
-        </div>
-      </div>
-    -->
+  <div class="data">
 
     <!--[if lt IE 7]>
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>

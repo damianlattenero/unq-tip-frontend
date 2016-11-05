@@ -1,12 +1,6 @@
 <div class="well" ng-if="isAuthenticated">
   <form novalidate class="form-horizontal" ng-controller="MainCtrl as mainCtrl">
 
-
-    <div class="text-center" ng-if="isAuthenticated" ng-controller="LoginController as vm">
-      <h2>Welcome, {{ vm.authService.userProfile.nickname }}</h2>
-      <img ng-src="{{ vm.authService.userProfile.picture }}">
-    </div>
-
     <div>
       <h2 class="text-center">Vista Principal</h2>
       <h3 class="text-center">{{mainCtrl.front && 'Mostrador' || 'Cocina'}}</h3>
@@ -54,13 +48,13 @@
                   <!--Ordenar-->
                   <div ng-show="mainCtrl.isFront()">
                     <span class="orderProduct">
-                      <button
+                      <button type="button"
                          ng-disabled="!mainCtrl.isEnabledOrderProduct(product)"
                          ng-click="mainCtrl.orderProduct(product, vm.authService.userProfile.nickname)"
                          class="btn btn-primary">Ordenar</button>
                     </span>
                     <span class="cancelOrderProduct">
-                      <button
+                      <button type="button"
                          ng-disabled="!mainCtrl.isEnabledCancelOrderProduct(product)"
                          ng-click="mainCtrl.cancelOrderProduct(product, vm.authService.userProfile.nickname)"
                          class="btn btn-danger">Anular</button>
@@ -69,13 +63,13 @@
                   <!--Cocinar-->
                   <div ng-show="mainCtrl.isKitchen()">
                     <span class="cookProduct">
-                      <button
+                      <button type="button"
                          ng-disabled="!mainCtrl.isEnabledCookProduct(product)"
                          ng-click="mainCtrl.cookProduct(product, vm.authService.userProfile.nickname)"
                          class="btn btn-secondary">Cocinar</button>
                     </span>
                     <span class="cookProduct">
-                      <button
+                      <button type="button"
                          ng-disabled="!mainCtrl.isEnabledCancelCookProduct(product)"
                          ng-click="mainCtrl.cancelCookProduct(product, vm.authService.userProfile.nickname)"
                          class="btn btn-danger">Anular</button>
