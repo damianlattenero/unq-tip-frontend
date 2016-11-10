@@ -21,8 +21,8 @@
       <th>Fecha</th>
     </tr>
     </thead>
-    <tbody ng-controller="FoodOrderHistoryCtrl">
-    <tr ng-repeat="foodOrderHistory in ordersHistory">
+    <tbody ng-controller="FoodOrderHistoryCtrl as historyCtrl">
+    <tr ng-repeat="foodOrderHistory in historyCtrl.ordersHistory">
       <td>{{ foodOrderHistory.id }}</td>
       <td>{{ foodOrderHistory.productName }}</td>
       <td>{{ foodOrderHistory.productDescription }}</td>

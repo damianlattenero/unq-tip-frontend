@@ -9,15 +9,23 @@
  */
 
 angular.module('myApp')
-  .controller('FoodOrderHistoryCtrl', function($scope, FoodOrderHistoryService, $routeParams) {
-    var self = this;
+  .controller('FoodOrderHistoryCtrl', function(FoodOrderHistoryService) {
+    return new FoodOrderHistoryController(FoodOrderHistoryService);
+  });
 
-    $scope.loading = true;
+function FoodOrderHistoryController(FoodOrderHistoryService) {
+  var self = this;
 
-    self.ordersHistory = [];
+  this.ordersHistory = [];
+
+  this.getAll = function() {
     FoodOrderHistoryService.getAll()
       .then(function successCallback(response) {
+        console.log(response);
         self.ordersHistory = response.data;
       });
+  }
 
-  });
+  this.getAll();
+
+}
