@@ -32,6 +32,16 @@ angular.module('myApp')
            token: AuthService.getToken()          },*/
           data: generateClosureData
         });
+      },
+      generateClosureToday: function (user) {
+        return $http({
+          method: 'post',
+          //dataType: 'json',
+          url: ENV.apiEndpoint + 'foodOrdersClosure/generateClosureToday/',
+          /* params: {
+           token: AuthService.getToken()          },*/
+          data: user
+        });
       }
     };
   });

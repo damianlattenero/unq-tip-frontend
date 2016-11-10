@@ -27,6 +27,15 @@ angular.module('myApp')
 
       FoodOrderClosureService.generateClosure(self.generateClosureData)
         .then(function successCallback(response) {
+          window.location.reload();
+          // self.updatePending(foodOrder.productId, response.data.productPending);
+        });
+    };
+
+    this.generateClosureToday = function () {
+      FoodOrderClosureService.generateClosureToday(authService.userProfile.nickname)
+        .then(function successCallback(response) {
+          window.location.reload();
           // self.updatePending(foodOrder.productId, response.data.productPending);
         });
     };
