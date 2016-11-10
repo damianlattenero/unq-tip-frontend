@@ -9,15 +9,22 @@
  */
 
 angular.module('myApp')
-  .controller('FoodOrderClosureCtrl', function($scope, FoodOrderClosureService, $routeParams) {
-    var self = this;
+  .controller('FoodOrderClosureCtrl', function(FoodOrderClosureService) {
+    return new FoodOrderClosureController(FoodOrderClosureService);
+  });
 
-    $scope.loading = true;
+function FoodOrderClosureController(FoodOrderClosureService) {
+  var self = this;
 
-    self.ordersClosure = [];
+  self.ordersClosure = [];
+
+  this.getAll = function() {
     FoodOrderClosureService.getAll()
       .then(function successCallback(response) {
         self.ordersClosure = response.data;
       });
+  }
 
-  });
+  this.getAll();
+
+}
