@@ -4,7 +4,7 @@
   "devDependencies": {
     "angular-jwt": "^0.1.7",
     "angular-lock": "^1.0.5",
-    "angular-ui-router": "^0.3.1",
+    "angular-ui-router": "^0.3.2",
     "autoprefixer-core": "^5.2.1",
     "eslint": "^2.7.0",
     "express": "^4.13.4",
@@ -41,7 +41,7 @@
     "karma": "^0.13.22",
     "karma-jasmine": "^0.3.8",
     "karma-phantomjs-launcher": "^1.0.2",
-    "mdbootstrap": "^4.1.1",
+    "mdbootstrap": "^4.2.0",
     "phantomjs": "^2.1.7",
     "phantomjs-prebuilt": "^2.1.12",
     "time-grunt": "^1.0.0"
@@ -56,20 +56,9 @@
   },
   "dependencies": {
     "angular-bootstrap-datetimepicker": "^1.0.1",
-    "angular-jwt": "^0.1.7",
-    "angular-lock": "^1.0.5",
-    "angular-ui-router": "^0.3.2",
     "checklist-model": "^0.9.0",
     "cssmin": "^0.4.3",
-    "grunt": "^0.4.5",
-    "grunt-karma": "^0.12.2",
-    "jasmine-core": "^2.5.1",
-    "karma": "^0.13.22",
     "karma-chrome-launcher": "^0.1.7",
-    "karma-jasmine": "^0.3.8",
-    "karma-phantomjs-launcher": "^1.0.2",
-    "mdbootstrap": "^4.2.0",
-    "moment": "^2.13.0",
-    "phantomjs-prebuilt": "^2.1.12"
+    "moment": "^2.13.0"
   }
 }
