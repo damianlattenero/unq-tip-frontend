@@ -31,7 +31,6 @@ module.exports = function(config) {
       'bower_components/angular-touch/angular-touch.js',
       'bower_components/angular-local-storage/dist/angular-local-storage.js',
       'bower_components/moment/moment.js',
-      'bower_components/checklist-model/checklist-model.js',
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       'bower_components/angular-ui-notification/dist/angular-ui-notification.js',
       'bower_components/angular-jwt/dist/angular-jwt.js',
