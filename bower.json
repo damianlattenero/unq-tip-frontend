@@ -28,5 +28,8 @@
         "dist/js/bootstrap.js"
       ]
     }
+  },
+  "resolutions": {
+    "bootstrap": "^3.3.7"
   }
 }
