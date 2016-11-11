@@ -1,19 +1,30 @@
-<div class="well">
-  <h2 class="text-center">Vista Principal</h2>
-  <h3 class="text-center">Mostrador</h3>
-  <form novalidate class="form-horizontal">
+<div class="well" ng-if="isAuthenticated">
+  <form novalidate class="form-horizontal" ng-controller="MainCtrl as mainCtrl">
 
-    <div ng-repeat="x in allProducts">
-      <div ng-controller="NewFoodOrderCtrl">
+    <div>
+      <h2 class="text-center">Vista Principal</h2>
+      <h3 class="text-center">{{mainCtrl.front && 'Mostrador' || 'Cocina'}}</h3>
+      <!--toggle-->
+      <div style="display: inline-block;">
+        <a style="text-align: right;" class="btn btn-secondary pull-right" ng-init="true"
+           ng-class="{true: 'btn-primary', false: 'btn-secondary'}[!mainCtrl.front]"
+           ng-click="mainCtrl.front = !mainCtrl.front">Cambiar a {{!mainCtrl.front && 'Mostrador' || 'Cocina'}}</a>
 
-        <div id="{{x.id}}" class="col-md-4">
+        <!--boton de actualizar-->
+        <a ng-hide="true" type="button" name="button" ng-click="mainCtrl.getProducts()"
+           class="btn btn-primary">Actualizar Vista</a>
+      </div>
+
+      <div ng-repeat="product in mainCtrl.products">
+
+        <div id="{{product.id}}" class="col-md-4">
 
           <!--Card-->
           <div class="card card-cascade" style="text-align: center;">
 
             <!--Card image-->
             <div class="view overlay hm-white-light text-xs-center">
-              <img src="../../assets/images/products/{{x.id}}.png" class="img-responsive" alt="{{x.name}}">
+              <img src="../../assets/images/products/{{product.id}}.png" class="img-responsive" alt="{{product.name}}">
               <a href="/#/foodOrder">
                 <div class="mask"></div>
               </a>
@@ -23,35 +34,47 @@
             <!--Card content-->
             <div class="card-block text-xs-center">
               <!--Title-->
-              <h4 class="card-title"><strong>{{x.name}}</strong></h4>
+              <h4 class="card-title"><strong>{{product.name}}</strong></h4>
 
               <!--SubTitle-->
-              <p class="card-text">{{x.description}}</p>
+              <p class="card-text">{{product.description}}</p>
 
               <!--Info-->
-              <p class="card-text"><strong>Pendientes: <span class="productPending">{{x.pending}}</span></strong></p>
+              <p ng-show="mainCtrl.isKitchen()" class="card-text"><strong>Pendientes: <span class="productPending">{{product.pending}}</span></strong>
+              </p>
 
-              <div class="form-group">
-                <div ng-show="false">
-                  <label for="productId" class="col-sm-2 control-label">Food ID</label>
-                  <label>
-                    <input ng-init="setId(x.id)" required integer ng-model="newFoodOrder.productId" type="number"
-                           class="form-control"
-                           id="productId">
-                  </label>
-                </div>
-
+              <div class="form-group" ng-controller="LoginController as vm">
                 <div class="FoodOrderActions">
                   <!--Ordenar-->
-                  <span class="orderProduct">
-                    <a type="button" name="button" ng-click="orderProduct(newFoodOrder)"
-                       class="btn btn-primary">Ordenar</a>
-                  </span>
+                  <div ng-show="mainCtrl.isFront()">
+                    <span class="orderProduct">
+                      <button type="button"
+                         ng-disabled="!mainCtrl.isEnabledOrderProduct(product)"
+                         ng-click="mainCtrl.orderProduct(product, vm.authService.userProfile.nickname)"
+                         class="btn btn-primary">Ordenar</button>
+                    </span>
+                    <span class="cancelOrderProduct">
+                      <button type="button"
+                         ng-disabled="!mainCtrl.isEnabledCancelOrderProduct(product)"
+                         ng-click="mainCtrl.cancelOrderProduct(product, vm.authService.userProfile.nickname)"
+                         class="btn btn-danger">Anular</button>
+                    </span>
+                  </div>
                   <!--Cocinar-->
-                  <span class="cookProduct">
-                    <a type="button" name="button" ng-click="cookProduct(newFoodOrder)"
-                       class="btn btn-secondary">Cocinar</a>
-                  </span>
+                  <div ng-show="mainCtrl.isKitchen()">
+                    <span class="cookProduct">
+                      <button type="button"
+                         ng-disabled="!mainCtrl.isEnabledCookProduct(product)"
+                         ng-click="mainCtrl.cookProduct(product, vm.authService.userProfile.nickname)"
+                         class="btn btn-secondary">Cocinar</button>
+                    </span>
+                    <span class="cookProduct">
+                      <button type="button"
+                         ng-disabled="!mainCtrl.isEnabledCancelCookProduct(product)"
+                         ng-click="mainCtrl.cancelCookProduct(product, vm.authService.userProfile.nickname)"
+                         class="btn btn-danger">Anular</button>
+                    </span>
+                  </div>
                 </div>
               </div>
 

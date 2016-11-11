@@ -7,16 +7,20 @@
       <th>Nombre</th>
       <th>Descripcion</th>
       <th>Cantidad</th>
+      <th>Estado</th>
+      <th>Usuario</th>
       <th>Fecha</th>
     </tr>
     </thead>
     <tbody ng-controller="FoodOrderCtrl">
-    <tr ng-repeat="x in orders">
-      <td>{{ x.id }}</td>
-      <td>{{ x.productName }}</td>
-      <td>{{ x.productDescription }}</td>
-      <td>{{ x.productAmount }}</td>
-      <td>{{ x.moment | date:'yyyy-MM-dd HH:mm:ss'}}</td><br>
+    <tr ng-repeat="foodOrder in orders">
+      <td>{{ foodOrder.id }}</td>
+      <td>{{ foodOrder.productName }}</td>
+      <td>{{ foodOrder.productDescription }}</td>
+      <td>{{ foodOrder.productAmount }}</td>
+      <td>{{ foodOrder.state }}</td>
+      <td>{{ foodOrder.user }}</td>
+      <td>{{ foodOrder.moment | date:'dd-MM-yyyy HH:mm:ss'}}</td><br>
     </tr>
     </tbody>
   </table>
