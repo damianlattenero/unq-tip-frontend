@@ -55,7 +55,8 @@ module.exports = function (grunt) {
         constants: {
           ENV: {
             name: 'development',
-            apiEndpoint: 'http://cdmarchionne.ddns.net:8080/rest/'
+            // apiEndpoint: 'http://cdmarchionne.ddns.net:8080/rest/'
+            apiEndpoint: 'http://localhost:8080/rest/'
           }
         }
       },
