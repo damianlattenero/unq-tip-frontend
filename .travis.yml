@@ -7,7 +7,7 @@ install:
   - npm upgrade -g npm
   - npm install -g grunt grunt-cli bower yo generator-karma generator-angular
   - gem install compass
-  - echo "1" | npm install
+  - npm install
   - bower install
 script:
   - grunt test
