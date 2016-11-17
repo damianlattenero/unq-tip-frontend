@@ -27,18 +27,23 @@
   <!-- bower:css -->
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
   <link rel="stylesheet" href="bower_components/angular-ui-notification/dist/angular-ui-notification.css" />
+  <link rel="stylesheet" href="bower_components/MDBootstrap/css/mdb.css" />
+  <link rel="stylesheet" href="bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
   <!-- endbower -->
   <!-- endbuild -->
 
   <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+
+  <link rel="stylesheet" href="/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
   <!-- Font Awesome -->
   <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">-->
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="bower_components/MDBootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../bower_components/MDBootstrap/css/bootstrap.min.css">
 
   <!-- Material Design Bootstrap -->
-  <link rel="stylesheet" href="bower_components/MDBootstrap/css/mdb.min.css">
+  <link rel="stylesheet" href="../bower_components/MDBootstrap/css/mdb.min.css">
   <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/css/mdb.min.css">-->
 
   <!-- Your custom styles (optional) -->
@@ -50,7 +55,7 @@
   <nav class="navbar navbar-fixed-top navbar-light teal lighten-4" ng-controller="LoginController as vm">
 
     <!-- Collapse button-->
-    <button class="button" type="button" data-toggle="collapse" data-target="#collapseEx2">
+    <button class="form-inline float-xs-left" type="button" data-toggle="collapse" data-target="#collapseEx2">
       <i class="fa fa-bars"></i>
     </button>
 
@@ -128,10 +133,14 @@
   <script src="bower_components/angular-lock/angular-lock.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+  <script src="bower_components/MDBootstrap/js/mdb.js"></script>
+  <script src="bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
 
   <!-- build:js({.tmp,app}) scripts/scripts.js -->
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+
   <!-- JQuery -->
   <script type="text/javascript" src="bower_components/MDBootstrap/js/jquery-3.1.1.min.js"></script>
 
@@ -143,6 +152,10 @@
 
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="bower_components/MDBootstrap/js/mdb.min.js"></script>
+
+  <script type="text/javascript" src="/bower_components/moment/min/moment.min.js"></script>
+  <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
 
   <script src="app.js"></script>
   <script src="scripts/config.js"></script>
