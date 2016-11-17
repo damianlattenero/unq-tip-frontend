@@ -138,7 +138,7 @@ app.run(function ($rootScope, authService, lock, authManager) {
 
   // Register the synchronous hash parser
   // when using UI Router
-  lock.interceptHash()
+  lock.interceptHash();
 
   // Use the authManager from angular-jwt to check for
   // the user's authentication state when the page is

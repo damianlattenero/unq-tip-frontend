@@ -13,6 +13,7 @@
     var vm = this;
     vm.authService = authService;
 
+
     this.refresh = function () {
       /*$window.location.reload(true);
       /!*$timeout(function () {

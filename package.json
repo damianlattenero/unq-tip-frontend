@@ -55,7 +55,7 @@
     "test": "karma start test/karma.conf.js"
   },
   "dependencies": {
-    "bootstrap": "^3.3.7",
+    "bootstrap": "3.3.7",
     "cssmin": "^0.4.3",
     "karma-chrome-launcher": "^0.1.7",
     "moment": "^2.13.0"

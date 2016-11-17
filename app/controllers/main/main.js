@@ -8,9 +8,12 @@
  */
 
 angular.module('myApp')
-  .controller('MainCtrl', function ($scope, $interval, ProductService, FoodOrderService) {
+  .controller('MainCtrl', function ($scope, $interval, ProductService, FoodOrderService, authService) {
 
     var self = this;
+
+    console.log('Main User: ' + authService.userProfile);
+    console.log('Main User LocalStorage: ' + JSON.parse(localStorage.getItem('profile')));
 
     this.getProducts = function () {
       ProductService.getAll()

@@ -20,6 +20,8 @@
      }
      );*/
 
+    var self = this;
+
     try {
       var block = JSON.parse(localStorage.getItem('profile'));
     }
@@ -27,7 +29,7 @@
       block = {};
     }
 
-    var userProfile = block;
+    this.userProfile = block;
 
 
     function login() {
@@ -44,7 +46,7 @@
       localStorage.removeItem('id_token');
       localStorage.removeItem('profile');
       authManager.unauthenticate();
-      userProfile = {};
+      self.userProfile = {};
     }
 
     // Set up the logic for when a user authenticates
@@ -58,7 +60,14 @@
           if (error) {
             console.log(error);
           }
+//
+          console.log('user: ' + self.userProfile);
+          self.userProfile = JSON.stringify(profile);
+          console.log('user: ' + self.userProfile);
 
+          console.log('id_token' + authResult.idToken);
+          console.log('profile' + JSON.stringify(profile));
+//
           localStorage.setItem('profile', JSON.stringify(profile));
           $rootScope.$broadcast('userProfileSet', profile);
 
@@ -67,7 +76,7 @@
     }
 
     return {
-      userProfile: userProfile,
+      userProfile: self.userProfile,
       login: login,
       logout: logout,
       registerAuthenticationListener: registerAuthenticationListener
