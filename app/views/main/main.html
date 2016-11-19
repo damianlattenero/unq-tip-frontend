@@ -40,7 +40,8 @@
               <p class="card-text">{{product.description}}</p>
 
               <!--Info-->
-              <p ng-show="mainCtrl.isKitchen()" class="card-text"><strong>Pendientes: <span class="productPending">{{product.pending}}</span></strong>
+              <!--<p ng-show="mainCtrl.isKitchen()" class="card-text"><strong>Pendientes: <span class="productPending">{{product.pending}}</span></strong>-->
+              <p class="card-text"><strong>Pendientes: <span class="productPending">{{product.pending}}</span></strong>
               </p>
 
               <div class="form-group" ng-controller="LoginController as vm">
@@ -49,30 +50,35 @@
                   <div ng-show="mainCtrl.isFront()">
                     <span class="orderProduct">
                       <button type="button"
-                         ng-disabled="!mainCtrl.isEnabledOrderProduct(product)"
-                         ng-click="mainCtrl.orderProduct(product, vm.authService.userProfile.nickname)"
-                         class="btn btn-primary">Ordenar</button>
+                              ng-disabled="!mainCtrl.isEnabledOrderProduct(product) || mainCtrl.hasStock(product) "
+                              ng-click="mainCtrl.orderProduct(product, vm.authService.userProfile.nickname)"
+                              class="btn btn-primary">Ordenar</button>
                     </span>
                     <span class="cancelOrderProduct">
                       <button type="button"
-                         ng-disabled="!mainCtrl.isEnabledCancelOrderProduct(product)"
-                         ng-click="mainCtrl.cancelOrderProduct(product, vm.authService.userProfile.nickname)"
-                         class="btn btn-danger">Anular</button>
+                              ng-disabled="!mainCtrl.isEnabledCancelOrderProduct(product)"
+                              ng-click="mainCtrl.cancelOrderProduct(product, vm.authService.userProfile.nickname)"
+                              class="btn btn-danger">Anular</button>
                     </span>
                   </div>
                   <!--Cocinar-->
                   <div ng-show="mainCtrl.isKitchen()">
                     <span class="cookProduct">
                       <button type="button"
-                         ng-disabled="!mainCtrl.isEnabledCookProduct(product)"
-                         ng-click="mainCtrl.cookProduct(product, vm.authService.userProfile.nickname)"
-                         class="btn btn-secondary">Cocinar</button>
+                              ng-disabled="!mainCtrl.isEnabledCookProduct(product)"
+                              ng-click="mainCtrl.cookProduct(product, vm.authService.userProfile.nickname)"
+                              class="btn btn-secondary">Cocinar</button>
                     </span>
                     <span class="cookProduct">
                       <button type="button"
-                         ng-disabled="!mainCtrl.isEnabledCancelCookProduct(product)"
-                         ng-click="mainCtrl.cancelCookProduct(product, vm.authService.userProfile.nickname)"
-                         class="btn btn-danger">Anular</button>
+                              ng-disabled="!mainCtrl.isEnabledCancelCookProduct(product)"
+                              ng-click="mainCtrl.cancelCookProduct(product, vm.authService.userProfile.nickname)"
+                              class="btn btn-danger">Anular</button>
+                    </span>
+                    <span class="cookProduct">
+                      <a style="text-align: right;" class="btn btn-danger pull-right" ng-init="true"
+                         ng-class="{true: 'btn-danger', false: 'btn-secondary'}[!product.hasStock]"
+                         ng-click="mainCtrl.modifyStock(product)">{{!product.hasStock && 'No' || ''}} Hay Stock</a>
                     </span>
                   </div>
                 </div>

@@ -25,6 +25,16 @@ angular.module('myApp')
           data: newFoodOrder
         });
       },
+      hasStock: function (productBody) {
+        return $http({
+          method: 'post',
+          //dataType: 'json',
+          url: ENV.apiEndpoint + 'foodOrders/create/',
+          /* params: {
+           token: AuthService.getToken()          },*/
+          data: productBody
+        });
+      },
       getAll: function () {
         return $http({
           method: 'get',

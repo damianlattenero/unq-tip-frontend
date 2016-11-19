@@ -34,6 +34,17 @@ angular.module('myApp')
       state: ""
     };
 
+    this.modifyStock = function (product){
+      ProductService.hasStock(product)
+        .then(function successCallback(response) {
+          product.hasStock = response.data;
+        });
+    }
+
+    this.hasStock = function (product) {
+      return product.hasStock;
+    }
+
     this.isEnabledOrderProduct = function (product) {
       //return product[0].hasStock;
       return true;
