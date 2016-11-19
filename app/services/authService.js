@@ -6,20 +6,9 @@
     .module('myApp')
     .service('authService', authService);
 
-  authService.$inject = ['$route', '$window', '$state', '$rootScope', 'lock', 'authManager', '$location'];
+  authService.$inject = ['$rootScope', 'lock', 'authManager'];
 
-  function authService($route, $window, $state, $rootScope, lock, authManager, $location) {
-    /*var lock = new Auth0Lock(
-     'BCL0BYCBdbFUmrJh16lG2CB1MZsxz7ex',
-     'marchionnelattenero.auth0.com',
-     {
-     auth: {
-     redirect: true,
-     redirectUrl: 'http://localhost:9000/#/main'
-     }
-     }
-     );*/
-
+  function authService($rootScope, lock, authManager) {
     var self = this;
 
     try {
@@ -60,14 +49,7 @@
           if (error) {
             console.log(error);
           }
-//
-          console.log('user: ' + self.userProfile);
-          self.userProfile = JSON.stringify(profile);
-          console.log('user: ' + self.userProfile);
 
-          console.log('id_token' + authResult.idToken);
-          console.log('profile' + JSON.stringify(profile));
-//
           localStorage.setItem('profile', JSON.stringify(profile));
           $rootScope.$broadcast('userProfileSet', profile);
 
