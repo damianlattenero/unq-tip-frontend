@@ -1,0 +1,91 @@
+<div class="well">
+  <h2 class="text-center">Historial</h2>
+
+  <div class="form-group" ng-controller="ClosureCtrl as closureCtrl">
+
+
+    <div class="container">
+      <div class='col-md-5'>
+        <label for="from" class="col-sm-2 control-label">Desde</label>
+        <div class='input-group date' id='from'>
+          <input type='text' class="form-control"/>
+          <span class="input-group-addon">
+                    <button class="glyphicon glyphicon-calendar"></button>
+                </span>
+        </div>
+      </div>
+
+      <div class='col-md-5'>
+        <label for="to" class="col-sm-2 control-label">Hasta</label>
+        <div class='input-group date' id='to' >
+          <input type='text' class="form-control"/>
+          <span class="input-group-addon">
+                    <button class="glyphicon glyphicon-calendar"></button>
+                </span>
+        </div>
+      </div>
+
+
+      <div class='col-md-5'>
+        <button type="button"
+                ng-click="closureCtrl.generateClosure()"
+                class="btn btn-primary">Generar Cierre
+        </button>
+      </div>
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Cantidad de Órdenes realizadas</th>
+        <th>Cantidad de Órdenes canceladas</th>
+        <th>Cantidad de Cocciones realizadas</th>
+        <th>Cantidad de Cocciones canceladas</th>
+        <th>Fecha</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="closure in closureCtrl.clousures">
+        <td>{{ closure.id }}</td>
+        <td>{{ closure.productName }}</td>
+        <td>{{ closure.productDescription }}</td>
+        <td>{{ closure.countOrder }}</td>
+        <td>{{ closure.countCancelOrder }}</td>
+        <td>{{ closure.countCooked }}</td>
+        <td>{{ closure.countCancelCooked }}</td>
+        <td>{{ closure.moment | date:'dd-MM-yyyy'}}</td>
+        <br>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th>Cantidad</th>
+      <th>Estado</th>
+      <th>Fecha</th>
+    </tr>
+    </thead>
+    <tbody ng-controller="FoodOrderHistoryCtrl as historyCtrl">
+    <tr ng-repeat="foodOrderHistory in historyCtrl.ordersHistory">
+      <td>{{ foodOrderHistory.id }}</td>
+      <td>{{ foodOrderHistory.productName }}</td>
+      <td>{{ foodOrderHistory.productDescription }}</td>
+      <td>{{ foodOrderHistory.productAmount }}</td>
+      <td>{{ foodOrderHistory.state }}</td>
+      <td>{{ foodOrderHistory.moment | date:'dd-MM-yyyy'}}</td>
+      <br>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
