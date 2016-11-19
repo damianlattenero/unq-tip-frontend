@@ -37,7 +37,6 @@ module.exports = function(config) {
       'bower_components/angular-lock/angular-lock.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'bower_components/angular-mocks/angular-mocks.js',
-      'bower_components/MDBootstrap/js/mdb.js',
       'bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
       // endbower
       'app/scripts/**/*.js',
