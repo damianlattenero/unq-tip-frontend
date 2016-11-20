@@ -15,6 +15,16 @@ angular.module('myApp')
           url: ENV.apiEndpoint + 'products/' + id
         });
       },
+      modifyStock: function (productBody) {
+        return $http({
+          method: 'post',
+          //dataType: 'json',
+          url: ENV.apiEndpoint + 'products/modifyStock/',
+          /* params: {
+           token: AuthService.getToken()          },*/
+          data: productBody
+        });
+      },
       save: function (newProduct) {
         return $http({
           method: 'post',

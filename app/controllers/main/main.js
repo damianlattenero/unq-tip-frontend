@@ -35,19 +35,31 @@ angular.module('myApp')
     };
 
     this.modifyStock = function (product){
-      ProductService.hasStock(product)
+      var productBody = {
+        productId: product.id,
+        hasStock: !product.hasStock
+      }
+      ProductService.modifyStock(productBody)
         .then(function successCallback(response) {
-          product.hasStock = response.data;
+          console.log(product.id + JSON.stringify(response.data));
+          self.updateStock(product.id, response.data.hasStock);
         });
     }
 
+    this.updateStock = function (productId, hasStock) {
+      var product = self.products.filter(function (product) {
+        return product.id === productId
+      });
+      product[0].hasStock = hasStock;
+    };
+
+
     this.hasStock = function (product) {
-      return product.hasStock;
+      return product.modifyStock;
     }
 
     this.isEnabledOrderProduct = function (product) {
-      //return product[0].hasStock;
-      return true;
+      return product.hasStock;
     };
 
     this.orderProduct = function (product, user) {
@@ -71,7 +83,7 @@ angular.module('myApp')
     };
 
     this.isEnabledCancelCookProduct= function (product) {
-      //return product[0].hasStock;
+      //return product[0].modifyStock;
       return true;
     };
 

@@ -50,7 +50,7 @@
                   <div ng-show="mainCtrl.isFront()">
                     <span class="orderProduct">
                       <button type="button"
-                              ng-disabled="!mainCtrl.isEnabledOrderProduct(product) || mainCtrl.hasStock(product) "
+                              ng-disabled="!mainCtrl.isEnabledOrderProduct(product)"
                               ng-click="mainCtrl.orderProduct(product, vm.authService.userProfile.nickname)"
                               class="btn btn-primary">Ordenar</button>
                     </span>
@@ -75,10 +75,10 @@
                               ng-click="mainCtrl.cancelCookProduct(product, vm.authService.userProfile.nickname)"
                               class="btn btn-danger">Anular</button>
                     </span>
-                    <span class="cookProduct">
-                      <a style="text-align: right;" class="btn btn-danger pull-right" ng-init="true"
-                         ng-class="{true: 'btn-danger', false: 'btn-secondary'}[!product.hasStock]"
-                         ng-click="mainCtrl.modifyStock(product)">{{!product.hasStock && 'No' || ''}} Hay Stock</a>
+                    <span class="StockProduct">
+                      <a style="text-align: right;" class="btn btn-secondary pull-right" ng-init="true"
+                         ng-class="{true: 'btn-secondary', false: 'btn-danger'}[!product.hasStock]"
+                         ng-click="mainCtrl.modifyStock(product)">{{product.hasStock && 'No' || ''}} Hay Stock</a>
                     </span>
                   </div>
                 </div>
