@@ -12,9 +12,6 @@ angular.module('myApp')
 
     var self = this;
 
-    console.log('Main User: ' + authService.userProfile);
-    console.log('Main User LocalStorage: ' + JSON.parse(localStorage.getItem('profile')));
-
     this.getProducts = function () {
       ProductService.getAll()
         .then(function successCallback(response) {
@@ -41,7 +38,6 @@ angular.module('myApp')
       }
       ProductService.modifyStock(productBody)
         .then(function successCallback(response) {
-          console.log(product.id + JSON.stringify(response.data));
           self.updateStock(product.id, response.data.hasStock);
         });
     }
