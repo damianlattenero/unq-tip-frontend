@@ -8,33 +8,38 @@
  */
 
 angular.module('myApp')
-  .controller('NewFoodOrderCtrl', function ($scope, FoodOrderService, $window) {
-      this.newFoodOrder = {
-        productId: 0,
-        productAmount: 0
-      };
+  .controller('NewFoodOrderCtrl', function (FoodOrderService) {
+    return new NewFoodOrderController(FoodOrderService);
+  });
 
-      this.orderProduct = function (foodOrder) {
-        foodOrder.productAmount = 1;
-        this.save(foodOrder);
-      };
+function NewFoodOrderController(FoodOrderService) {
+  var self = this;
 
-      this.cookProduct = function (foodOrder) {
-        foodOrder.productAmount = (-1);
-        this.save(foodOrder);
-      };
+  this.newFoodOrder = {
+    productId: 0,
+    productAmount: 0
+  };
 
-      this.save = function (foodOrder) {
-        FoodOrderService.save(foodOrder)
-          .then(function successCallback(response) {
-            this.updatePending(foodOrder.productId, response.data.productPending);
-          });
-      };
+  this.orderProduct = function (foodOrder) {
+    foodOrder.productAmount = 1;
+    this.save(foodOrder);
+  };
 
-      this.updatePending = function (productId, pending) {
-        var product = document.getElementById(productId);
-        product.getElementsByClassName("productPending")[0].innerHTML = pending;
-      };
+  this.cookProduct = function (foodOrder) {
+    foodOrder.productAmount = (-1);
+    this.save(foodOrder);
+  };
 
-    }
-  );
+  this.save = function (foodOrder) {
+    FoodOrderService.save(foodOrder)
+      .then(function successCallback(response) {
+        self.updatePending(foodOrder.productId, response.data.productPending);
+      });
+  };
+
+  this.updatePending = function (productId, pending) {
+    var product = document.getElementById(productId);
+    product.getElementsByClassName("productPending")[0].innerHTML = pending;
+  };
+
+}

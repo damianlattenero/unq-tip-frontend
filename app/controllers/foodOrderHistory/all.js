@@ -9,7 +9,7 @@
  */
 
 angular.module('myApp')
-  .controller('FoodOrderHistoryCtrl', function(FoodOrderHistoryService) {
+  .controller('FoodOrderHistoryCtrl', function (FoodOrderHistoryService) {
     return new FoodOrderHistoryController(FoodOrderHistoryService);
   });
 
@@ -18,7 +18,7 @@ function FoodOrderHistoryController(FoodOrderHistoryService) {
 
   this.ordersHistory = [];
 
-  this.getAll = function() {
+  this.getAll = function () {
     FoodOrderHistoryService.getAll()
       .then(function successCallback(response) {
         self.ordersHistory = response.data;

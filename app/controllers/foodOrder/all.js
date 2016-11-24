@@ -9,7 +9,7 @@
  */
 
 angular.module('myApp')
-  .controller('FoodOrderCtrl', function(FoodOrderService) {
+  .controller('FoodOrderCtrl', function (FoodOrderService) {
     return new FoodOrderController(FoodOrderService);
   });
 

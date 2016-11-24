@@ -14,49 +14,38 @@ angular.module('myApp')
   });
 
 function ClosureController(FoodOrderClosureService, authService) {
-    var self = this;
+  var self = this;
 
-    this.clousure = {
-      user: "",
-      from: 0,
-      to: 0
-    };
+  this.clousure = {
+    user: "",
+    from: 0,
+    to: 0
+  };
 
-    this.clousures = [];
+  this.clousures = [];
 
-    $(function () {
-        $('#from').datetimepicker();
-        $('#to').datetimepicker({ useCurrent: false });
+  $(function () {
+    $('#from').datetimepicker();
+    $('#to').datetimepicker({useCurrent: false});
 
-        $("#from").on("dp.change", function (e) {
-          $('#to').data("DateTimePicker").minDate(e.date);
-          self.clousure.from = e.date;
-        });
+    $("#from").on("dp.change", function (e) {
+      $('#to').data("DateTimePicker").minDate(e.date);
+      self.clousure.from = new Date(e.date).getTime();
+    });
 
-        $("#to").on("dp.change", function (e) {
-          $('#from').data("DateTimePicker").maxDate(e.date);
-          self.clousure.to = e.date;
-        });
+    $("#to").on("dp.change", function (e) {
+      $('#from').data("DateTimePicker").maxDate(e.date);
+      self.clousure.to = new Date(e.date).getTime();
+    });
+  });
+
+  this.generateClosure = function () {
+    self.clousure.user = authService.userProfile.nickname;
+
+    FoodOrderClosureService.generateClosure(self.clousure)
+      .then(function successCallback(response) {
+        self.clousures = response.data;
       });
-
-    this.generateClosure = function () {
-      console.log("generateClosureDataFrom:" + self.clousure.from);
-      console.log("generateClosureDataTo:" + self.clousure.to);
-
-      self.clousure.user = authService.userProfile.nickname;
-      self.clousure.from = new Date(self.clousure.from).getTime();
-      self.clousure.to = new Date(self.clousure.to).getTime();
-
-      console.log("generateClosureDataFrom:" + self.clousure.from);
-      console.log("generateClosureDataTo:" + self.clousure.to);
-
-      FoodOrderClosureService.generateClosure(self.clousure)
-        .then(function successCallback(response) {
-          self.clousures = response.data;
-          console.log("closures:" + response.data);
-          // window.location.reload();
-          // self.updatePending(foodOrder.productId, response.data.productPending);
-        });
-    };
+  };
 
 }

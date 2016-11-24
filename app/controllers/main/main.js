@@ -12,6 +12,8 @@ angular.module('myApp')
 
     var self = this;
 
+    this.products = [];
+
     this.getProducts = function () {
       ProductService.getAll()
         .then(function successCallback(response) {
@@ -31,7 +33,7 @@ angular.module('myApp')
       state: ""
     };
 
-    this.modifyStock = function (product){
+    this.modifyStock = function (product) {
       var productBody = {
         productId: product.id,
         hasStock: !product.hasStock
@@ -63,7 +65,7 @@ angular.module('myApp')
     };
 
     this.isEnabledCancelOrderProduct = function (product) {
-       return (product.pending > 0);
+      return (product.pending > 0);
     };
 
     this.cancelOrderProduct = function (product, user) {
@@ -78,7 +80,7 @@ angular.module('myApp')
       self.save(product, -1, "COOKED", user);
     };
 
-    this.isEnabledCancelCookProduct= function (product) {
+    this.isEnabledCancelCookProduct = function (product) {
       //return product[0].modifyStock;
       return true;
     };

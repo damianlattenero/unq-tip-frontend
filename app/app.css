@@ -1,14 +1,14 @@
 /* app css stylesheet */
 
-.navbar-brand{
+.navbar-brand {
   margin: 0em 0.5em;
   padding: 0.4em;
 }
 
 .username,
-.nav-item .nav-link{
- margin: 0.5em;
- padding: 0.4em;
+.nav-item .nav-link {
+  margin: 0.5em;
+  padding: 0.4em;
 }
 
 .data {

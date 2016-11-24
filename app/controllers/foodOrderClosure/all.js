@@ -9,7 +9,7 @@
  */
 
 angular.module('myApp')
-  .controller('FoodOrderClosureCtrl', function(FoodOrderClosureService) {
+  .controller('FoodOrderClosureCtrl', function (FoodOrderClosureService) {
     return new FoodOrderClosureController(FoodOrderClosureService);
   });
 
@@ -18,7 +18,7 @@ function FoodOrderClosureController(FoodOrderClosureService) {
 
   self.ordersClosure = [];
 
-  this.getAll = function() {
+  this.getAll = function () {
     FoodOrderClosureService.getAll()
       .then(function successCallback(response) {
         self.ordersClosure = response.data;

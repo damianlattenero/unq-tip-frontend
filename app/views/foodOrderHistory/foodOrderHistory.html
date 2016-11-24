@@ -17,7 +17,7 @@
 
       <div class='col-md-5'>
         <label for="to" class="col-sm-2 control-label">Hasta</label>
-        <div class='input-group date' id='to' >
+        <div class='input-group date' id='to'>
           <input type='text' class="form-control"/>
           <span class="input-group-addon">
                     <button class="glyphicon glyphicon-calendar"></button>
@@ -64,28 +64,30 @@
 
   </div>
 
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th>Id</th>
-      <th>Nombre</th>
-      <th>Descripcion</th>
-      <th>Cantidad</th>
-      <th>Estado</th>
-      <th>Fecha</th>
-    </tr>
-    </thead>
-    <tbody ng-controller="FoodOrderHistoryCtrl as historyCtrl">
-    <tr ng-repeat="foodOrderHistory in historyCtrl.ordersHistory">
-      <td>{{ foodOrderHistory.id }}</td>
-      <td>{{ foodOrderHistory.productName }}</td>
-      <td>{{ foodOrderHistory.productDescription }}</td>
-      <td>{{ foodOrderHistory.productAmount }}</td>
-      <td>{{ foodOrderHistory.state }}</td>
-      <td>{{ foodOrderHistory.moment | date:'dd-MM-yyyy'}}</td>
-      <br>
-    </tr>
-    </tbody>
-  </table>
+  <div ng-controller="FoodOrderHistoryCtrl as historyCtrl">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Cantidad</th>
+        <th>Estado</th>
+        <th>Fecha</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="foodOrderHistory in historyCtrl.ordersHistory | orderBy:'-id'">
+        <td>{{ foodOrderHistory.id }}</td>
+        <td>{{ foodOrderHistory.productName }}</td>
+        <td>{{ foodOrderHistory.productDescription }}</td>
+        <td>{{ foodOrderHistory.productAmount }}</td>
+        <td>{{ foodOrderHistory.state }}</td>
+        <td>{{ foodOrderHistory.moment | date:'dd-MM-yyyy'}}</td>
+        <br>
+      </tr>
+      </tbody>
+    </table>
 
+  </div>
 </div>

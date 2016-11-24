@@ -1,4 +1,4 @@
-(function() {
+(function () {
 
   'use strict';
 
@@ -13,7 +13,7 @@
     var vm = this;
     vm.authService = authService;
 
-    $rootScope.$on("userProfileSet", function(event, obj){
+    $rootScope.$on("userProfileSet", function (event, obj) {
       vm.authService.userProfile = obj;
     });
   }

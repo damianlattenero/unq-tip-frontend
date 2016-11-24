@@ -1,27 +1,28 @@
 <div class="well">
-  <h2 class="text-center">Ordenes</h2>
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th>Id</th>
-      <th>Nombre</th>
-      <th>Descripcion</th>
-      <th>Cantidad</th>
-      <th>Estado</th>
-      <th>Usuario</th>
-      <th>Fecha</th>
-    </tr>
-    </thead>
-    <tbody ng-controller="FoodOrderCtrl as foodOrderCtrl">
-    <tr ng-repeat="foodOrder in foodOrderCtrl.orders">
-      <td>{{ foodOrder.id }}</td>
-      <td>{{ foodOrder.productName }}</td>
-      <td>{{ foodOrder.productDescription }}</td>
-      <td>{{ foodOrder.productAmount }}</td>
-      <td>{{ foodOrder.state }}</td>
-      <td>{{ foodOrder.user }}</td>
-      <td>{{ foodOrder.moment | date:'dd-MM-yyyy HH:mm:ss'}}</td><br>
-    </tr>
-    </tbody>
-  </table>
+  <div ng-controller="FoodOrderCtrl as foodOrderCtrl">
+    <h2 class="text-center">Ordenes</h2>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Cantidad</th>
+        <th>Estado</th>
+        <th>Usuario</th>
+        <th>Fecha</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="foodOrder in foodOrderCtrl.orders | orderBy:'-id'">
+        <td>{{ foodOrder.productName }}</td>
+        <td>{{ foodOrder.productDescription }}</td>
+        <td>{{ foodOrder.productAmount }}</td>
+        <td>{{ foodOrder.state }}</td>
+        <td>{{ foodOrder.user }}</td>
+        <td>{{ foodOrder.moment | date:'dd-MM-yyyy HH:mm:ss'}}</td>
+        <br>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

@@ -1,21 +1,23 @@
 <div class="well">
-  <h2 class="text-center">Cierres</h2>
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th>Id</th>
-      <th>Usuario</th>
-      <th>Fecha de Cierre</th>
-      <th>Fecha de Ejecucion</th>
-    </tr>
-    </thead>
-    <tbody ng-controller="FoodOrderClosureCtrl as foodOrderClosureCtrl">
-    <tr ng-repeat="foodOrderClosure in foodOrderClosureCtrl.ordersClosure">
-      <td>{{ foodOrderClosure.id }}</td>
-      <td>{{ foodOrderClosure.user }}</td>
-      <td>{{ foodOrderClosure.momentClosure | date:'dd-MM-yyyy'}}</td><br>
-      <td>{{ foodOrderClosure.moment | date:'dd-MM-yyyy hh:mm:ss'}}</td><br>
-    </tr>
-    </tbody>
-  </table>
+  <div ng-controller="FoodOrderClosureCtrl as foodOrderClosureCtrl">
+    <h2 class="text-center">Cierres</h2>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Usuario</th>
+        <th>Fecha de Cierre</th>
+        <th>Fecha de Ejecucion</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="foodOrderClosure in foodOrderClosureCtrl.ordersClosure | orderBy:'-id'">
+        <td>{{ foodOrderClosure.id }}</td>
+        <td>{{ foodOrderClosure.user }}</td>
+        <td>{{ foodOrderClosure.momentClosure | date:'dd-MM-yyyy'}}</td>
+        <td>{{ foodOrderClosure.moment | date:'dd-MM-yyyy hh:mm:ss'}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

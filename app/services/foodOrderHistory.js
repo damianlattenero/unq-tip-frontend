@@ -9,14 +9,6 @@
 angular.module('myApp')
   .factory('FoodOrderHistoryService', function ($http, ENV) {
     return {
-/*
-      get: function (id) {
-        return $http({
-          method: 'get',
-          url: ENV.apiEndpoint + 'foodOrdersHistory/' + id
-        });
-      },
-*/
       getAll: function () {
         return $http({
           method: 'get',
