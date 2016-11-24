@@ -1,17 +1,10 @@
 <div class="well">
-  <h2 class="text-center">Historial</h2>
+  <h2 class="text-center">Generar Cierres</h2>
 
-  <div class="form-group" ng-controller="FoodOrderHistoryCtrl as historyCtrl">
+  <div class="form-group" ng-controller="ClosureCtrl as closureCtrl">
 
 
     <div class="container">
-      <div class='col-md-3'>
-        <label for="producto" class="control-label">Producto</label>
-        <div class='input-group date' id='producto'>
-          <input type='text' class="form-control"/>
-        </div>
-      </div>
-
       <div class='col-md-3'>
         <label for="from" class="control-label">Desde</label>
         <div class='input-group date' id='from'>
@@ -34,8 +27,15 @@
 
       <div class='col-md-3'>
         <button type="button"
-                ng-click="historyCtrl.find()"
-                class="btn btn-primary">Buscar
+                ng-click="closureCtrl.showClosure()"
+                class="btn btn-primary">Mostrar Cierre
+        </button>
+      </div>
+
+      <div class='col-md-3'>
+        <button type="button"
+                ng-click="closureCtrl.generateClosure()"
+                class="btn btn-primary">Generar Cierre
         </button>
       </div>
     </div>
@@ -53,14 +53,14 @@
       </tr>
       </thead>
       <tbody>
-      <tr ng-repeat="ordersHistory in historyCtrl.ordersHistories | orderBy: '-moment' && '-id'">
-        <td>{{ ordersHistory.productName }}</td>
-        <td>{{ ordersHistory.productDescription }}</td>
-        <td>{{ ordersHistory.countOrder }}</td>
-        <td>{{ ordersHistory.countCancelOrder }}</td>
-        <td>{{ ordersHistory.countCooked }}</td>
-        <td>{{ ordersHistory.countCancelCooked }}</td>
-        <td>{{ ordersHistory.moment | date:'dd-MM-yyyy'}}</td>
+      <tr ng-repeat="closure in closureCtrl.clousures | orderBy: '-moment' && '-id'">
+        <td>{{ closure.productName }}</td>
+        <td>{{ closure.productDescription }}</td>
+        <td>{{ closure.countOrder }}</td>
+        <td>{{ closure.countCancelOrder }}</td>
+        <td>{{ closure.countCooked }}</td>
+        <td>{{ closure.countCancelCooked }}</td>
+        <td>{{ closure.moment | date:'dd-MM-yyyy'}}</td>
         <br>
       </tr>
       </tbody>
