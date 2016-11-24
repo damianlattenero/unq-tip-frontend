@@ -9,9 +9,10 @@
       <th>Fecha de Ejecucion</th>
     </tr>
     </thead>
-    <tbody ng-controller="FoodOrderClosureCtrl">
-    <tr ng-repeat="foodOrderClosure in ordersClosure">
+    <tbody ng-controller="FoodOrderClosureCtrl as foodOrderClosureCtrl">
+    <tr ng-repeat="foodOrderClosure in foodOrderClosureCtrl.ordersClosure">
       <td>{{ foodOrderClosure.id }}</td>
+      <td>{{ foodOrderClosure.user }}</td>
       <td>{{ foodOrderClosure.momentClosure | date:'dd-MM-yyyy'}}</td><br>
       <td>{{ foodOrderClosure.moment | date:'dd-MM-yyyy hh:mm:ss'}}</td><br>
     </tr>

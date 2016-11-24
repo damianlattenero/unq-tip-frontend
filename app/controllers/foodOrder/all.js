@@ -8,15 +8,24 @@
  * Controller of the tipMarchionneLattenero
  */
 
-//var myApp = angular.module('myApp', []);
-//var myApp = angular.module('tipMarchionneLattenero', []);
-
 angular.module('myApp')
-  .controller('FoodOrderCtrl', function($scope, FoodOrderService, $routeParams) {
-    $scope.loading = true;
-    $scope.orders = [];
+  .controller('FoodOrderCtrl', function(FoodOrderService) {
+    return new FoodOrderController(FoodOrderService);
+  });
+
+function FoodOrderController(FoodOrderService) {
+  var self = this;
+
+  this.orders = [];
+
+  this.getAll = function () {
     FoodOrderService.getAll()
       .then(function successCallback(response) {
-        $scope.orders = response.data;
+        self.orders = response.data;
       });
-  });
+  };
+
+  this.getAll();
+
+}
+

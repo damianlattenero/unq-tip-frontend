@@ -23,7 +23,7 @@ function FoodOrderClosureController(FoodOrderClosureService) {
       .then(function successCallback(response) {
         self.ordersClosure = response.data;
       });
-  }
+  };
 
   this.getAll();
 

@@ -9,52 +9,48 @@
  */
 
 angular.module('myApp')
-  .controller('ClosureCtrl', function ($scope, FoodOrderClosureService, authService, $routeParams) {
+  .controller('ClosureCtrl', function (FoodOrderClosureService, authService) {
+    return new ClosureController(FoodOrderClosureService, authService);
+  });
+
+function ClosureController(FoodOrderClosureService, authService) {
     var self = this;
 
-    $scope.loading = true;
-
-    $scope.clousure = {
+    this.clousure = {
       user: "",
       from: 0,
       to: 0
     };
 
+    this.clousures = [];
+
     $(function () {
         $('#from').datetimepicker();
-        $('#to').datetimepicker({
-          useCurrent: false //Important! See issue #1075
-        });
+        $('#to').datetimepicker({ useCurrent: false });
+
         $("#from").on("dp.change", function (e) {
           $('#to').data("DateTimePicker").minDate(e.date);
+          self.clousure.from = e.date;
         });
+
         $("#to").on("dp.change", function (e) {
           $('#from').data("DateTimePicker").maxDate(e.date);
-        });
-        $("#from").on("dp.change", function(e) {
-
-        $scope.clousure.from = e.date;
-
-        });
-        $("#to").on("dp.change", function(e) {
-
-        $scope.clousure.to = e.date;
-
+          self.clousure.to = e.date;
         });
       });
 
-    this.clousures = [];
-    //vm.authService.userProfile.nickname
-
     this.generateClosure = function () {
-      $scope.clousure.user = authService.userProfile.nickname;
-      $scope.clousure.from= new Date($scope.clousure.from).getTime();
-      $scope.clousure.to = new Date($scope.clousure.to).getTime();
+      console.log("generateClosureDataFrom:" + self.clousure.from);
+      console.log("generateClosureDataTo:" + self.clousure.to);
 
-      console.log("generateClosureDataFrom:" + $scope.clousure.from);
-      console.log("generateClosureDataTo:" + $scope.clousure.to);
+      self.clousure.user = authService.userProfile.nickname;
+      self.clousure.from = new Date(self.clousure.from).getTime();
+      self.clousure.to = new Date(self.clousure.to).getTime();
 
-      FoodOrderClosureService.generateClosure($scope.clousure)
+      console.log("generateClosureDataFrom:" + self.clousure.from);
+      console.log("generateClosureDataTo:" + self.clousure.to);
+
+      FoodOrderClosureService.generateClosure(self.clousure)
         .then(function successCallback(response) {
           self.clousures = response.data;
           console.log("closures:" + response.data);
@@ -63,12 +59,4 @@ angular.module('myApp')
         });
     };
 
-    this.generateClosureToday = function () {
-      FoodOrderClosureService.generateClosureToday(authService.userProfile.nickname)
-        .then(function successCallback(response) {
-          window.location.reload();
-          // self.updatePending(foodOrder.productId, response.data.productPending);
-        });
-    };
-
-  });
+}

@@ -12,8 +12,8 @@
       <th>Fecha</th>
     </tr>
     </thead>
-    <tbody ng-controller="FoodOrderCtrl">
-    <tr ng-repeat="foodOrder in orders">
+    <tbody ng-controller="FoodOrderCtrl as foodOrderCtrl">
+    <tr ng-repeat="foodOrder in foodOrderCtrl.orders">
       <td>{{ foodOrder.id }}</td>
       <td>{{ foodOrder.productName }}</td>
       <td>{{ foodOrder.productDescription }}</td>

@@ -21,10 +21,9 @@ function FoodOrderHistoryController(FoodOrderHistoryService) {
   this.getAll = function() {
     FoodOrderHistoryService.getAll()
       .then(function successCallback(response) {
-        console.log(response);
         self.ordersHistory = response.data;
       });
-  }
+  };
 
   this.getAll();
 
