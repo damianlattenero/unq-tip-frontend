@@ -8,7 +8,7 @@
  */
 
 angular.module('myApp')
-  .controller('MainCtrl', function ($scope, $interval, ProductService, FoodOrderService, authService) {
+  .controller('MainCtrl', function ($rootScope, $interval, ProductService, FoodOrderService, LoginService) {
 
     var self = this;
 
@@ -60,24 +60,24 @@ angular.module('myApp')
       return product.hasStock;
     };
 
-    this.orderProduct = function (product, user) {
-      self.save(product, 1, "ORDER", user);
+    this.orderProduct = function (product) {
+      self.save(product, 1, "ORDER");
     };
 
     this.isEnabledCancelOrderProduct = function (product) {
       return (product.pending > 0);
     };
 
-    this.cancelOrderProduct = function (product, user) {
-      self.save(product, -1, "CANCELORDER", user);
+    this.cancelOrderProduct = function (product) {
+      self.save(product, -1, "CANCELORDER");
     };
 
     this.isEnabledCookProduct = function (product) {
       return (product.pending > 0);
     };
 
-    this.cookProduct = function (product, user) {
-      self.save(product, -1, "COOKED", user);
+    this.cookProduct = function (product) {
+      self.save(product, -1, "COOKED");
     };
 
     this.isEnabledCancelCookProduct = function (product) {
@@ -85,15 +85,15 @@ angular.module('myApp')
       return true;
     };
 
-    this.cancelCookProduct = function (product, user) {
-      self.save(product, 1, "CANCELCOOKED", user);
+    this.cancelCookProduct = function (product) {
+      self.save(product, 1, "CANCELCOOKED");
     };
 
-    this.save = function (product, type, state, user) {
+    this.save = function (product, type, state) {
       self.newFoodOrder.productId = product.id;
       self.newFoodOrder.productAmount = type;
       self.newFoodOrder.state = state;
-      self.newFoodOrder.user = user;
+      self.newFoodOrder.user = $rootScope.userName;
 
       product.pending += self.newFoodOrder.productAmount;
 

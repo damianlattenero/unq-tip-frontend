@@ -1,14 +1,20 @@
+'use strict';
+/**
+ * @ngdoc service
+ * @name tipMarchionneLattenero.authService
+ * @description
+ * # authService
+ * Service in the tipMarchionneLattenero.
+ */
+
 (function () {
-
-  'use strict';
-
   angular
     .module('myApp')
     .service('authService', authService);
 
-  authService.$inject = ['$rootScope', 'lock', 'authManager'];
+  authService.$inject = ['$rootScope', 'lock', 'authManager', 'LoginService'];
 
-  function authService($rootScope, lock, authManager) {
+  function authService($rootScope, lock, authManager, LoginService) {
     var self = this;
 
     try {
@@ -17,12 +23,9 @@
     catch (err) {
       block = {};
     }
-
     this.userProfile = block;
 
-
     function login() {
-
       lock.show({
         callbackUrl: '/#/main',
         state: location.href = '/#/main'
@@ -35,6 +38,7 @@
       localStorage.removeItem('id_token');
       localStorage.removeItem('profile');
       authManager.unauthenticate();
+      $rootScope.$broadcast('userProfileClear', "");
       self.userProfile = {};
     }
 
@@ -52,7 +56,6 @@
 
           localStorage.setItem('profile', JSON.stringify(profile));
           $rootScope.$broadcast('userProfileSet', profile);
-
         });
       });
     }

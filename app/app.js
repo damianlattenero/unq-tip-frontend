@@ -12,13 +12,13 @@ var app = angular
     'angular-jwt',
     'ui.router'
   ])
-  .config(function ($routeProvider, lockProvider, $urlRouterProvider) {
+  .config(function ($routeProvider, lockProvider) {
 
 
     lockProvider.init({
       clientID: 'BCL0BYCBdbFUmrJh16lG2CB1MZsxz7ex',
       domain: 'marchionnelattenero.auth0.com',
-      callback: 'http://127.0.0.1:9000/#/main/',
+      callback: 'http://localhost:9000/#/main/',
       options: {
         auth: {
           redirect: false
@@ -76,13 +76,8 @@ var app = angular
         requireAuth: true
       })
       .otherwise({redirectTo: '/login'});
-
-    //$urlRouterProvider.otherwise('/login');
   })
-  // .config(function Config($httpProvider, jwtOptionsProvider) {
   .config(function Config($httpProvider, $stateProvider, lockProvider, jwtOptionsProvider) {
-    //.config(function Config($httpProvider, $stateProvider, lockProvider, $urlRouterProvider, jwtOptionsProvider) {
-    //.config(function config($stateProvider, $httpProvider, lockProvider, jwtOptionsProvider, jwtInterceptorProvider) {
     jwtOptionsProvider.config({
       tokenGetter: function () {
         return localStorage.getItem('id_token');
