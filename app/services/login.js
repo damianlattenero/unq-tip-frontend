@@ -3,13 +3,13 @@
 angular.module('myApp')
   .factory('LoginService', function ($http, ENV) {
     return {
-      userLogin: function (token) {
+      userLogin: function (obj) {
         return $http({
           method: 'post',
           //dataType: 'json',
           url: ENV.apiEndpoint + 'userModels/login', //'oauth/google',
           // params: { token: AuthService.getToken() },
-          data: token
+          data: obj
         });
       }
     };

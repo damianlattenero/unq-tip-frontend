@@ -37,8 +37,11 @@
       self.userName = obj.nickname;
 
       var authCode = {
-        authorizationCode: (obj == null) ? "" : obj.clientID
+        token: localStorage.getItem('id_token'),
+        userId: self.authService.userProfile.user_id
       };
+
+      console.log(JSON.stringify(authCode));
 
       LoginService.userLogin(authCode)
         .then(function (response) {
