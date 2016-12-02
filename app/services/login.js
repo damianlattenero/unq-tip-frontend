@@ -7,7 +7,16 @@ angular.module('myApp')
         return $http({
           method: 'post',
           //dataType: 'json',
-          url: ENV.apiEndpoint + 'userModels/login', //'oauth/google',
+          url: ENV.apiEndpoint + 'userModels/login',
+          // params: { token: AuthService.getToken() },
+          data: obj
+        });
+      },
+      userLogout: function (obj) {
+        return $http({
+          method: 'post',
+          //dataType: 'json',
+          url: ENV.apiEndpoint + 'userModels/logout',
           // params: { token: AuthService.getToken() },
           data: obj
         });

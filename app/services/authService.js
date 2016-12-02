@@ -12,9 +12,11 @@
     .module('myApp')
     .service('authService', authService);
 
-  authService.$inject = ['$rootScope', 'lock', 'authManager', 'LoginService'];
+  // authService.$inject = ['$rootScope', 'lock', 'authManager'];
+  authService.$inject = ['$rootScope', 'lock'];
 
-  function authService($rootScope, lock, authManager, LoginService) {
+  // function authService($rootScope, lock, authManager) {
+  function authService($rootScope, lock) {
     var self = this;
 
     try {
@@ -35,11 +37,11 @@
     // Logging out just requires removing the user's
     // id_token and profile
     function logout() {
+      $rootScope.$broadcast('userProfileClear', "");
       localStorage.removeItem('id_token');
       localStorage.removeItem('profile');
-      authManager.unauthenticate();
-      $rootScope.$broadcast('userProfileClear', "");
-      self.userProfile = {};
+      // authManager.unauthenticate();
+      // self.userProfile = {};
     }
 
     // Set up the logic for when a user authenticates
@@ -47,7 +49,7 @@
     function registerAuthenticationListener() {
       lock.on('authenticated', function (authResult) {
         localStorage.setItem('id_token', authResult.idToken);
-        authManager.authenticate();
+        // authManager.authenticate();
 
         lock.getProfile(authResult.idToken, function (error, profile) {
           if (error) {
