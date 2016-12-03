@@ -15,7 +15,7 @@
   <meta name="keywords" content="Kiosko">
   <meta name="author" content="Marchionne Cristian &amp; Lattenero Damian">
   <!-- Mobile Specific Meta -->
-  <meta name="viewport" content="width=device-width, initial-scale=1", maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <!-- Fav Icon -->
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   <link rel="icon" href="assets/images/favicon.png" type="image/ico" sizes="16x16">
@@ -91,11 +91,11 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="nav-item username">
-            <div ng-if="isAuthenticated"> {{loginCtrl.userName}}</div>
+|            <div ng-if="loginCtrl.isLogIn()"> {{loginCtrl.userName}}</div>
           </li>
           <li class="nav-item active">
-            <a class="log-out" ng-if="isAuthenticated" ng-click="loginCtrl.logout()">Log Out</a>
-            <a class="log-in" ng-if="!isAuthenticated" ng-click="loginCtrl.login()">Log In</a>
+            <a class="log-out" ng-if="loginCtrl.isLogIn()" ng-click="loginCtrl.logout()">Log Out</a>
+            <a class="log-in" ng-if="!loginCtrl.isLogIn()" ng-click="loginCtrl.login()">Log In</a>
           </li>
         </ul>
       </div>

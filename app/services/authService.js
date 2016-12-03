@@ -12,20 +12,10 @@
     .module('myApp')
     .service('authService', authService);
 
-  // authService.$inject = ['$rootScope', 'lock', 'authManager'];
   authService.$inject = ['$rootScope', 'lock'];
 
-  // function authService($rootScope, lock, authManager) {
   function authService($rootScope, lock) {
     var self = this;
-
-    try {
-      var block = JSON.parse(localStorage.getItem('profile'));
-    }
-    catch (err) {
-      block = {};
-    }
-    this.userProfile = block;
 
     function login() {
       lock.show({
@@ -40,8 +30,6 @@
       $rootScope.$broadcast('userProfileClear', "");
       localStorage.removeItem('id_token');
       localStorage.removeItem('profile');
-      // authManager.unauthenticate();
-      // self.userProfile = {};
     }
 
     // Set up the logic for when a user authenticates
@@ -49,7 +37,6 @@
     function registerAuthenticationListener() {
       lock.on('authenticated', function (authResult) {
         localStorage.setItem('id_token', authResult.idToken);
-        // authManager.authenticate();
 
         lock.getProfile(authResult.idToken, function (error, profile) {
           if (error) {

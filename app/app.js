@@ -28,7 +28,7 @@ var app = angular
 
     $routeProvider
       .when('/login', {
-        controller: 'LoginController',
+        // controller: 'LoginController',
         templateUrl: 'views/login/login.html',
         controllerAs: 'mainCtrl',
         requireAuth: false
