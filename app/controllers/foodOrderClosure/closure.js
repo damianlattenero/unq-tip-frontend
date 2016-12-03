@@ -9,11 +9,11 @@
  */
 
 angular.module('myApp')
-  .controller('ClosureCtrl', function (FoodOrderClosureService, authService) {
-    return new ClosureController(FoodOrderClosureService, authService);
+  .controller('ClosureCtrl', function (FoodOrderClosureService, $rootScope) {
+    return new ClosureController(FoodOrderClosureService, $rootScope);
   });
 
-function ClosureController(FoodOrderClosureService, authService) {
+function ClosureController(FoodOrderClosureService, $rootScope) {
   var self = this;
 
   this.clousure = {
@@ -40,7 +40,7 @@ function ClosureController(FoodOrderClosureService, authService) {
   });
 
   this.generateClosure = function () {
-    self.clousure.user = authService.userProfile.nickname;
+    self.clousure.user = $rootScope.userName;
 
     FoodOrderClosureService.generateClosure(self.clousure)
       .then(function successCallback(response) {
