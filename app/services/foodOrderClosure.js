@@ -7,7 +7,7 @@
  * Service in the tipMarchionneLattenero.
  */
 angular.module('myApp')
-  .factory('FoodOrderClosureService', function ($http, ENV) {
+  .factory('FoodOrderClosureService', function ($http, ENV, LoginService) {
     return {
       getAll: function () {
         return $http({
@@ -18,10 +18,9 @@ angular.module('myApp')
       generateClosure: function (generateClosureData) {
         return $http({
           method: 'post',
-          //dataType: 'json',
+          dataType: 'json',
           url: ENV.apiEndpoint + 'foodOrdersClosure/generateClosure/',
-          /* params: {
-           token: AuthService.getToken()          },*/
+          params: { token: LoginService.getToken() },
           data: generateClosureData
         });
       }

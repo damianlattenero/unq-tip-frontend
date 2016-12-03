@@ -7,7 +7,7 @@
  * Service in the tipMarchionneLattenero.
  */
 angular.module('myApp')
-  .factory('ProductService', function ($http, ENV) {
+  .factory('ProductService', function ($http, ENV, LoginService) {
     return {
       get: function (id) {
         return $http({
@@ -18,20 +18,18 @@ angular.module('myApp')
       modifyStock: function (productBody) {
         return $http({
           method: 'post',
-          //dataType: 'json',
+          dataType: 'json',
           url: ENV.apiEndpoint + 'products/modifyStock/',
-          /* params: {
-           token: AuthService.getToken()          },*/
+          params: { token: LoginService.getToken() },
           data: productBody
         });
       },
       save: function (newProduct) {
         return $http({
           method: 'post',
-          //dataType: 'json',
+          dataType: 'json',
           url: ENV.apiEndpoint + 'products/create',
-          /* params: {
-           token: AuthService.getToken()          },*/
+          params: { token: LoginService.getToken() },
           data: newProduct
         });
       },

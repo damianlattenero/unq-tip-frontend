@@ -20,8 +20,13 @@ var app = angular
       domain: 'marchionnelattenero.auth0.com',
       callback: 'http://localhost:9000/#/main/',
       options: {
-        auth: {
-          redirect: false
+        auth: { redirect: false },
+        theme: {
+          logo: './assets/images/virtualkiosklogo.png',
+          primaryColor: "#b81b1c"
+        },
+        languageDictionary: {
+          title: "Virtual Kiosk"
         }
       }
     });
@@ -86,6 +91,9 @@ var app = angular
       authenticatedRedirectPath: '/#/main',
       unauthenticatedRedirectPath: '/#/login'
     });
+
+    //To force jwtInterceptor call tokenGetter for each request set
+    // jwtInterceptorProvider.forceHeadersUpdate = true;
 
     // Add the jwtInterceptor to the array of HTTP interceptors
     // so that JWTs are attached as Authorization headers

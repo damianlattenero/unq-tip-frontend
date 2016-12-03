@@ -7,7 +7,7 @@
  * Service in the tipMarchionneLattenero.
  */
 angular.module('myApp')
-  .factory('FoodOrderService', function ($http, ENV) {
+  .factory('FoodOrderService', function ($http, ENV, LoginService) {
     return {
       get: function (id) {
         return $http({
@@ -18,10 +18,9 @@ angular.module('myApp')
       save: function (newFoodOrder) {
         return $http({
           method: 'post',
-          //dataType: 'json',
+          dataType: 'json',
           url: ENV.apiEndpoint + 'foodOrders/create/',
-          /* params: {
-           token: AuthService.getToken()          },*/
+          params: {token: LoginService.getToken()},
           data: newFoodOrder
         });
       },

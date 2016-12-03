@@ -12,15 +12,15 @@
     .module('myApp')
     .service('authService', authService);
 
-  authService.$inject = ['$rootScope', 'lock'];
+  authService.$inject = ['$rootScope', 'lock', 'LoginService'];
 
-  function authService($rootScope, lock) {
+  function authService($rootScope, lock, LoginService) {
     var self = this;
 
     function login() {
       lock.show({
-        callbackUrl: '/#/main',
-        state: location.href = '/#/main'
+        // callbackUrl: '/#/main',
+        // state: location.href = '/#/main'
       })
     }
 
