@@ -18,31 +18,56 @@ function FoodOrderHistoryController($scope, FoodOrderHistoryService) {
 
   this.orderHistories = [];
 
-  this.f = {};
+  this.filter = {};
 
-  this.filter_by_ge = function (field, date) {
-    console.log(field + ": " + date + " - " + new Date(date).toString('dd-MM-yyyy'));
-    if (date === '') {
-      delete self.f['ge_' + field];
-      return;
+  this.find = function () {
+    self.filter.productName = self.filterProductName;
+
+    var dateFrom = $('#from').data("DateTimePicker").date();
+    if (dateFrom != null) {
+      dateFrom = new Date(dateFrom._d);
+      dateFrom.setUTCHours(0, 0, 0, 0);
+      self.filter_by_ge(self.filter, 'moment', dateFrom.getTime());
     }
-    self.f['ge_' + field] = true;
-    self.orderHistories.forEach(function (ordersHistory) {
-      ordersHistory['ge_' + field] = (ordersHistory[field] >= date);
-    })
+    else
+      self.filter_by_ge(self.filter, 'moment', 0);
+
+
+    var dateTo = $('#to').data("DateTimePicker").date();
+    if (dateTo != null) {
+      dateTo = new Date(dateTo._d);
+      dateTo.setUTCHours(0, 0, 0, 0);
+      self.filter_by_le(self.filter, 'moment', dateTo.getTime());
+    }
+    else
+      self.filter_by_le(self.filter, 'moment', 0);
+
   };
 
-  this.filter_by_le = function (field, date) {
+
+  this.filter_by_ge = function (filter, field, date) {
     console.log(field + ": " + date + " - " + new Date(date).toString('dd-MM-yyyy'));
-    if (date === '') {
-      delete self.f['le_' + field];
+    if ((date == null) || (date == 0) || (date === '')) {
+      delete filter['ge_' + field];
       return;
     }
-    self.f['le_' + field] = true;
+    filter['ge_' + field] = true;
     self.orderHistories.forEach(function (ordersHistory) {
-      // console.log("ordersHistory: " + ordersHistory[field] + " - " + new Date(ordersHistory[field]).toString('dd-MM-yyyy'));
+      ordersHistory['ge_' + field] = (ordersHistory[field] >= date);
+    });
+  };
+
+  this.filter_by_le = function (filter, field, date) {
+    console.log(field + ": " + date + " - " + new Date(date).toString('dd-MM-yyyy'));
+    if ((date == null) || (date === 0) || (date === '')) {
+      console.log("borro propiedad Date");
+      delete filter['le_' + field];
+      return;
+    }
+    filter['le_' + field] = true;
+    self.orderHistories.forEach(function (ordersHistory) {
       ordersHistory['le_' + field] = (ordersHistory[field] <= date);
-    })
+    });
   };
 
   this.getAll = function () {
@@ -60,16 +85,10 @@ function FoodOrderHistoryController($scope, FoodOrderHistoryService) {
 
     $("#from").on("dp.change", function (e) {
       $('#to').data("DateTimePicker").minDate(e.date);
-      var date = new Date(e.date);
-      date.setUTCHours(0,0,0,0);
-      self.filter_by_ge('moment', date.getTime())
     });
 
     $("#to").on("dp.change", function (e) {
       $('#from').data("DateTimePicker").maxDate(e.date);
-      var date = new Date(e.date);
-      date.setUTCHours(0,0,0,0);
-      self.filter_by_le('moment', date.getTime())
     });
   });
 
