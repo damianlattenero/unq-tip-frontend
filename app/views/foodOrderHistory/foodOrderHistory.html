@@ -7,28 +7,28 @@
     <div class="container">
       <div class='col-md-3'>
         <label for="producto" class="control-label">Producto</label>
-        <div class='input-group date' id='producto'>
-          <input type='text' class="form-control"/>
+        <div class='input-group' id='producto'>
+          <input ng-model="historyCtrl.f.productName" type='text' class="form-control"/>
         </div>
       </div>
 
       <div class='col-md-3'>
         <label for="from" class="control-label">Desde</label>
         <div class='input-group date' id='from'>
-          <input type='text' class="form-control"/>
+          <input ng-model="historyCtrl.f.moment" ng-change="historyCtrl.filter_by_ge('moment')" type='text' class="form-control"/>
           <span class="input-group-addon">
-                    <button class="glyphicon glyphicon-calendar"></button>
-                </span>
+            <button class="glyphicon glyphicon-calendar"></button>
+          </span>
         </div>
       </div>
 
       <div class='col-md-3'>
         <label for="to" class="control-label">Hasta</label>
         <div class='input-group date' id='to'>
-          <input type='text' class="form-control"/>
+          <input ng-model="historyCtrl.f.moment" ng-change="historyCtrl.filter_by_le('moment')" type='text' class="form-control"/>
           <span class="input-group-addon">
-                    <button class="glyphicon glyphicon-calendar"></button>
-                </span>
+            <button class="glyphicon glyphicon-calendar"></button>
+          </span>
         </div>
       </div>
 
@@ -53,7 +53,8 @@
       </tr>
       </thead>
       <tbody>
-      <tr ng-repeat="ordersHistory in historyCtrl.ordersHistories | orderBy: '-moment' && '-id'">
+      <tr ng-repeat="ordersHistory in historyCtrl.orderHistories | filter: historyCtrl.f | orderBy: '-moment' && '-id'">
+
         <td>{{ ordersHistory.productName }}</td>
         <td>{{ ordersHistory.productDescription }}</td>
         <td>{{ ordersHistory.countOrder }}</td>
