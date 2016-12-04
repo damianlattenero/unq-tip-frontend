@@ -28,8 +28,10 @@
     // id_token and profile
     function logout() {
       $rootScope.$broadcast('userProfileClear', "");
-      localStorage.removeItem('id_token');
-      localStorage.removeItem('profile');
+      if (!$rootScope.logginWithBackend){
+        localStorage.removeItem('id_token');
+        localStorage.removeItem('profile');
+      }
     }
 
     // Set up the logic for when a user authenticates
