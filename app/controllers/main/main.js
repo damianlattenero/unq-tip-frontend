@@ -31,16 +31,69 @@ angular.module('myApp')
     }, 1000);
 
     this.newFoodOrder = {
-      productId: 0,
-      productAmount: 0,
-      state: ""
+      productId: 0
     };
+
+    /*Acciones sobre pedidos de productos*/
+
+    this.orderProduct = function (product) {
+      product.pending += 1;
+      self.newFoodOrder.productId = product.id;
+      FoodOrderService.order(self.newFoodOrder)
+        .then(function successCallback(response) {
+          self.updatePending(product.id, response.data.productPending);
+        });
+    };
+
+    this.cancelOrderProduct = function (product) {
+      self.newFoodOrder.productId = product.id;
+      product.pending -= 1;
+      FoodOrderService.cancelorder(self.newFoodOrder)
+        .then(function successCallback(response) {
+          self.updatePending(self.newFoodOrder.productId, response.data.productPending);
+        });
+    };
+
+    this.cookProduct = function (product) {
+      self.newFoodOrder.productId = product.id;
+      product.pending -= 1;
+      FoodOrderService.cooked(self.newFoodOrder)
+        .then(function successCallback(response) {
+          self.updatePending(self.newFoodOrder.productId, response.data.productPending);
+        });
+    };
+
+    this.cancelCookProduct = function (product) {
+      self.newFoodOrder.productId = product.id;
+      product.pending += 1;
+      FoodOrderService.cancelcooked(self.newFoodOrder)
+        .then(function successCallback(response) {
+          self.updatePending(self.newFoodOrder.productId, response.data.productPending);
+        });
+    };
+
+    this.updatePending = function (productId, pending) {
+      var product = self.products.filter(function (product) {
+        return product.id === productId
+      });
+      product[0].pending = pending;
+    };
+
+    this.isEnabledCookProduct = function (product) {
+      return (product.pending > 0);
+    };
+
+    this.isEnabledCancelOrderProduct = function (product) {
+      return (product.pending > 0);
+    };
+
+    this.front = true;
 
     this.modifyStock = function (product) {
       var productBody = {
         productId: product.id,
         hasStock: !product.hasStock
-      }
+      };
       ProductService.modifyStock(productBody)
         .then(function successCallback(response) {
           self.updateStock(product.id, response.data.hasStock);
@@ -54,6 +107,10 @@ angular.module('myApp')
       product[0].hasStock = hasStock;
     };
 
+    this.isEnabledCancelCookProduct = function (product) {
+      //return product[0].modifyStock;
+      return true;
+    };
 
     this.hasStock = function (product) {
       return product.modifyStock;
@@ -62,62 +119,6 @@ angular.module('myApp')
     this.isEnabledOrderProduct = function (product) {
       return product.hasStock;
     };
-
-    this.orderProduct = function (product) {
-      self.save(product, 1, "ORDER");
-    };
-
-    this.isEnabledCancelOrderProduct = function (product) {
-      return (product.pending > 0);
-    };
-
-    this.cancelOrderProduct = function (product) {
-      self.save(product, -1, "CANCELORDER");
-    };
-
-    this.isEnabledCookProduct = function (product) {
-      return (product.pending > 0);
-    };
-
-    this.cookProduct = function (product) {
-      self.save(product, -1, "COOKED");
-    };
-
-    this.isEnabledCancelCookProduct = function (product) {
-      //return product[0].modifyStock;
-      return true;
-    };
-
-    this.cancelCookProduct = function (product) {
-      self.save(product, 1, "CANCELCOOKED");
-    };
-
-    this.save = function (product, type, state) {
-      self.newFoodOrder.productId = product.id;
-      self.newFoodOrder.productAmount = type;
-      self.newFoodOrder.state = state;
-      self.newFoodOrder.user = $rootScope.userName;
-
-      product.pending += self.newFoodOrder.productAmount;
-
-      self.saveFoodOrder(self.newFoodOrder);
-    };
-
-    this.saveFoodOrder = function (foodOrder) {
-      FoodOrderService.save(foodOrder)
-        .then(function successCallback(response) {
-          self.updatePending(foodOrder.productId, response.data.productPending);
-        });
-    };
-
-    this.updatePending = function (productId, pending) {
-      var product = self.products.filter(function (product) {
-        return product.id === productId
-      });
-      product[0].pending = pending;
-    };
-
-    this.front = true;
 
     this.isFront = function () {
       return self.front;
