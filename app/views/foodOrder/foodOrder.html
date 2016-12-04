@@ -16,7 +16,7 @@
       <tr ng-repeat="foodOrder in foodOrderCtrl.orders | orderBy:'-id'">
         <td>{{ foodOrder.productName }}</td>
         <td>{{ foodOrder.productDescription }}</td>
-        <td>{{ foodOrder.productAmount }}</td>
+        <td>{{ foodOrder.productAmount | abs }}</td>
         <td>{{ foodOrder.state }}</td>
         <td>{{ foodOrder.user }}</td>
         <td>{{ foodOrder.moment | date:'dd-MM-yyyy HH:mm:ss'}}</td>

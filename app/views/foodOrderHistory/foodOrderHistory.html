@@ -45,10 +45,13 @@
       <tr>
         <th>Nombre</th>
         <th>Descripcion</th>
-        <th>Cantidad de Órdenes realizadas</th>
-        <th>Cantidad de Órdenes canceladas</th>
-        <th>Cantidad de Cocciones realizadas</th>
-        <th>Cantidad de Cocciones canceladas</th>
+        <th>Ordenadas</th>
+        <th>Órdenes</br>Canceladas</th>
+        <th>Cocinadas</th>
+        <th>Cocciones</br>Canceladas</th>
+        <th>Pendientes</th>
+        <th>Total</br>Cancelados</th>
+        <th>Stock</th>
         <th>Fecha</th>
       </tr>
       </thead>
@@ -57,10 +60,13 @@
 
         <td>{{ ordersHistory.productName }}</td>
         <td>{{ ordersHistory.productDescription }}</td>
-        <td>{{ ordersHistory.countOrder }}</td>
-        <td>{{ ordersHistory.countCancelOrder }}</td>
-        <td>{{ ordersHistory.countCooked }}</td>
-        <td>{{ ordersHistory.countCancelCooked }}</td>
+        <td>{{ ordersHistory.countOrder | abs }}</td>
+        <td>{{ ordersHistory.countCancelOrder | abs }}</td>
+        <td>{{ ordersHistory.countCooked | abs }}</td>
+        <td>{{ ordersHistory.countCancelCooked | abs }}</td>
+        <td>{{ ordersHistory.countDiff | abs }}</td>
+        <td>{{ ordersHistory.countTotalCancel | abs }}</td>
+        <td>{{ ordersHistory.countTotalStock | abs }}</td>
         <td>{{ ordersHistory.moment | date:'dd-MM-yyyy'}}</td>
         <br>
       </tr>
