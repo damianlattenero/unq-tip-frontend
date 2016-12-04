@@ -20,14 +20,16 @@ var app = angular
       domain: 'marchionnelattenero.auth0.com',
       callback: 'http://localhost:9000/#/main/',
       options: {
-        auth: { redirect: false },
         theme: {
           logo: './assets/images/virtualkiosklogo.png',
           primaryColor: "#b81b1c"
         },
         languageDictionary: {
-          title: "Virtual Kiosk"
-        }
+          title: "Virtual Kiosk",
+          emailInputPlaceholder: "nombre@mail.com"
+        },
+        language: 'es',
+        rememberLastLogin: false
       }
     });
 

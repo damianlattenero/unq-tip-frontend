@@ -5,14 +5,16 @@
     .module('myApp')
     .controller('LoginController', LoginController);
 
-  LoginController.$inject = ['$rootScope', 'authService', 'LoginService', 'authManager'];
+  LoginController.$inject = ['$rootScope', 'authService', 'LoginService', 'authManager', $window];
 
-  function LoginController($rootScope, authService, LoginService, authManager) {
+  function LoginController($rootScope, authService, LoginService, authManager, $window) {
 
     var self = this;
     self.authService = authService;
 
     this.userName = "";
+
+    this.place = "COCINA";
 
     this.isAuthenticatingWithDB = false;
 
@@ -29,25 +31,20 @@
       self.authService.login();
     };
 
-    this.loginFail = function (message) {
-      $rootScope.logginWithBackend = false;
-      authManager.unauthenticate();
-      console.log("Error al registrar el Usuario: " + message);
-    };
-
     this.loginSuccess = function (user, message) {
       console.log("loginSuccess: user=" + user + ". msg:" + message);
       self.setUserName(user);
       $rootScope.logginWithBackend = true;
       authManager.authenticate();
-      /*
-       Notification.success("Welcome! Successfully logged in");
-       $window.location.assign('/#/');
-       */
+      $window.location.assign('/#/main');
+      // Notification.success("Welcome! Successfully logged in");
+      // alert("loginSuccess: " + message);
     };
 
-    this.logout = function () {
-      self.authService.logout();
+    this.loginFail = function (message) {
+      alert("loginFail: " + message);
+      console.log("Error al registrar el Usuario: " + message);
+      self.logoutSuccess();
     };
 
     this.logoutSuccess = function () {
@@ -55,9 +52,11 @@
       localStorage.removeItem('userDB');
       self.setUserName("");
       authManager.unauthenticate();
+      authService.logout();
+      $window.location.assign('/#/login');
     };
 
-    $rootScope.$on("userProfileClear", function (event, obj) {
+    this.logout = function () {
       var authCode = {
         token: localStorage.getItem('id_token'),
         userId: localStorage.getItem('profile').user_id
@@ -72,12 +71,20 @@
               if (response.data.authenticated) {
                 self.logoutSuccess();
               }
+              else
+              {
+                console.log("logout Failure! Error en el Servidor.");
+                console.log(error);
+                alert("logout Failure! Error en el Servidor.");
+              }
             },
             function (error) {
+              console.log("logout Failure! Error en la red.");
               console.log(error);
+              alert("logout Failure! Error en la red.");
             });
       }
-    });
+    };
 
     $rootScope.$on("userProfileSet", function (event, obj) {
       var authCode = {
@@ -85,8 +92,6 @@
         userId: obj.user_id
       };
       console.log(JSON.stringify(authCode));
-      console.log("authManager.isAuthenticated: " + authManager.isAuthenticated);
-      console.log("$rootScope.isAuthenticated: " + $rootScope.isAuthenticated);
 
       if (!$rootScope.logginWithBackend) {
         LoginService.userLogin(authCode)
@@ -103,7 +108,6 @@
             },
             function (error) {
               self.loginFail(JSON.stringify(error));
-              console.log(error);
             });
       }
     });
