@@ -6,11 +6,17 @@
       <h3 class="text-center">{{mainCtrl.front && 'Mostrador' || 'Cocina'}}</h3>
       <!--toggle-->
       <div style="display: inline-block;">
-        <a style="text-align: right;" class="btn btn-secondary pull-right" ng-init="true"
+        <a id="place"
+           style="text-align: right;" class="btn btn-secondary pull-right" ng-init="true"
            ng-class="{true: 'btn-primary', false: 'btn-secondary'}[!mainCtrl.front]"
            ng-click="mainCtrl.front = !mainCtrl.front">Cambiar a {{!mainCtrl.front && 'Mostrador' || 'Cocina'}}</a>
 
         <!--boton de actualizar-->
+        <a id="refresh"
+          style="text-align: right;" class="btn btn-secondary pull-right" ng-init="true"
+           ng-class="{true: 'btn-primary', false: 'btn-secondary'}[!mainCtrl.autoRefresh]"
+           ng-click="mainCtrl.autoRefresh = !mainCtrl.autoRefresh">{{!mainCtrl.autoRefresh && 'Desconectado' || 'Actualizando...'}}</a>
+
         <a ng-hide="true" type="button" name="button" ng-click="mainCtrl.getProducts()"
            class="btn btn-primary">Actualizar Vista</a>
       </div>
@@ -21,6 +27,15 @@
 
           <!--Card-->
           <div class="card card-cascade" style="text-align: center;">
+
+            <!--Cocina-->
+            <div ng-show="mainCtrl.isKitchen()" class="KitchenTopAdds">
+              <span class="StockProduct">
+                <a style="text-align: center;" class="btn btn-secondary" ng-init="true"
+                   ng-class="{true: 'btn-secondary', false: 'btn-danger'}[!product.hasStock]"
+                   ng-click="mainCtrl.modifyStock(product)">{{product.hasStock && 'No' || ''}} Hay Stock</a>
+              </span>
+            </div>
 
             <!--Card image-->
             <div class="view overlay hm-white-light text-xs-center">
@@ -46,7 +61,7 @@
 
               <div class="form-group">
                 <div class="FoodOrderActions">
-                  <!--Ordenar-->
+                  <!--Mostrador-->
                   <div ng-show="mainCtrl.isFront()">
                     <span class="orderProduct">
                       <button type="button"
@@ -61,7 +76,7 @@
                               class="btn btn-danger">Anular</button>
                     </span>
                   </div>
-                  <!--Cocinar-->
+                  <!--Cocina-->
                   <div ng-show="mainCtrl.isKitchen()">
                     <span class="cookProduct">
                       <button type="button"
@@ -69,16 +84,11 @@
                               ng-click="mainCtrl.cookProduct(product)"
                               class="btn btn-secondary">Cocinar</button>
                     </span>
-                    <span class="cookProduct">
+                    <span class="cancelCookProduct">
                       <button type="button"
                               ng-disabled="!mainCtrl.isEnabledCancelCookProduct(product)"
                               ng-click="mainCtrl.cancelCookProduct(product)"
                               class="btn btn-danger">Anular</button>
-                    </span>
-                    <span class="StockProduct">
-                      <a style="text-align: right;" class="btn btn-secondary pull-right" ng-init="true"
-                         ng-class="{true: 'btn-secondary', false: 'btn-danger'}[!product.hasStock]"
-                         ng-click="mainCtrl.modifyStock(product)">{{product.hasStock && 'No' || ''}} Hay Stock</a>
                     </span>
                   </div>
                 </div>

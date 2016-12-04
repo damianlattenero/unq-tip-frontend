@@ -14,3 +14,25 @@
 .data {
   margin-top: 4.8em;
 }
+
+#place, #refresh {
+  position: absolute;
+  /*top: 9em;*/
+  right: 3em;
+  z-index: 1;
+}
+
+#refresh {
+  top: 7.25em;
+}
+
+#place {
+  top: 10.75em;
+}
+
+.card > .KitchenTopAdds {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  z-index: 1;
+}

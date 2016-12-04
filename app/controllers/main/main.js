@@ -14,17 +14,20 @@ angular.module('myApp')
 
     this.products = [];
 
+    this.autoRefresh = true;
+
     this.getProducts = function () {
       ProductService.getAll()
         .then(function successCallback(response) {
           self.products = response.data;
         });
-    }
+    };
 
     this.getProducts();
 
     $interval(function () {
-      self.getProducts();
+      if ($rootScope.isAuthenticated && self.autoRefresh)
+        self.getProducts();
     }, 1000);
 
     this.newFoodOrder = {
