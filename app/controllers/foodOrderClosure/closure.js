@@ -9,15 +9,14 @@
  */
 
 angular.module('myApp')
-  .controller('ClosureCtrl', function (FoodOrderClosureService, $rootScope) {
-    return new ClosureController(FoodOrderClosureService, $rootScope);
+  .controller('ClosureCtrl', function (FoodOrderClosureService) {
+    return new ClosureController(FoodOrderClosureService);
   });
 
-function ClosureController(FoodOrderClosureService, $rootScope) {
+function ClosureController(FoodOrderClosureService) {
   var self = this;
 
   this.clousure = {
-    user: "",
     from: 0,
     to: 0
   };
@@ -40,8 +39,6 @@ function ClosureController(FoodOrderClosureService, $rootScope) {
   });
 
   this.generateClosure = function () {
-    self.clousure.user = $rootScope.userName;
-
     FoodOrderClosureService.generateClosure(self.clousure)
       .then(function successCallback(response) {
         self.clousures = response.data;
