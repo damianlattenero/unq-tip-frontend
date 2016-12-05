@@ -18,7 +18,6 @@ var app = angular
     lockProvider.init({
       clientID: 'BCL0BYCBdbFUmrJh16lG2CB1MZsxz7ex',
       domain: 'marchionnelattenero.auth0.com',
-      callback: 'http://localhost:9000/#/main/',
       options: {
         theme: {
           logo: './assets/images/virtualkiosklogo.png',

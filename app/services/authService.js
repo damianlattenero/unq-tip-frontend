@@ -18,10 +18,7 @@
     var self = this;
 
     function login() {
-      lock.show({
-        // callbackUrl: '/#/main',
-        // state: location.href = '/#/main'
-      })
+      lock.show();
     }
 
     // Logging out just requires removing the user's
@@ -35,13 +32,12 @@
     // This method is called from app.run.js
     function registerAuthenticationListener() {
       lock.on('authenticated', function (authResult) {
-        localStorage.setItem('id_token', authResult.idToken);
-
-        lock.getProfile(authResult.idToken, function (error, profile) {
+        lock.getUserInfo(authResult.accessToken, function (error, profile) {
           if (error) {
             console.log(error);
           }
 
+          localStorage.setItem('id_token', authResult.idToken);
           localStorage.setItem('profile', JSON.stringify(profile));
           $rootScope.$broadcast('userProfileSet', profile);
         });

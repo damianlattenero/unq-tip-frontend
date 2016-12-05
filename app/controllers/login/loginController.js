@@ -5,9 +5,10 @@
     .module('myApp')
     .controller('LoginController', LoginController);
 
-  LoginController.$inject = ['$rootScope', 'authService', 'LoginService', 'authManager', $window];
+  LoginController.$inject = ['$rootScope', 'authService', 'lock', 'LoginService', 'authManager', '$window', '$timeout'];
 
-  function LoginController($rootScope, authService, LoginService, authManager, $window) {
+  function LoginController($rootScope, authService, lock, LoginService, authManager, $window) {
+
 
     var self = this;
     self.authService = authService;
@@ -38,12 +39,27 @@
       authManager.authenticate();
       $window.location.assign('/#/main');
       // Notification.success("Welcome! Successfully logged in");
-      // alert("loginSuccess: " + message);
+/*
+      lock.show({
+        flashMessage: {
+          type: 'success',
+          text: message
+        }
+      });
+      $timeout(function () { lock.hide(); }, 3000);
+*/
     };
 
     this.loginFail = function (message) {
-      alert("loginFail: " + message);
       console.log("Error al registrar el Usuario: " + message);
+
+      lock.show({
+        flashMessage: {
+          type: 'error',
+          text: message
+        }
+      });
+
       self.logoutSuccess();
     };
 
@@ -54,6 +70,12 @@
       authManager.unauthenticate();
       authService.logout();
       $window.location.assign('/#/login');
+    };
+
+    this.logoutFail = function (message, details) {
+      console.log("logout Failure! " + message);
+      console.log(details);
+      alert("logout Failure! " + message);
     };
 
     this.logout = function () {
@@ -71,17 +93,12 @@
               if (response.data.authenticated) {
                 self.logoutSuccess();
               }
-              else
-              {
-                console.log("logout Failure! Error en el Servidor.");
-                console.log(error);
-                alert("logout Failure! Error en el Servidor.");
+              else {
+                self.logoutFail("Error en el Servidor.", error);
               }
             },
             function (error) {
-              console.log("logout Failure! Error en la red.");
-              console.log(error);
-              alert("logout Failure! Error en la red.");
+              self.logoutFail("Error en la red.", error);
             });
       }
     };
@@ -113,7 +130,7 @@
     });
 
     this.refresh = function () {
-      console.log("Recuperando User");
+      console.log("Looking for User");
       try {
         var userDB = JSON.parse(localStorage.getItem('userDB'));
       }
