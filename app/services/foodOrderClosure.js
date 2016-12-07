@@ -15,6 +15,15 @@ angular.module('myApp')
           url: ENV.apiEndpoint + 'foodOrdersClosure/all/'
         });
       },
+      showClosure: function (data) {
+        return $http({
+          method: 'post',
+          dataType: 'json',
+          url: ENV.apiEndpoint + 'foodOrdersClosure/showClosure/',
+          params: { token: LoginService.getToken() },
+          data: data
+        });
+      },
       generateClosure: function (generateClosureData) {
         return $http({
           method: 'post',

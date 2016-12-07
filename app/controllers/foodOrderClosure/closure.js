@@ -45,4 +45,11 @@ function ClosureController(FoodOrderClosureService) {
       });
   };
 
+  this.showClosure = function () {
+    FoodOrderClosureService.showClosure(self.clousure)
+      .then(function successCallback(response) {
+        self.clousures = response.data;
+      });
+  };
+
 }
