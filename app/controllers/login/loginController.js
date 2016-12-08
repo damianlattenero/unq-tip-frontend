@@ -15,7 +15,7 @@
 
     this.userName = "";
 
-    this.place = "COCINA";
+    $rootScope.place = "";
 
     this.isAuthenticatingWithDB = false;
 
@@ -118,6 +118,9 @@
               if (response.data.authenticated && response.data.signedIn) {
                 localStorage.setItem('userDB', JSON.stringify(response.data));
                 self.loginSuccess(response.data.nickname, response.data.message);
+                var userDB = JSON.parse(localStorage.getItem('userDB'));
+                $rootScope.place = userDB.place;
+                console.log($rootScope.place)
               }
               else {
                 self.loginFail(response.data.message);

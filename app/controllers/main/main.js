@@ -8,7 +8,7 @@
  */
 
 angular.module('myApp')
-  .controller('MainCtrl', function ($rootScope, $interval, ProductService, FoodOrderService, LoginService) {
+  .controller('MainCtrl', function ($rootScope, $interval, ProductService, FoodOrderService, CacheService) {
 
     var self = this;
 
@@ -120,12 +120,31 @@ angular.module('myApp')
       return product.hasStock;
     };
 
+    this.changePlace = function () {
+      if (this.isFront()) {
+        $rootScope.place = "COCINA"
+      } else {
+        $rootScope.place = "MOSTRADOR1"
+      }
+
+      var userPlace = {
+        place: $rootScope.place
+      }
+
+      console.log(userPlace.place)
+
+      CacheService.changeUserPlace(userPlace)
+        .then(function successCallback(response) {
+          console.log(response.data)
+        });
+    }
+
     this.isFront = function () {
-      return self.front;
+      return $rootScope.place != "COCINA";
     };
 
     this.isKitchen = function () {
-      return !self.front;
+      return !this.isFront();
     };
 
   });

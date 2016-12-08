@@ -3,13 +3,13 @@
 
     <div>
       <h2 class="text-center">Vista Principal</h2>
-      <h3 class="text-center">{{mainCtrl.front && 'Mostrador' || 'Cocina'}}</h3>
+      <h3 class="text-center">{{mainCtrl.isFront() && 'Mostrador1' || 'Cocina'}}</h3>
       <!--toggle-->
       <div style="display: inline-block;">
         <a id="place"
-           style="text-align: right;" class="btn btn-secondary pull-right" ng-init="true"
+           style="text-align: right;" class="btn btn-secondary pull-right" ng-init="mainCtrl.isFront()"
            ng-class="{true: 'btn-primary', false: 'btn-secondary'}[!mainCtrl.front]"
-           ng-click="mainCtrl.front = !mainCtrl.front">Cambiar a {{!mainCtrl.front && 'Mostrador' || 'Cocina'}}</a>
+           ng-click="mainCtrl.changePlace()">Cambiar a {{!mainCtrl.isFront() && 'Mostrador1' || 'Cocina'}}</a>
 
         <!--boton de actualizar-->
         <a id="refresh"
