@@ -13,15 +13,16 @@
 
         <!--boton de actualizar-->
         <a id="refresh"
-          style="text-align: right;" class="btn btn-secondary pull-right" ng-init="true"
+           style="text-align: right;" class="btn btn-secondary pull-right" ng-init="true"
            ng-class="{true: 'btn-primary', false: 'btn-secondary'}[!mainCtrl.autoRefresh]"
-           ng-click="mainCtrl.autoRefresh = !mainCtrl.autoRefresh">{{!mainCtrl.autoRefresh && 'Desconectado' || 'Actualizando...'}}</a>
+           ng-click="mainCtrl.toggleAutoRefresh()">{{!mainCtrl.autoRefresh && 'Desconectado' ||
+          'Actualizando...'}}</a>
 
         <a ng-hide="true" type="button" name="button" ng-click="mainCtrl.getProducts()"
            class="btn btn-primary">Actualizar Vista</a>
       </div>
 
-      <div ng-repeat="product in mainCtrl.products" ng-controller="CacheController as cache">
+      <div ng-repeat="product in mainCtrl.products">
 
         <div id="{{product.id}}" class="col-md-4">
 
@@ -39,7 +40,8 @@
 
             <!--Card image-->
             <div class="view overlay hm-white-light text-xs-center">
-              <img src="../../assets/images/products/{{product.id}}.png" class="img-responsive" alt="{{product.name}}">
+              <img src="../../assets/images/products/{{product.id}}.png" class="img-responsive"
+                   alt="{{product.name}}">
               <a href="/#/foodOrder">
                 <div class="mask"></div>
               </a>
@@ -56,7 +58,7 @@
 
               <!--Info-->
               <!--<p ng-show="mainCtrl.isKitchen()" class="card-text"><strong>Pendientes: <span class="productPending">{{product.pending}}</span></strong>-->
-              <p class="card-text"><strong>Pendientes: <span class="productPending">{{cache.getPendingForProduct(product.id, true)}}</span></strong>
+              <p class="card-text"><strong>Pendientes: <span class="productPending">{{mainCtrl.getPendingForProduct(product.id)}}</span></strong>
               </p>
 
               <div class="form-group">
@@ -101,7 +103,9 @@
           <!--/.Card-->
 
         </div>
+        <!--product-->
       </div>
+      <!--ng-repeat="product in mainCtrl.products"-->
     </div>
   </form>
 

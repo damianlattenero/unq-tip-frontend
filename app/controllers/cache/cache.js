@@ -13,17 +13,16 @@ angular.module('myApp')
     return new CacheController($rootScope, $interval,CacheService,LoginService);
   });
 
-function CacheController($rootScope, $interval,CacheService,LoginService) {
+function CacheController($rootScope, $interval, CacheService, LoginService) {
   var self = this;
 
-  this.productsByUsers = [];
-  this.cachePlaces = [];
-  this.cacheProducts = [];
+  $rootScope.productsByUsers = [];
+  $rootScope.cachePlaces = [];
 
   this.getCacheUsers = function () {
     CacheService.getUsers()
       .then(function successCallback(response) {
-        self.productsByUsers = response.data[LoginService.getToken()].allProductsPending;
+        $rootScope.productsByUsers = response.data[LoginService.getToken()].allProductsPending;
       });
   };
 
@@ -32,41 +31,20 @@ function CacheController($rootScope, $interval,CacheService,LoginService) {
   this.getCachePlaces = function () {
     CacheService.getPlaces()
       .then(function successCallback(response) {
-        self.cachePlaces = response.data;
+        $rootScope.cachePlaces = response.data;
       });
   };
 
   this.getCachePlaces();
-
-  this.getCacheProducts = function () {
-    CacheService.getProducts()
-      .then(function successCallback(response) {
-        self.cacheProducts = response.data;
-      });
-  };
-
-  this.getCacheProducts();
-
-  this.getPendingForProduct = function(productID, isFront){
-    if(isFront){
-      if (!self.productsByUsers.hasOwnProperty(productID)) {
-        return 0;
-      } else {
-        return self.productsByUsers[productID];
-      }
-    }else{
-      return self.cacheProducts[productID]
-    }
-  }
 
   $interval(function () {
-    if ($rootScope.isAuthenticated && self.autoRefresh)
-      self.getCacheProducts();
-  }, 1000);
+    if ($rootScope.isAuthenticated && $rootScope.autoRefresh){
+      console.log("Updating All Cache ...");
+      self.getCacheUsers();
+      self.getCachePlaces();
+    }
+  }, 1500);
 
-  this.getCacheUsers();
-  this.getCachePlaces();
-  this.getCacheProducts();
 
 }
 

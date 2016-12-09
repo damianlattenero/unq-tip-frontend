@@ -15,7 +15,7 @@ angular.module('myApp')
           dataType: 'json',
           url: ENV.apiEndpoint + 'userModels/login',
           // headers: { Authorization: 'Bearer ' + token },
-          params: { token: this.getToken() },
+          params: {token: this.getToken()},
           data: obj
         });
       },
@@ -24,9 +24,19 @@ angular.module('myApp')
           method: 'post',
           dataType: 'json',
           url: ENV.apiEndpoint + 'userModels/logout',
-          params: { token: this.getToken() },
+          params: {token: this.getToken()},
           data: obj
         });
+      },
+      changeUserPlace: function (userPlace) {
+        return $http({
+          method: 'post',
+          dataType: 'json',
+          url: ENV.apiEndpoint + 'userModels/changeUserPlace',
+          params: {token: this.getToken()},
+          data: userPlace
+        })
       }
-    };
-  });
+    }
+  })
+;
