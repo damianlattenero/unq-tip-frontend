@@ -21,7 +21,7 @@
            class="btn btn-primary">Actualizar Vista</a>
       </div>
 
-      <div ng-repeat="product in mainCtrl.products">
+      <div ng-repeat="product in mainCtrl.products" ng-controller="CacheController as cache">
 
         <div id="{{product.id}}" class="col-md-4">
 
@@ -56,7 +56,7 @@
 
               <!--Info-->
               <!--<p ng-show="mainCtrl.isKitchen()" class="card-text"><strong>Pendientes: <span class="productPending">{{product.pending}}</span></strong>-->
-              <p class="card-text"><strong>Pendientes: <span class="productPending">{{product.pending}}</span></strong>
+              <p class="card-text"><strong>Pendientes: <span class="productPending">{{cache.getPendingForProduct(product.id, true)}}</span></strong>
               </p>
 
               <div class="form-group">
