@@ -18,18 +18,14 @@ angular.module('myApp')
       modifyStock: function (productBody) {
         return $http({
           method: 'post',
-          dataType: 'json',
           url: ENV.apiEndpoint + 'products/modifyStock/',
-          params: { token: LoginService.getToken() },
           data: productBody
         });
       },
       save: function (newProduct) {
         return $http({
           method: 'post',
-          dataType: 'json',
           url: ENV.apiEndpoint + 'products/create',
-          params: { token: LoginService.getToken() },
           data: newProduct
         });
       },

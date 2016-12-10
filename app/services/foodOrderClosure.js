@@ -18,18 +18,14 @@ angular.module('myApp')
       showClosure: function (data) {
         return $http({
           method: 'post',
-          dataType: 'json',
           url: ENV.apiEndpoint + 'foodOrdersClosure/showClosure/',
-          params: { token: LoginService.getToken() },
           data: data
         });
       },
       generateClosure: function (generateClosureData) {
         return $http({
           method: 'post',
-          dataType: 'json',
           url: ENV.apiEndpoint + 'foodOrdersClosure/generateClosure/',
-          params: { token: LoginService.getToken() },
           data: generateClosureData
         });
       }

@@ -34,9 +34,7 @@ angular.module('myApp')
       changeUserPlace: function (userPlace) {
         return $http({
           method: 'post',
-          dataType: 'json',
           url: ENV.apiEndpoint + 'userModels/changeUserPlace',
-          params: {token: this.getToken()},
           data: userPlace
         })
       }
