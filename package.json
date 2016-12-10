@@ -41,7 +41,6 @@
     "karma": "^0.13.22",
     "karma-jasmine": "^0.3.8",
     "karma-phantomjs-launcher": "^1.0.2",
-    "mdbootstrap": "^4.2.0",
     "phantomjs": "^2.1.7",
     "phantomjs-prebuilt": "^2.1.12",
     "time-grunt": "^1.0.0"
@@ -56,8 +55,10 @@
   },
   "dependencies": {
     "bootstrap": "3.3.7",
+    "bootstrap-material-design": "^0.5.10",
     "cssmin": "^0.4.3",
-    "karma-chrome-launcher": "^0.1.7",
-    "moment": "^2.13.0"
+    "eonasdan-bootstrap-datetimepicker": "^4.17.43",
+    "jquery": "3.1.1",
+    "karma-chrome-launcher": "^0.1.7"
   }
 }

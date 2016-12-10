@@ -28,15 +28,17 @@
           <div id="{{product.id}}" class="col-md-4">
 
             <!--Card-->
-            <div class="card card-cascade" style="text-align: center;">
+            <div class="panel panel-default" style="text-align: center;">
 
-              <!--Cocina-->
-              <div ng-show="mainCtrl.isKitchen()" class="KitchenTopAdds">
+              <!--Special Functions-->
+              <div class="panel-header">
+                <div ng-show="mainCtrl.isKitchen()" class="KitchenTopAdds">
               <span class="StockProduct">
                 <a style="text-align: center;" class="btn btn-secondary" ng-init="true"
                    ng-class="{true: 'btn-secondary', false: 'btn-danger'}[!product.hasStock]"
                    ng-click="mainCtrl.modifyStock(product)">{{product.hasStock && 'No' || ''}} Hay Stock</a>
               </span>
+                </div>
               </div>
 
               <!--Card image-->
@@ -50,55 +52,57 @@
               <!--/.Card image-->
 
               <!--Card content-->
-              <div class="card-block text-xs-center">
+              <div class="panel-body text-xs-center">
                 <!--Title-->
-                <h4 class="card-title"><strong>{{product.name}}</strong></h4>
+                <h4 class="panel-title"><strong>{{product.name}}</strong></h4>
 
                 <!--SubTitle-->
-                <p class="card-text">{{product.description}}</p>
+                <p class="panel-text">{{product.description}}</p>
 
                 <!--Info-->
-                <!--<p ng-show="mainCtrl.isKitchen()" class="card-text"><strong>Pendientes: <span class="productPending">{{product.pending}}</span></strong>-->
-                <p class="card-text"><strong>Pendientes: <span class="productPending">{{mainCtrl.getPendingForProduct(product.id)}}</span></strong>
+                <p class="panel-text">
+                  <strong>Pendientes: <span class="productPending">{{mainCtrl.getPendingForProduct(product.id)}}</span></strong>
                 </p>
 
+              </div>
+              <!--/.Card content-->
+
+              <div class="panel-footer">
                 <div class="form-group">
-                  <div class="FoodOrderActions">
-                    <!--Mostrador-->
-                    <div ng-show="mainCtrl.isFront()">
+                <div class="FoodOrderActions">
+                  <!--Mostrador-->
+                  <div ng-show="mainCtrl.isFront()">
                     <span class="orderProduct">
                       <button type="button"
                               ng-disabled="!mainCtrl.isEnabledOrderProduct(product)"
                               ng-click="mainCtrl.orderProduct(product)"
                               class="btn btn-primary">Ordenar</button>
                     </span>
-                      <span class="cancelOrderProduct">
+                    <span class="cancelOrderProduct">
                       <button type="button"
                               ng-disabled="!mainCtrl.isEnabledCancelOrderProduct(product)"
                               ng-click="mainCtrl.cancelOrderProduct(product)"
                               class="btn btn-danger">Anular</button>
                     </span>
-                    </div>
-                    <!--Cocina-->
-                    <div ng-show="mainCtrl.isKitchen()">
+                  </div>
+                  <!--Cocina-->
+                  <div ng-show="mainCtrl.isKitchen()">
                     <span class="cookProduct">
                       <button type="button"
                               ng-disabled="!mainCtrl.isEnabledCookProduct(product)"
                               ng-click="mainCtrl.cookProduct(product)"
                               class="btn btn-secondary">Cocinar</button>
                     </span>
-                      <span class="cancelCookProduct">
+                    <span class="cancelCookProduct">
                       <button type="button"
                               ng-disabled="!mainCtrl.isEnabledCancelCookProduct(product)"
                               ng-click="mainCtrl.cancelCookProduct(product)"
                               class="btn btn-danger">Anular</button>
                     </span>
-                    </div>
                   </div>
                 </div>
-
               </div>
-              <!--/.Card content-->
+              </div>
 
             </div>
             <!--/.Card-->
