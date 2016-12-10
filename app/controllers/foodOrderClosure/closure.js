@@ -9,16 +9,17 @@
  */
 
 angular.module('myApp')
-  .controller('ClosureCtrl', function (FoodOrderClosureService) {
-    return new ClosureController(FoodOrderClosureService);
+  .controller('ClosureCtrl', function (FoodOrderClosureService, LoginService) {
+    return new ClosureController(FoodOrderClosureService, LoginService);
   });
 
-function ClosureController(FoodOrderClosureService) {
+function ClosureController(FoodOrderClosureService, LoginService) {
   var self = this;
 
   this.clousure = {
     from: 0,
-    to: 0
+    to: 0,
+    userId: LoginService.getUserId()
   };
 
   this.clousures = [];
@@ -53,6 +54,7 @@ function ClosureController(FoodOrderClosureService) {
       .then(function successCallback(response) {
         self.clousures = response.data;
       });
+    // console.log((JSON.parse(localStorage.getItem('profile')).sub))
   };
 
 }

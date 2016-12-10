@@ -12,6 +12,11 @@ angular.module('myApp')
 
     var self = this;
 
+    this.newFoodOrder = {
+      productId: 0,
+      userId: LoginService.getUserId()
+    };
+
     this.products = [];
 
     self.autoRefresh = true;
@@ -31,9 +36,7 @@ angular.module('myApp')
 
     this.getProducts();
 
-    this.newFoodOrder = {
-      productId: 0
-    };
+
 
     /*Acciones sobre pedidos de productos*/
 
@@ -153,7 +156,8 @@ angular.module('myApp')
       }
 
       var userPlace = {
-        place: $rootScope.place
+        place: $rootScope.place,
+        userId: LoginService.getUserId()
       };
 
       console.log(userPlace.place);

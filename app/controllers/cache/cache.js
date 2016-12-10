@@ -22,7 +22,7 @@ function CacheController($rootScope, $interval, CacheService, LoginService) {
   this.getCacheUsers = function () {
     CacheService.getUsers()
       .then(function successCallback(response) {
-        $rootScope.productsByUsers = response.data[LoginService.getToken()].allProductsPending;
+        $rootScope.productsByUsers = response.data[LoginService.getUserId()].allProductsPending;
       });
   };
 

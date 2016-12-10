@@ -9,6 +9,9 @@ angular.module('myApp')
       getToken: function () {
         return localStorage.getItem(this.getTokenKey());
       },
+      getUserId: function () {
+        return (JSON.parse(localStorage.getItem('profile')).sub);
+      },
       userLogin: function (obj) {
         return $http({
           method: 'post',
