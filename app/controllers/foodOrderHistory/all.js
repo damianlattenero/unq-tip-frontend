@@ -80,10 +80,11 @@ function FoodOrderHistoryController($scope, FoodOrderHistoryService) {
   this.getAll();
 
   $(function () {
-    var day = new Date();
+    var dayFrom = new Date().setHours(0,0,0,0);
+    var dayTo = new Date().setHours(23,59,59,99);
 
-    $('#from').datetimepicker({defaultDate: day});
-    $('#to').datetimepicker({defaultDate: day, useCurrent: false});
+    $('#from').datetimepicker({format: 'DD/MM/YYYY', defaultDate: dayFrom});
+    $('#to').datetimepicker({format: 'DD/MM/YYYY', defaultDate: dayTo, useCurrent: false});
 
     $("#from").on("dp.change", function (e) {
       $('#to').data("DateTimePicker").minDate(e.date);
