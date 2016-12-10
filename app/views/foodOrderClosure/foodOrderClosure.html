@@ -8,6 +8,7 @@
         <th>Usuario</th>
         <th>Fecha de Cierre</th>
         <th>Fecha de Ejecución</th>
+        <th>Detalles</th>
       </tr>
       </thead>
       <tbody>
@@ -16,6 +17,7 @@
         <td>{{ foodOrderClosure.user }}</td>
         <td>{{ foodOrderClosure.momentClosure | date:'dd-MM-yyyy'}}</td>
         <td>{{ foodOrderClosure.moment | date:'dd-MM-yyyy hh:mm:ss'}}</td>
+        <td><a href="#!" ><i class="fa fa-eye fa-lg" aria-hidden="true"> Ver</i></a></td>
       </tr>
       </tbody>
     </table>
