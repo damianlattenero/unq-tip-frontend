@@ -1,112 +1,115 @@
 <div class="well" ng-if="isAuthenticated && logginWithBackend ">
   <form novalidate class="form-horizontal" ng-controller="MainCtrl as mainCtrl">
+    <div ng-controller="CacheController as cache">
 
-    <div>
-      <h2 class="text-center">Vista Principal</h2>
-      <h3 class="text-center">{{mainCtrl.isFront() && 'Mostrador1' || 'Cocina'}}</h3>
-      <!--toggle-->
-      <div style="display: inline-block;">
-        <a id="place"
-           style="text-align: right;" class="btn btn-secondary pull-right" ng-init="mainCtrl.isFront()"
-           ng-class="{true: 'btn-primary', false: 'btn-secondary'}[!mainCtrl.front]"
-           ng-click="mainCtrl.changePlace()">Cambiar a {{!mainCtrl.isFront() && 'Mostrador1' || 'Cocina'}}</a>
+      <div>
+        <h2 class="text-center">Vista Principal</h2>
+        <h3 class="text-center">{{mainCtrl.isFront() && 'Mostrador1' || 'Cocina'}}</h3>
+        <!--toggle-->
+        <div style="display: inline-block;">
+          <a id="place"
+             style="text-align: right;" class="btn btn-secondary pull-right" ng-init="mainCtrl.isFront()"
+             ng-class="{true: 'btn-primary', false: 'btn-secondary'}[!mainCtrl.front]"
+             ng-click="mainCtrl.changePlace()">Cambiar a {{!mainCtrl.isFront() && 'Mostrador1' || 'Cocina'}}</a>
 
-        <!--boton de actualizar-->
-        <a id="refresh"
-           style="text-align: right;" class="btn btn-secondary pull-right" ng-init="true"
-           ng-class="{true: 'btn-primary', false: 'btn-secondary'}[!mainCtrl.autoRefresh]"
-           ng-click="mainCtrl.toggleAutoRefresh()">{{!mainCtrl.autoRefresh && 'Desconectado' ||
-          'Actualizando...'}}</a>
+          <!--boton de actualizar-->
+          <a id="refresh"
+             style="text-align: right;" class="btn btn-secondary pull-right" ng-init="true"
+             ng-class="{true: 'btn-primary', false: 'btn-secondary'}[!mainCtrl.autoRefresh]"
+             ng-click="mainCtrl.toggleAutoRefresh()">{{!mainCtrl.autoRefresh && 'Desconectado' ||
+            'Actualizando...'}}</a>
 
-        <a ng-hide="true" type="button" name="button" ng-click="mainCtrl.getProducts()"
-           class="btn btn-primary">Actualizar Vista</a>
-      </div>
+          <a ng-hide="true" type="button" name="button" ng-click="mainCtrl.getProducts()"
+             class="btn btn-primary">Actualizar Vista</a>
+        </div>
 
-      <div ng-repeat="product in mainCtrl.products">
+        <div ng-repeat="product in mainCtrl.products">
 
-        <div id="{{product.id}}" class="col-md-4">
+          <div id="{{product.id}}" class="col-md-4">
 
-          <!--Card-->
-          <div class="card card-cascade" style="text-align: center;">
+            <!--Card-->
+            <div class="card card-cascade" style="text-align: center;">
 
-            <!--Cocina-->
-            <div ng-show="mainCtrl.isKitchen()" class="KitchenTopAdds">
+              <!--Cocina-->
+              <div ng-show="mainCtrl.isKitchen()" class="KitchenTopAdds">
               <span class="StockProduct">
                 <a style="text-align: center;" class="btn btn-secondary" ng-init="true"
                    ng-class="{true: 'btn-secondary', false: 'btn-danger'}[!product.hasStock]"
                    ng-click="mainCtrl.modifyStock(product)">{{product.hasStock && 'No' || ''}} Hay Stock</a>
               </span>
-            </div>
+              </div>
 
-            <!--Card image-->
-            <div class="view overlay hm-white-light text-xs-center">
-              <img src="../../assets/images/products/{{product.id}}.png" class="img-responsive"
-                   alt="{{product.name}}">
-              <a href="/#/foodOrder">
-                <div class="mask"></div>
-              </a>
-            </div>
-            <!--/.Card image-->
+              <!--Card image-->
+              <div class="view overlay hm-white-light text-xs-center">
+                <img src="../../assets/images/products/{{product.id}}.png" class="img-responsive"
+                     alt="{{product.name}}">
+                <a href="/#/foodOrder">
+                  <div class="mask"></div>
+                </a>
+              </div>
+              <!--/.Card image-->
 
-            <!--Card content-->
-            <div class="card-block text-xs-center">
-              <!--Title-->
-              <h4 class="card-title"><strong>{{product.name}}</strong></h4>
+              <!--Card content-->
+              <div class="card-block text-xs-center">
+                <!--Title-->
+                <h4 class="card-title"><strong>{{product.name}}</strong></h4>
 
-              <!--SubTitle-->
-              <p class="card-text">{{product.description}}</p>
+                <!--SubTitle-->
+                <p class="card-text">{{product.description}}</p>
 
-              <!--Info-->
-              <!--<p ng-show="mainCtrl.isKitchen()" class="card-text"><strong>Pendientes: <span class="productPending">{{product.pending}}</span></strong>-->
-              <p class="card-text"><strong>Pendientes: <span class="productPending">{{mainCtrl.getPendingForProduct(product.id)}}</span></strong>
-              </p>
+                <!--Info-->
+                <!--<p ng-show="mainCtrl.isKitchen()" class="card-text"><strong>Pendientes: <span class="productPending">{{product.pending}}</span></strong>-->
+                <p class="card-text"><strong>Pendientes: <span class="productPending">{{mainCtrl.getPendingForProduct(product.id)}}</span></strong>
+                </p>
 
-              <div class="form-group">
-                <div class="FoodOrderActions">
-                  <!--Mostrador-->
-                  <div ng-show="mainCtrl.isFront()">
+                <div class="form-group">
+                  <div class="FoodOrderActions">
+                    <!--Mostrador-->
+                    <div ng-show="mainCtrl.isFront()">
                     <span class="orderProduct">
                       <button type="button"
                               ng-disabled="!mainCtrl.isEnabledOrderProduct(product)"
                               ng-click="mainCtrl.orderProduct(product)"
                               class="btn btn-primary">Ordenar</button>
                     </span>
-                    <span class="cancelOrderProduct">
+                      <span class="cancelOrderProduct">
                       <button type="button"
                               ng-disabled="!mainCtrl.isEnabledCancelOrderProduct(product)"
                               ng-click="mainCtrl.cancelOrderProduct(product)"
                               class="btn btn-danger">Anular</button>
                     </span>
-                  </div>
-                  <!--Cocina-->
-                  <div ng-show="mainCtrl.isKitchen()">
+                    </div>
+                    <!--Cocina-->
+                    <div ng-show="mainCtrl.isKitchen()">
                     <span class="cookProduct">
                       <button type="button"
                               ng-disabled="!mainCtrl.isEnabledCookProduct(product)"
                               ng-click="mainCtrl.cookProduct(product)"
                               class="btn btn-secondary">Cocinar</button>
                     </span>
-                    <span class="cancelCookProduct">
+                      <span class="cancelCookProduct">
                       <button type="button"
                               ng-disabled="!mainCtrl.isEnabledCancelCookProduct(product)"
                               ng-click="mainCtrl.cancelCookProduct(product)"
                               class="btn btn-danger">Anular</button>
                     </span>
+                    </div>
                   </div>
                 </div>
+
               </div>
+              <!--/.Card content-->
 
             </div>
-            <!--/.Card content-->
+            <!--/.Card-->
 
           </div>
-          <!--/.Card-->
-
+          <!--product-->
         </div>
-        <!--product-->
+        <!--ng-repeat="product in mainCtrl.products"-->
       </div>
-      <!--ng-repeat="product in mainCtrl.products"-->
     </div>
+    <!--CacheController-->
   </form>
 
 
