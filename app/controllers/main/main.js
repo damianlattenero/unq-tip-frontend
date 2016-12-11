@@ -8,7 +8,7 @@
  */
 
 angular.module('myApp')
-  .controller('MainCtrl', function ($rootScope, $interval, ProductService, FoodOrderService, LoginService) {
+  .controller('MainCtrl', function ($rootScope, $interval, ProductService, FoodOrderService, LoginService, CacheService) {
 
     var self = this;
 
@@ -175,5 +175,12 @@ angular.module('myApp')
     this.isKitchen = function () {
       return !this.isFront();
     };
+
+    this.cleanAllCache = function () {
+      CacheService.cleanAll()
+        .then(function successCallback(response) {
+          console.log("Caches Limpias")
+        });
+    }
 
   });

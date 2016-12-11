@@ -20,6 +20,12 @@ angular.module('myApp')
           method: 'get',
           url: ENV.apiEndpoint + 'cache/users'
         });
+      },
+      cleanAll: function () {
+        return $http({
+          method: 'get',
+          url: ENV.apiEndpoint + 'cache/cleanAll'
+        });
       }
     };
   });
