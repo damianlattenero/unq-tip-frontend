@@ -39,8 +39,9 @@ module.exports = function(config) {
       'bower_components/moment/moment.js',
       'bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
       'bower_components/bootstrap/dist/js/bootstrap.js',
-      'bower_components/tether/dist/js/tether.js',
-      'bower_components/bootstrap-material-design/dist/bootstrap-material-design.iife.js',
+      'bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
+      'bower_components/bootstrap-material-design/dist/js/material.js',
+      'bower_components/bootstrap-material-design/dist/js/ripples.js',
       // endbower
       'app/scripts/**/*.js',
       'test/mock/**/*.js',

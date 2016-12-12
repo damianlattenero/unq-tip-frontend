@@ -139,6 +139,8 @@ var app = angular
   }]);
 
 app.run(function ($rootScope, authService, lock, authManager) {
+  $.material.init();
+
   // Put the authService on $rootScope so its methods
   // can be accessed from the nav bar
   $rootScope.authService = authService;
@@ -158,7 +160,7 @@ app.run(function ($rootScope, authService, lock, authManager) {
 });
 
 app.filter('abs', function () {
-  return function(val) {
+  return function (val) {
     return Math.abs(val);
   }
 });

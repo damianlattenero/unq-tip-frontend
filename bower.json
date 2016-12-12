@@ -16,7 +16,7 @@
     "angular-lock": "^1.0.5",
     "angular-ui-router": "^0.3.1",
     "angular-mocks": "^1.4.0",
-    "jquery": "3.1.1",
+    "jquery": "2.1.1",
     "eonasdan-bootstrap-datetimepicker": "^4.17.43"
   },
   "overrides": {
@@ -29,11 +29,11 @@
     }
   },
   "resolutions": {
-    "jquery": "3.1.1",
-    "bootstrap": "^3.3.7"
+    "jquery": "2.1.1",
+    "bootstrap": "3.3.6"
   },
   "devDependencies": {
-    "bootstrap": "^3.3.7",
-    "bootstrap-material-design": "^4.0.2"
+    "bootstrap": "3.3.6",
+    "bootstrap-material-design": "0.5.9"
   }
 }
