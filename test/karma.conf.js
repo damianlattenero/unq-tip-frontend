@@ -22,7 +22,6 @@ module.exports = function(config) {
       // bower:js
       'bower_components/jquery/dist/jquery.js',
       'bower_components/angular/angular.js',
-      'bower_components/bootstrap/dist/js/bootstrap.js',
       'bower_components/angular-animate/angular-animate.js',
       'bower_components/angular-cookies/angular-cookies.js',
       'bower_components/angular-resource/angular-resource.js',
@@ -39,6 +38,9 @@ module.exports = function(config) {
       'bower_components/angular-mocks/angular-mocks.js',
       'bower_components/moment/moment.js',
       'bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+      'bower_components/bootstrap/dist/js/bootstrap.js',
+      'bower_components/tether/dist/js/tether.js',
+      'bower_components/bootstrap-material-design/dist/bootstrap-material-design.iife.js',
       // endbower
       'app/scripts/**/*.js',
       'test/mock/**/*.js',

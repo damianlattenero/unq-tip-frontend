@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "dependencies": {
     "angular": "^1.4.0",
-    "bootstrap": "3.3.7",
     "angular-animate": "^1.4.0",
     "angular-cookies": "^1.4.0",
     "angular-resource": "^1.4.0",
@@ -30,7 +29,11 @@
     }
   },
   "resolutions": {
-    "bootstrap": "3.3.7",
-    "jquery": "3.1.1"
+    "jquery": "3.1.1",
+    "bootstrap": "^3.3.7"
+  },
+  "devDependencies": {
+    "bootstrap": "^3.3.7",
+    "bootstrap-material-design": "^4.0.2"
   }
 }
