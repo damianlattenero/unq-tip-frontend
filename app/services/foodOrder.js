@@ -49,5 +49,11 @@ angular.module('myApp')
           url: ENV.apiEndpoint + 'foodOrders/all/'
         });
       },
+      getAllNotArchived: function () {
+        return $http({
+          method: 'get',
+          url: ENV.apiEndpoint + 'foodOrders/allNotArchived/'
+        });
+      }
     };
   });
