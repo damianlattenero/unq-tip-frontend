@@ -21,16 +21,14 @@ function CacheController($rootScope, $interval, CacheService, LoginService, Noti
 
   this.getCacheUsers = function () {
 
-    var myOldProducts = ({}).hasOwnProperty.call($rootScope.productsByUsers, LoginService.getUserId()) ?
-      $rootScope.productsByUsers[LoginService.getUserId()].allProductsPending : null
+    var myOldProducts = $rootScope.productsByUsers;
 
     CacheService.getUsers()
       .then(function successCallback(response) {
 
-        $rootScope.productsByUsers = response.data;
+        $rootScope.productsByUsers = response.data[LoginService.getUserId()].allProductsPending;
 
-        var myProducts = ({}).hasOwnProperty.call($rootScope.productsByUsers, LoginService.getUserId()) ?
-          $rootScope.productsByUsers[LoginService.getUserId()].allProductsPending : null
+        var myProducts = $rootScope.productsByUsers;
 
         $rootScope.products.map(function (product) {
           if ($rootScope.getPendingForProduct(myProducts, product.id) < $rootScope.getPendingForProduct(myOldProducts, product.id)) {
@@ -46,8 +44,7 @@ function CacheController($rootScope, $interval, CacheService, LoginService, Noti
   this.getCacheUsers();
 
   this.getCachePlaces = function () {
-    var oldProductsInKitchen = ({}).hasOwnProperty.call($rootScope.cachePlaces, "COCINA") ?
-      $rootScope.cachePlaces["COCINA"].allProductsPending : null
+    var oldProductsInKitchen = $rootScope.cachePlaces
 
     // var oldProductsInKitchen = $rootScope.cachePlaces.COCINA.allProductsPending;
 
@@ -55,8 +52,7 @@ function CacheController($rootScope, $interval, CacheService, LoginService, Noti
       .then(function successCallback(response) {
         $rootScope.cachePlaces = response.data;
 
-        var productsInKitchen = ({}).hasOwnProperty.call($rootScope.cachePlaces, "COCINA") ?
-          $rootScope.cachePlaces["COCINA"].allProductsPending : null
+        var productsInKitchen = $rootScope.cachePlaces
 
         $rootScope.products.map(function (product) {
           if ($rootScope.getPendingForProduct(productsInKitchen, product.id) >

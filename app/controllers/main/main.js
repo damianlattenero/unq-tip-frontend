@@ -41,7 +41,7 @@ angular.module('myApp')
 
     this.getCacheProducts = function () {
       return self.isFront() ?
-        $rootScope.productsByUsers[LoginService.getUserId()].allProductsPending :
+        $rootScope.productsByUsers :
         $rootScope.cachePlaces[$rootScope.place].allProductsPending;
     };
 
