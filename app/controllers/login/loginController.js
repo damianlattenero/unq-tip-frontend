@@ -72,10 +72,9 @@ function LoginController($rootScope, authService, lock, LoginService, Notificati
     this.logout = function () {
       var authCode = {
         token: localStorage.getItem('id_token'),
-        userId: localStorage.getItem('profile').sub
+        userId: JSON.parse(localStorage.getItem('profile')).user_id
       };
       console.log(JSON.stringify(authCode));
-      console.log("userId: " + JSON.stringify(authCode.userId));
 
       if ($rootScope.logginWithBackend) {
         LoginService.userLogout(authCode)
