@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc function
- * @name tipMarchionneLattenero.controller:AllFoodOrderCtrl
+ * @name tipMarchionneLattenero.controller:FoodOrderCtrl
  * @description
- * # AllFoodOrderCtrl
+ * # FoodOrderCtrl
  * Controller of the tipMarchionneLattenero
  */
 
