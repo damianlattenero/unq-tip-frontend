@@ -8,7 +8,7 @@
  */
 
 angular.module('myApp')
-  .controller('MainCtrl', function ($rootScope, $interval, ProductService, FoodOrderService, LoginService, CacheService) {
+  .controller('MainCtrl', function ($rootScope, $interval, ProductService, FoodOrderService, LoginService, CacheService, Notification) {
 
     var self = this;
 
@@ -17,7 +17,7 @@ angular.module('myApp')
       userId: LoginService.getUserId()
     };
 
-    this.products = [];
+    $rootScope.products = [];
 
     self.autoRefresh = true;
     $rootScope.autoRefresh = self.autoRefresh;
@@ -30,19 +30,18 @@ angular.module('myApp')
     this.getProducts = function () {
       ProductService.getAll()
         .then(function successCallback(response) {
-          self.products = response.data;
+          $rootScope.products = response.data;
         });
     };
 
     this.getProducts();
 
 
-
     /*Acciones sobre pedidos de productos*/
 
     this.getCacheProducts = function () {
       return self.isFront() ?
-        $rootScope.productsByUsers :
+        $rootScope.productsByUsers[LoginService.getUserId()].allProductsPending :
         $rootScope.cachePlaces[$rootScope.place].allProductsPending;
     };
 
@@ -64,9 +63,10 @@ angular.module('myApp')
       FoodOrderService.order(self.newFoodOrder)
       //TODO: agregar popup avisando SUCCESS & ERROR
         .then(function successCallback(response) {
+          Notification.success("Pedido entregado!")
         }, function errorCallback(response) {
           self.updatePending(product.id, -cant);
-      });
+        });
     };
 
     this.cancelOrderProduct = function (product) {
@@ -129,7 +129,7 @@ angular.module('myApp')
     };
 
     this.updateStock = function (productId, hasStock) {
-      var product = self.products.filter(function (product) {
+      var product = $rootScope.products.filter(function (product) {
         return product.id === productId
       });
       product[0].hasStock = hasStock;

@@ -1,13 +1,12 @@
 'use strict';
 
-(function () {
-  angular
-    .module('myApp')
-    .controller('LoginController', LoginController);
+angular.module('myApp')
+  .controller('LoginController', function ($rootScope, authService, lock, LoginService, Notification, authManager, $window) {
+    return new LoginController($rootScope, authService, lock, LoginService, Notification, authManager, $window);
+  });
 
-  LoginController.$inject = ['$rootScope', 'authService', 'lock', 'LoginService', 'authManager', '$window', '$timeout'];
 
-  function LoginController($rootScope, authService, lock, LoginService, authManager, $window) {
+function LoginController($rootScope, authService, lock, LoginService, Notification, authManager, $window) {
 
 
     var self = this;
@@ -33,6 +32,7 @@
     };
 
     this.loginSuccess = function (user, message) {
+      Notification.success({message: 'Bienvenid@!</b><img src="assets/images/favicon.png">', title: 'Virtual Kiosk'});
       console.log("loginSuccess: user=" + user + ". msg:" + message);
       self.setUserName(user);
       $rootScope.logginWithBackend = true;
@@ -64,6 +64,7 @@
     };
 
     this.logoutSuccess = function () {
+      Notification.success("Gracias por elegirnos!")
       $rootScope.logginWithBackend = false;
       localStorage.removeItem('userDB');
       self.setUserName("");
@@ -162,4 +163,4 @@
 
   }
 
-})();
+

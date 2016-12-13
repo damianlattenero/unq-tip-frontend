@@ -10,6 +10,7 @@ var app = angular
     'config',
     'auth0.lock',
     'angular-jwt',
+    'ui-notification',
     'ui.router'
   ])
   .config(function ($routeProvider, lockProvider) {
@@ -82,6 +83,17 @@ var app = angular
         requireAuth: true
       })
       .otherwise({redirectTo: '/login'});
+  })
+  .config(function (NotificationProvider) {
+    NotificationProvider.setOptions({
+      delay: 2000,
+      startTop: 20,
+      startRight: 10,
+      verticalSpacing: 20,
+      horizontalSpacing: 20,
+      positionX: 'right',
+      positionY: 'bottom'
+    });
   })
   .config(function Config($httpProvider, $stateProvider, lockProvider, jwtOptionsProvider) {
     jwtOptionsProvider.config({

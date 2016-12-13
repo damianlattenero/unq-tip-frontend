@@ -54,6 +54,7 @@
     "test": "karma start test/karma.conf.js"
   },
   "dependencies": {
+    "angular-ui-notification": "^0.2.0",
     "bootstrap": "3.3.6",
     "bootstrap-material-design": "0.5.9",
     "cssmin": "^0.4.3",
