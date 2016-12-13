@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc function
- * @name tipMarchionneLattenero.controller:FoodOrderCtrl
+ * @name tipMarchionneLattenero.controller:CacheCtrl
  * @description
- * # FoodOrderCtrl
+ * # CacheCtrl
  * Controller of the tipMarchionneLattenero
  */
 
 angular.module('myApp')
-  .controller('CacheController', function ($rootScope, $interval, CacheService, LoginService, Notification) {
+  .controller('CacheCtrl', function ($rootScope, $interval, CacheService, LoginService, Notification) {
     return new CacheController($rootScope, $interval, CacheService, LoginService, Notification);
   });
 
@@ -20,23 +20,22 @@ function CacheController($rootScope, $interval, CacheService, LoginService, Noti
   $rootScope.cachePlaces = {};
 
   this.getCacheUsers = function () {
-
-    var myOldProducts = $rootScope.productsByUsers;
+    var oldProducts = $rootScope.productsByUsers;
 
     CacheService.getUsers()
       .then(function successCallback(response) {
 
         $rootScope.productsByUsers = response.data[LoginService.getUserId()].allProductsPending;
 
-        var myProducts = $rootScope.productsByUsers;
+        var newProducts = $rootScope.productsByUsers;
 
-        $rootScope.products.map(function (product) {
-          if ($rootScope.getPendingForProduct(myProducts, product.id) < $rootScope.getPendingForProduct(myOldProducts, product.id)) {
-            if ($rootScope.place != "COCINA") {
+        if (self.isFront()) {
+          $rootScope.products.map(function (product) {
+            if (self.getPendingForProduct(newProducts, product.id) < self.getPendingForProduct(oldProducts, product.id)) {
               Notification.success("Tenes una orden de " + product.name.toUpperCase() + " lista para retirar!");
             }
-          }
-        });
+          });
+        }
 
       });
   };
@@ -44,24 +43,22 @@ function CacheController($rootScope, $interval, CacheService, LoginService, Noti
   this.getCacheUsers();
 
   this.getCachePlaces = function () {
-    var oldProductsInKitchen = $rootScope.cachePlaces
-
-    // var oldProductsInKitchen = $rootScope.cachePlaces.COCINA.allProductsPending;
+    var oldProductsInPlace = $rootScope.cachePlaces;
 
     CacheService.getPlaces()
       .then(function successCallback(response) {
         $rootScope.cachePlaces = response.data;
 
-        var productsInKitchen = $rootScope.cachePlaces
+        var newProductsInPlace = $rootScope.cachePlaces;
 
-        $rootScope.products.map(function (product) {
-          if ($rootScope.getPendingForProduct(productsInKitchen, product.id) >
-            $rootScope.getPendingForProduct(oldProductsInKitchen, product.id)) {
-            if ($rootScope.place == "COCINA") {
-              Notification.success("Tenes una orden de " + product.name.toUpperCase() + "!");
-            }
-          }
-        });
+        if (self.isKitchen()) {
+          $rootScope.products.map(function (product) {
+              if (self.getPendingForProduct(newProductsInPlace, product.id) > self.getPendingForProduct(oldProductsInPlace, product.id)) {
+                Notification.success("Tenes una pedido de " + product.name.toUpperCase() + "!");
+              }
+            });
+        }
+
       });
 
   };
@@ -78,12 +75,19 @@ function CacheController($rootScope, $interval, CacheService, LoginService, Noti
   }, 1500);
 
 
-  $rootScope.getPendingForProduct = function (userProducts, productID) {
-    return (userProducts == null) ?
-      0 :
-      !userProducts.hasOwnProperty(productID) ?
-        0 : userProducts[productID]
-  }
+  this.getPendingForProduct = function (userProducts, productID) {
+    return (userProducts == null) ? 0 :
+      !userProducts.hasOwnProperty(productID) ? 0 : userProducts[productID]
+  };
+
+  this.isFront = function () {
+    return $rootScope.place != "COCINA";
+  };
+
+  this.isKitchen = function () {
+    return !this.isFront();
+  };
+
 }
 
 

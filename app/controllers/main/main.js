@@ -57,56 +57,74 @@ angular.module('myApp')
 
     this.orderProduct = function (product) {
       var cant = 1;
+      var msg = "Orden de Pedido realizado!";
       self.updatePending(product.id, cant);
 
       self.newFoodOrder.productId = product.id;
       FoodOrderService.order(self.newFoodOrder)
-      //TODO: agregar popup avisando SUCCESS & ERROR
         .then(function successCallback(response) {
-          Notification.success("Pedido entregado!")
+          self.NotificationSuccess(msg);
         }, function errorCallback(response) {
+          self.NotificationError(msg);
           self.updatePending(product.id, -cant);
         });
     };
 
     this.cancelOrderProduct = function (product) {
       var cant = -1;
+      var msg = "Cancelar Orden de Pedido!";
       self.updatePending(product.id, cant);
 
       self.newFoodOrder.productId = product.id;
       FoodOrderService.cancelorder(self.newFoodOrder)
-      //TODO: agregar popup avisando SUCCESS & ERROR
         .then(function successCallback(response) {
+          self.NotificationWarning(msg);
         }, function errorCallback(response) {
+          self.NotificationError(msg);
           self.updatePending(product.id, -cant);
         });
     };
 
     this.cookProduct = function (product) {
       var cant = -1;
+      var msg = "Producto Cocinado!";
       self.updatePending(product.id, cant);
 
       self.newFoodOrder.productId = product.id;
       FoodOrderService.cooked(self.newFoodOrder)
-      //TODO: agregar popup avisando SUCCESS & ERROR
         .then(function successCallback(response) {
-
+          self.NotificationSuccess(msg);
         }, function errorCallback(response) {
+          self.NotificationError(msg);
           self.updatePending(product.id, cant * (-1));
         });
     };
 
     this.cancelCookProduct = function (product) {
       var cant = 1;
+      var msg = "Cancelar Producto Cocinado!";
       self.updatePending(product.id, cant);
 
       self.newFoodOrder.productId = product.id;
       FoodOrderService.cancelcooked(self.newFoodOrder)
-      //TODO: agregar popup avisando SUCCESS & ERROR
         .then(function successCallback(response) {
+          self.NotificationWarning(msg);
         }, function errorCallback(response) {
+          self.NotificationError(msg);
           self.updatePending(product.id, cant * (-1));
         });
+    };
+
+    this.NotificationSuccess = function (msg) {
+      Notification.success(msg);
+    };
+
+    this.NotificationWarning = function (msg) {
+      Notification.warning(msg);
+    };
+
+    this.NotificationError = function (msg) {
+      Notification.error("Error al informar sobre: <br>" + msg);
     };
 
     this.isEnabledCookProduct = function (product) {
@@ -116,6 +134,16 @@ angular.module('myApp')
     this.isEnabledCancelOrderProduct = function (product) {
       return (self.getPendingForProduct(product.id) > 0);
     };
+
+    this.isEnabledCancelCookProduct = function (product) {
+      //return product[0].modifyStock;
+      return true;
+    };
+
+    this.isEnabledOrderProduct = function (product) {
+      return product.hasStock;
+    };
+
 
     this.modifyStock = function (product) {
       var productBody = {
@@ -127,7 +155,6 @@ angular.module('myApp')
           self.updateStock(product.id, response.data.hasStock);
         });
     };
-
     this.updateStock = function (productId, hasStock) {
       var product = $rootScope.products.filter(function (product) {
         return product.id === productId
@@ -135,19 +162,9 @@ angular.module('myApp')
       product[0].hasStock = hasStock;
     };
 
-    this.isEnabledCancelCookProduct = function (product) {
-      //return product[0].modifyStock;
-      return true;
-    };
-
     this.hasStock = function (product) {
       return product.modifyStock;
     };
-
-    this.isEnabledOrderProduct = function (product) {
-      return product.hasStock;
-    };
-
     this.changePlace = function () {
       if (this.isFront()) {
         $rootScope.place = "COCINA"
@@ -179,7 +196,7 @@ angular.module('myApp')
     this.cleanAllCache = function () {
       CacheService.cleanAll()
         .then(function successCallback(response) {
-          console.log("Caches Limpias")
+          console.log("Caches Limpias");
         });
     }
 

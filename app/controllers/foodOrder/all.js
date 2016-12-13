@@ -2,18 +2,18 @@
 
 /**
  * @ngdoc function
- * @name tipMarchionneLattenero.controller:FoodOrderCtrl
+ * @name tipMarchionneLattenero.controller:AllFoodOrderCtrl
  * @description
- * # FoodOrderCtrl
+ * # AllFoodOrderCtrl
  * Controller of the tipMarchionneLattenero
  */
 
 angular.module('myApp')
-  .controller('FoodOrderCtrl', function (FoodOrderService) {
-    return new FoodOrderController(FoodOrderService);
+  .controller('AllFoodOrderCtrl', function (FoodOrderService) {
+    return new AllFoodOrderController(FoodOrderService);
   });
 
-function FoodOrderController(FoodOrderService) {
+function AllFoodOrderController(FoodOrderService) {
   var self = this;
 
   this.orders = [];
