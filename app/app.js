@@ -57,7 +57,7 @@ var app = angular
       .when('/foodOrder', {
         url: '/foodOrder',
         templateUrl: 'views/foodOrder/foodOrder.html',
-        controller: 'FoodOrderCtrl',
+        controller: 'AllFoodOrderCtrl',
         controllerAs: 'foodOrderCtrl',
         requireAuth: true
       })

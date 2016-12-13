@@ -32,22 +32,12 @@ function LoginController($rootScope, authService, lock, LoginService, Notificati
     };
 
     this.loginSuccess = function (user, message) {
-      Notification.success({message: 'Bienvenid@!</b><img src="assets/images/favicon.png">', title: 'Virtual Kiosk'});
+      Notification.success({message: 'Bienvenid@! <b>' + user + '</b>', title: '<img src="assets/images/favicon.png"> Virtual Kiosk'});
       console.log("loginSuccess: user=" + user + ". msg:" + message);
       self.setUserName(user);
       $rootScope.logginWithBackend = true;
       authManager.authenticate();
       $window.location.assign('/#/main');
-      // Notification.success("Welcome! Successfully logged in");
-/*
-      lock.show({
-        flashMessage: {
-          type: 'success',
-          text: message
-        }
-      });
-      $timeout(function () { lock.hide(); }, 3000);
-*/
     };
 
     this.loginFail = function (message) {
@@ -64,7 +54,7 @@ function LoginController($rootScope, authService, lock, LoginService, Notificati
     };
 
     this.logoutSuccess = function () {
-      Notification.success("Gracias por elegirnos!")
+      Notification.success("Gracias por elegirnos!");
       $rootScope.logginWithBackend = false;
       localStorage.removeItem('userDB');
       self.setUserName("");

@@ -9,11 +9,11 @@
  */
 
 angular.module('myApp')
-  .controller('FoodOrderCtrl', function (FoodOrderService) {
-    return new FoodOrderController(FoodOrderService);
+  .controller('AllFoodOrderCtrl', function (FoodOrderService) {
+    return new AllFoodOrderController(FoodOrderService);
   });
 
-function FoodOrderController(FoodOrderService) {
+function AllFoodOrderController(FoodOrderService) {
   var self = this;
 
   this.orders = [];
