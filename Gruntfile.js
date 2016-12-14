@@ -67,7 +67,7 @@ module.exports = function (grunt) {
         constants: {
           ENV: {
             name: 'production',
-            apiEndpoint: 'http://virtual-kiosk-ar.herokuapp.com.com/rest/'
+            apiEndpoint: 'http://localhost:8080/rest/'
           }
         }
       }
