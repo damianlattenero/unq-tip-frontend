@@ -11,6 +11,8 @@ module.exports = function (grunt) {
 
   // Time how long tasks take. Can help when optimizing build times
   grunt.loadNpmTasks('grunt-ng-constant');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+
 
   require('time-grunt')(grunt);
 
@@ -593,6 +595,7 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
 
   grunt.registerTask('serve2', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
