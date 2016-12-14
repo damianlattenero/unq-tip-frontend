@@ -1,17 +1,8 @@
-const path = require('path')
-const express = require('express')
+var express = require('express'),
+  app = express();
 
-module.exports = {
-  app: function() {
-    const app = express()
-    const indexPath = path.join(__dirname, '../dist/index.html')
-    app.use(express.static(path.join(__dirname, '../dist')));
-    app.use(express.static(path.join(__dirname, '../bower_components')));
-
-    app.get('/', function(_, res) {
-      res.sendFile(indexPath)
-    })
-
-    return app
-  }
-}
+app.use(express.static(__dirname));
+app.get('/', function(req, res) {
+  res.sendfile('index.html', {root: __dirname })
+});
+var server = app.listen(process.env.PORT || 80);
