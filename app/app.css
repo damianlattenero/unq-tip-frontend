@@ -5,19 +5,22 @@
   padding: 0.8em;
 }
 
+#navbar-brand-icon {
+  padding: 0.3em 0.2em;
+}
+
 .nav-item.username {
   margin: 0.4em;
   padding: 1em;
 }
 
-.navbar-collapse.collapse.in>.nav.navbar-nav.navbar-left.navbar-menu
-{
-  border-color: rgba(0,0,0,.1);
+.navbar-collapse.collapse.in > .nav.navbar-nav.navbar-left.navbar-menu {
+  border-color: rgba(0, 0, 0, .1);
   border-bottom-width: 1px;
   border-bottom-style: solid;
   box-shadow: 0 1px 0 rgba(255, 255, 255, .1);
   box-sizing: border-box;
-  color: rgba(255,255,255,.84);
+  color: rgba(255, 255, 255, .84);
 }
 
 .data {

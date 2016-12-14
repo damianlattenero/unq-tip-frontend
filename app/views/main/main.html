@@ -8,19 +8,19 @@
         <!--toggle-->
         <div style="display: inline-block;">
           <a id="place"
-             style="text-align: right;" class="btn btn-secondary pull-right" ng-init="mainCtrl.isFront()"
+             style="text-align: right;" class="btn btn-secondary pull-right btn-raised" ng-init="mainCtrl.isFront()"
              ng-class="{true: 'btn-primary', false: 'btn-secondary'}[!mainCtrl.front]"
              ng-click="mainCtrl.changePlace()">Cambiar a {{!mainCtrl.isFront() && 'Mostrador1' || 'Cocina'}}</a>
 
           <button type="button"
                   ng-click="mainCtrl.cleanAllCache()"
-                  class="btn btn-danger">Resetear Todo
+                  class="btn btn-info btn-raised">Resetear Todo
           </button>
 
           <!--boton de actualizar-->
           <a id="refresh"
-             style="text-align: right;" class="btn btn-secondary pull-right" ng-init="true"
-             ng-class="{true: 'btn-primary', false: 'btn-secondary'}[!mainCtrl.autoRefresh]"
+             style="text-align: right;" class="btn pull-right btn-raised" ng-init="true"
+             ng-class="{true: 'btn-default', false: 'btn-danger'}[mainCtrl.autoRefresh]"
              ng-click="mainCtrl.toggleAutoRefresh()">{{!mainCtrl.autoRefresh && 'Desconectado' ||
             'Actualizando...'}}</a>
 
@@ -38,11 +38,11 @@
               <!--Special Functions-->
               <div class="panel-header">
                 <div ng-show="mainCtrl.isKitchen()" class="KitchenTopAdds">
-              <span class="StockProduct">
-                <a style="text-align: center;" class="btn btn-secondary" ng-init="true"
-                   ng-class="{true: 'btn-secondary', false: 'btn-danger'}[!product.hasStock]"
-                   ng-click="mainCtrl.modifyStock(product)">{{product.hasStock && 'No' || ''}} Hay Stock</a>
-              </span>
+                  <span class="StockProduct">
+                    <a style="text-align: center;" class="btn btn-secondary btn-raised" ng-init="true"
+                       ng-class="{true: 'btn-secondary', false: 'btn-danger'}[!product.hasStock]"
+                       ng-click="mainCtrl.modifyStock(product)">{{product.hasStock && 'No' || ''}} Hay Stock</a>
+                  </span>
                 </div>
               </div>
 
@@ -65,9 +65,9 @@
                 <p class="panel-text">{{product.description}}</p>
 
                 <!--Info-->
-                <p class="panel-text">
-                  <strong>Pendientes: <span class="productPending">{{mainCtrl.getPendingForProduct(product.id)}}</span></strong>
-                </p>
+                <p class="panel-text text-center">
+                  <div class="active"><strong>Pendientes <span class="badge"><h4>{{mainCtrl.getPendingForProduct(product.id)}}</h4></span></strong></div>
+               </p>
 
               </div>
               <!--/.Card content-->
@@ -81,13 +81,13 @@
                       <button type="button"
                               ng-disabled="!mainCtrl.isEnabledOrderProduct(product)"
                               ng-click="mainCtrl.orderProduct(product)"
-                              class="btn btn-primary">Ordenar</button>
+                              class="btn btn-primary btn-raised">Ordenar</button>
                     </span>
                       <span class="cancelOrderProduct">
                       <button type="button"
                               ng-disabled="!mainCtrl.isEnabledCancelOrderProduct(product)"
                               ng-click="mainCtrl.cancelOrderProduct(product)"
-                              class="btn btn-danger">Anular</button>
+                              class="btn btn-danger btn-raised">Anular</button>
                     </span>
                     </div>
                     <!--Cocina-->
@@ -96,13 +96,13 @@
                       <button type="button"
                               ng-disabled="!mainCtrl.isEnabledCookProduct(product)"
                               ng-click="mainCtrl.cookProduct(product)"
-                              class="btn btn-secondary">Cocinar</button>
+                              class="btn btn-secondary btn-raised">Cocinar</button>
                     </span>
                       <span class="cancelCookProduct">
                       <button type="button"
                               ng-disabled="!mainCtrl.isEnabledCancelCookProduct(product)"
                               ng-click="mainCtrl.cancelCookProduct(product)"
-                              class="btn btn-danger">Anular</button>
+                              class="btn btn-danger btn-raised">Anular</button>
                     </span>
                     </div>
                   </div>
