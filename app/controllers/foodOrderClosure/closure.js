@@ -59,7 +59,6 @@ function ClosureController(FoodOrderClosureService, LoginService) {
       .then(function successCallback(response) {
         self.clousures = response.data;
       });
-    // console.log((JSON.parse(localStorage.getItem('profile')).sub))
   };
 
 }
