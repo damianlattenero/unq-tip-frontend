@@ -48,3 +48,11 @@
   right: 0.5em;
   z-index: 1;
 }
+
+#logo {
+  max-width: 8em;
+}
+
+h2.title {
+  padding: 0.4em;
+}
