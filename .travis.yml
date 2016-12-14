@@ -11,3 +11,8 @@ install:
   - bower install
 script:
   - grunt test
+deploy:
+  provider: heroku
+  api_key:
+    secure: AAAAB3NzaC1yc2EAAAADAQABAAABAQC5U/l9Gogy3NE/xtkPuA7+FtrBoB/kZAkD50uhAejBs3A5ZeqJ1oQ10A1U6J2FroEfEwmienVrUQhkE5lZwgTa4PYHYo9QMuSOw+A8oIDFkIfSx5AdcAvpH1tG2NBAbVHCYexiYz8LTSjS2oKFWNumpKvI6WvMG0aglyZ99dvYLf8bbl7pftw03tv3a3NMoBAnLGCcuBc0ul1Gatp1zwq7Gz1Pai6a7fbeuHPvG10j/JM+9QLIulwY9ksPe8cnCpvBGUW1/sYhj3lhFZ1D5YTAtctNUSoyqE0cY9WNNUjxQiQGOVGww3th32EJzBV3QJIRlE1PXRf2RuCFJu0LtcqJ
+  app: virtual-kiosk-argentina
