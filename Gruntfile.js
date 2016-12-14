@@ -30,7 +30,7 @@ module.exports = function (grunt) {
   // Define the configuration for all the tasks
   grunt.initConfig({
     uglify: {
-      my_target: {
+      target: {
         files: {
           'dest/output.min.js': ['src/input1.js', 'src/missing_controller.js']
         }
@@ -45,7 +45,7 @@ module.exports = function (grunt) {
       options: {
         space: '',
         wrap: '\'use strict\';\n\n {\%= __ngModule %}',
-        name: 'config',
+        name: 'config'
       },
       // Environment targets
       development: {
@@ -553,10 +553,10 @@ module.exports = function (grunt) {
     ]);
   });
 
-/*  grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
-    grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
-    grunt.task.run(['serve:' + target]);
-  });*/
+  /*  grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
+   grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
+   grunt.task.run(['serve:' + target]);
+   });*/
 
   grunt.registerTask('test', [
     'clean:server',
