@@ -31,8 +31,6 @@ function ClosureController(FoodOrderClosureService, LoginService) {
     self.clousure.from = dayFrom;
     self.clousure.to = dayTo;
 
-
-
     $('#from').datetimepicker({format: 'DD/MM/YYYY', defaultDate: dayFrom});
     $('#to').datetimepicker({format: 'DD/MM/YYYY', defaultDate: dayTo, useCurrent: false});
 

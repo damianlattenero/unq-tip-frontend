@@ -89,9 +89,9 @@
               <a class="nav-link" href="/#/foodOrderClosure">Auditoria</a>
             </li>
           </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li class="nav-item username">
-              <div ng-if="loginCtrl.isLogIn()"> {{loginCtrl.userName}}</div>
+          <ul class="nav navbar-nav navbar-right navbar-menu">
+            <li class="nav-item username" ng-if="loginCtrl.isLogIn()">
+              <div> {{loginCtrl.userName}}</div>
             </li>
             <li class="nav-item active">
               <a class="log-out" ng-if="loginCtrl.isLogIn()" ng-click="loginCtrl.logout()">Log Out</a>

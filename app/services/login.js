@@ -10,7 +10,15 @@ angular.module('myApp')
         return localStorage.getItem(this.getTokenKey());
       },
       getUserId: function () {
-        return (JSON.parse(localStorage.getItem('profile')).user_id);
+        var userProfile = {};
+        try {
+          userProfile = JSON.parse(localStorage.getItem('profile'));
+        }
+        catch (err) {
+          userProfile = {};
+        }
+
+        return (userProfile == null || userProfile == {}) ? "" : userProfile.user_id;
       },
       getUserDB: function () {
         return (JSON.parse(localStorage.getItem('userDB')));
