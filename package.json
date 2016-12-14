@@ -1,5 +1,5 @@
 {
-  "name": "unqMarchionneLatteneroTIP",
+  "name": "myApp",
   "private": true,
   "devDependencies": {
     "angular-jwt": "^0.1.7",
@@ -46,7 +46,8 @@
     "time-grunt": "^1.0.0"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=0.10.0",
+    "npm": "3.10.9"
   },
   "scripts": {
     "postinstall": "bower install && grunt build",
