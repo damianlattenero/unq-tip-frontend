@@ -71,8 +71,8 @@ function LoginController($rootScope, authService, lock, LoginService, Notificati
 
     this.logout = function () {
       var authCode = {
-        token: localStorage.getItem('id_token'),
-        userId: JSON.parse(localStorage.getItem('profile')).user_id
+        token: LoginService.getToken(),
+        userId: LoginService.getUserId()
       };
       console.log(JSON.stringify(authCode));
 
@@ -96,7 +96,7 @@ function LoginController($rootScope, authService, lock, LoginService, Notificati
 
     $rootScope.$on("userProfileSet", function (event, obj) {
       var authCode = {
-        token: localStorage.getItem('id_token'),
+        token: LoginService.getToken(),
         userId: obj.user_id
       };
       console.log(JSON.stringify(authCode));
@@ -109,7 +109,7 @@ function LoginController($rootScope, authService, lock, LoginService, Notificati
               if (response.data.authenticated && response.data.signedIn) {
                 localStorage.setItem('userDB', JSON.stringify(response.data));
                 self.loginSuccess(response.data.nickname, response.data.message);
-                var userDB = JSON.parse(localStorage.getItem('userDB'));
+                var userDB = LoginService.getUserDB();
                 $rootScope.place = userDB.place;
                 console.log($rootScope.place)
               }
@@ -126,7 +126,7 @@ function LoginController($rootScope, authService, lock, LoginService, Notificati
     this.refresh = function () {
       console.log("Looking for User");
       try {
-        var userDB = JSON.parse(localStorage.getItem('userDB'));
+        var userDB = LoginService.getUserDB();
       }
       catch (err) {
         userDB = {};
