@@ -78,16 +78,16 @@
             <li class="nav-item">
               <a class="nav-link" href="/#/products">Productos</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" ng-if="isAuthenticated && logginWithBackend">
               <a class="nav-link" href="/#/foodOrder">Ordenes</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" ng-if="isAuthenticated && logginWithBackend">
               <a class="nav-link" href="/#/foodOrderHistory">Historial</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" ng-if="isAuthenticated && logginWithBackend">
               <a class="nav-link" href="/#/foodOrderClosureGenerate">Cierres</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" ng-if="isAuthenticated && logginWithBackend">
               <a class="nav-link" href="/#/foodOrderClosure">Auditoria</a>
             </li>
           </ul>
