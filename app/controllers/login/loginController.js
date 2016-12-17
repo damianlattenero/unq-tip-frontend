@@ -118,7 +118,7 @@ function LoginController($rootScope, authService, lock, LoginService, Notificati
               }
             },
             function (error) {
-              self.loginFail(JSON.stringify(error));
+              self.loginFail("No se pudo establecer coneccion con el servidor!");
             });
       }
     });
