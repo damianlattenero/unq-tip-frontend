@@ -7,6 +7,7 @@ module.exports = {
     const indexPath = path.join(__dirname, '../dist/index.html');
     app.use(express.static(path.join(__dirname, '../dist')));
     app.use(express.static(path.join(__dirname, '../bower_components')));
+    app.use(express.static(path.join(__dirname, '../node_modules')));
 
     app.get('/', function(_, res) {
       res.sendFile(indexPath)
