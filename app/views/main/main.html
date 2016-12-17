@@ -66,8 +66,10 @@
 
                 <!--Info-->
                 <p class="panel-text text-center">
-                  <div class="active"><strong>Pendientes <span class="badge"><h4>{{mainCtrl.getPendingForProduct(product.id)}}</h4></span></strong></div>
-               </p>
+                  <div class="active">
+                    <strong>Pendientes <span class="badge"><h4>{{mainCtrl.getPendingForProduct(product.id)}}</h4></span></strong>
+                  </div>
+                </p>
 
               </div>
               <!--/.Card content-->
@@ -77,33 +79,33 @@
                   <div class="FoodOrderActions">
                     <!--Mostrador-->
                     <div ng-show="mainCtrl.isFront()">
-                    <span class="orderProduct">
-                      <button type="button"
-                              ng-disabled="!mainCtrl.isEnabledOrderProduct(product)"
-                              ng-click="mainCtrl.orderProduct(product)"
-                              class="btn btn-primary btn-raised">Ordenar</button>
-                    </span>
+                      <span class="orderProduct">
+                        <button type="button"
+                                ng-disabled="!mainCtrl.isEnabledOrderProduct(product)"
+                                ng-click="mainCtrl.orderProduct(product)"
+                                class="btn btn-primary btn-raised">Ordenar</button>
+                      </span>
                       <span class="cancelOrderProduct">
                       <button type="button"
                               ng-disabled="!mainCtrl.isEnabledCancelOrderProduct(product)"
                               ng-click="mainCtrl.cancelOrderProduct(product)"
                               class="btn btn-danger btn-raised">Anular</button>
-                    </span>
+                      </span>
                     </div>
                     <!--Cocina-->
-                    <div ng-show="mainCtrl.isKitchen()">
-                    <span class="cookProduct">
-                      <button type="button"
-                              ng-disabled="!mainCtrl.isEnabledCookProduct(product)"
-                              ng-click="mainCtrl.cookProduct(product)"
-                              class="btn btn-secondary btn-raised">Cocinar</button>
-                    </span>
+                      <div ng-show="mainCtrl.isKitchen()">
+                      <span class="cookProduct">
+                        <button type="button"
+                                ng-disabled="!mainCtrl.isEnabledCookProduct(product)"
+                                ng-click="mainCtrl.cookProduct(product)"
+                                class="btn btn-secondary btn-raised">Cocinar</button>
+                      </span>
                       <span class="cancelCookProduct">
                       <button type="button"
                               ng-disabled="!mainCtrl.isEnabledCancelCookProduct(product)"
                               ng-click="mainCtrl.cancelCookProduct(product)"
                               class="btn btn-danger btn-raised">Anular</button>
-                    </span>
+                      </span>
                     </div>
                   </div>
                 </div>
