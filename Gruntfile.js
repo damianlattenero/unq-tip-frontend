@@ -45,7 +45,7 @@ module.exports = function (grunt) {
       options: {
         space: '',
         wrap: '\'use strict\';\n\n {\%= __ngModule %}',
-        name: 'config',
+        name: 'config'
       },
       // Environment targets
       development: {
@@ -56,7 +56,8 @@ module.exports = function (grunt) {
           ENV: {
             name: 'development',
             // apiEndpoint: 'http://cdmarchionne.ddns.net:8080/rest/'
-            apiEndpoint: 'http://192.168.1.34:8080/rest/'
+            // apiEndpoint: 'http://192.168.1.34:8080/rest/'
+            apiEndpoint: 'http://localhost:8080/rest/'
           }
         }
       },
