@@ -68,6 +68,16 @@ var app = angular
         controllerAs: 'foodOrderHistoryCtrl',
         requireAuth: true
       })
+      .when('/foodOrderHistory:date', {
+        // url: function(params){ return '/foodOrderHistory/' + params },
+        templateUrl: 'views/foodOrderHistory/foodOrderHistory.html',
+        controller: 'FoodOrderHistoryCtrl',
+        controllerAs: 'foodOrderHistoryCtrl',
+        params: {
+          date: null
+        },
+        requireAuth: true
+      })
       .when('/foodOrderClosure', {
         url: '/foodOrderClosure',
         templateUrl: 'views/foodOrderClosure/foodOrderClosure.html',
