@@ -7,7 +7,7 @@
     "angular-ui-router": "^0.3.2"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=7.0.0"
   },
   "scripts": {
     "postinstall": "bower install && grunt build",
@@ -15,6 +15,9 @@
     "test": "karma start test/karma.conf.js"
   },
   "dependencies": {
+    "angular-jwt": "^0.1.7",
+    "angular-lock": "^1.0.5",
+    "angular-ui-router": "^0.3.2",
     "angular-ui-notification": "^0.2.0",
     "bootstrap": "3.3.6",
     "bootstrap-material-design": "0.5.9",
