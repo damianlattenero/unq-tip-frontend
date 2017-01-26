@@ -1,1 +1,1 @@
-web: grunt serve2
+web: npm start
