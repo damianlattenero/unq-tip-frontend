@@ -11,7 +11,7 @@
     "npm": "4.0.3"
   },
   "scripts": {
-    "preinstall": "gem install compass && npm install -g grunt-cli bower yo generator-karma generator-angular",
+    "preinstall": "gem install compass",
     "postinstall": "bower install && grunt build",
     "start": "node server/app.js",
     "test": "karma start test/karma.conf.js"
