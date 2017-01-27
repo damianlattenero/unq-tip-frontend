@@ -6,9 +6,10 @@ before_install:
 install:
   - npm upgrade -g npm
   - npm install -g grunt grunt-cli bower yo generator-karma generator-angular
-  - npm config set prefix /usr/local && npm install -g bower
+  - npm config set prefix /usr/local
+  - sudo npm install -g bower
   - gem install compass
   - npm install
-  - bower install
+  - sudo bower install --allow-root
 script:
   - grunt test
