@@ -13,7 +13,7 @@
     "npm": "4.0.3"
   },
   "scripts": {
-    "preinstall": "gem install compass",
+    "preinstall": "gem install compass && npm config set prefix /usr/local && npm install -g bower",
     "postinstall": "bower install && grunt build",
     "start": "node server/app.js",
     "test": "karma start test/karma.conf.js"
