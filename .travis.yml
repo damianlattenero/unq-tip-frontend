@@ -7,9 +7,9 @@ install:
   - npm upgrade -g npm
   - npm install -g grunt grunt-cli bower yo generator-karma generator-angular
   - npm config set prefix /usr/local
-  - sudo npm install -g bower
+  - npm install -g bower
   - gem install compass
   - npm install
-  - sudo bower install --allow-root
+  - bower install
 script:
   - grunt test
