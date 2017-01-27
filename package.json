@@ -4,7 +4,9 @@
   "devDependencies": {
     "angular-jwt": "^0.1.7",
     "angular-lock": "^1.0.5",
-    "angular-ui-router": "^0.3.2"
+    "angular-ui-router": "^0.3.2",
+    "autoprefixer": "^6.7.0",
+    "eslint": "^2.13.1"
   },
   "engines": {
     "node": ">=7.0.0",
