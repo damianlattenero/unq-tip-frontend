@@ -14,7 +14,7 @@
   },
   "scripts": {
     "preinstall": "gem install compass && npm config set prefix /usr/local/lib",
-    "postinstall": "bower install && grunt build",
+    "postinstall": "bower install && grunt build && ./node_modules/bower/bin/bower install",
     "start": "node server/app.js",
     "test": "karma start test/karma.conf.js"
   },
