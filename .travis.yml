@@ -6,7 +6,10 @@ before_install:
 install:
   - npm upgrade -g npm
   - npm install -g grunt grunt-cli bower yo generator-karma generator-angular
-  - npm config set prefix /usr/local
+  - mkdir ~/.npm-global
+  - npm config set prefix '~/.npm-global'
+  - export PATH=~/.npm-global/bin:$PATH
+  - source ~/.profile
   - npm install -g bower
   - gem install compass
   - npm install
