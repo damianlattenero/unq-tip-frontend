@@ -1,6 +1,5 @@
 {
   "name": "unqMarchionneLatteneroTIP",
-  "private": true,
   "devDependencies": {
     "angular-jwt": "^0.1.7",
     "angular-lock": "^1.0.5",
