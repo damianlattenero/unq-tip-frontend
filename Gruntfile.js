@@ -421,7 +421,7 @@ module.exports = function (grunt) {
       dist: {
         options: {
 
-          module: require('./bower.json').name + 'myApp',
+          module: require('./bower.json').name,
           htmlmin: '<%= htmlmin.dist.options %>',
           usemin: 'scripts/scripts.js'
         },
