@@ -615,7 +615,7 @@ module.exports = function (grunt) {
   // grunt.registerTask('heroku:production', 'clean less mincss uglify');
   grunt.registerTask('heroku:production', [
     'clean:dist',
-    'ngconstant:production',
+    'ngconstant:production', // ADD THIS
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
@@ -631,7 +631,5 @@ module.exports = function (grunt) {
     'usemin',
     'htmlmin'
   ]);
-  
-  grunt.registerTask('heroku', ['build']);
 
 };
