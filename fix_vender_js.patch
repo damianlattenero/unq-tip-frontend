@@ -1,0 +1,27 @@
+diff --git a/Gruntfile.js b/Gruntfile.js
+index 3ed8c51..41813f0 100644
+--- a/Gruntfile.js
++++ b/Gruntfile.js
+@@ -420,8 +420,7 @@ module.exports = function (grunt) {
+     ngtemplates: {
+       dist: {
+         options: {
+-
+-          module: require('./bower.json').name + 'tipMarchionneLattenero',
++          module: require('./bower.json').name,
+           htmlmin: '<%= htmlmin.dist.options %>',
+           usemin: 'scripts/scripts.js'
+         },
+diff --git a/app/index.html b/app/index.html
+index 6e747bc..d1ce703 100644
+--- a/app/index.html
++++ b/app/index.html
+@@ -118,7 +118,7 @@
+       <!--<div>Angular seed app: v<span app-version></span></div>-->
+   </div>
+ 
+-  <!-- build:js scripts/vendor.js -->
++  <!-- build:js(./) scripts/vendor.js -->
+   <!-- bower:js -->
+   <script src="bower_components/jquery/dist/jquery.js"></script>
+   <script src="bower_components/angular/angular.js"></script>
