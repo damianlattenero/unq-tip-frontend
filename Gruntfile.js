@@ -57,7 +57,7 @@ module.exports = function (grunt) {
             name: 'development',
             // apiEndpoint: 'http://cdmarchionne.ddns.net:8080/rest/'
             // apiEndpoint: 'http://192.168.1.34:8080/rest/'
-            apiEndpoint: 'http://localhost:8080/rest/'
+            apiEndpoint: 'http://cdmarchionne.ddns.net:8080/rest/'
           }
         }
       },
