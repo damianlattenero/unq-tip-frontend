@@ -8,7 +8,6 @@ var app = angular
     'ngRoute',
     //'ErrorCatcher',
     'config',
-    'auth0.auth0',
     'auth0.lock',
     'angular-jwt',
     'ui-notification',
