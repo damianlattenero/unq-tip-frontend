@@ -114,7 +114,7 @@ var app = angular
       tokenGetter: function () {
         return localStorage.getItem('id_token');
       },
-      whiteListedDomains: ['marchionnelattenero.auth0.com', 'localhost'],
+      whiteListedDomains: ['marchionnelattenero.auth0.com', 'localhost', 'virtual-kiosk-argentina.herokuapp.com'],
       authenticatedRedirectPath: '/#/main',
       unauthenticatedRedirectPath: '/#/login'
     });
