@@ -29,7 +29,8 @@ var app = angular
           emailInputPlaceholder: "nombre@mail.com"
         },
         language: 'es',
-        rememberLastLogin: false
+        rememberLastLogin: false,
+        params: {scope: 'openid'},
       }
     });
 
