@@ -8,6 +8,7 @@ var app = angular
     'ngRoute',
     //'ErrorCatcher',
     'config',
+    'auth0.auth0',
     'auth0.lock',
     'angular-jwt',
     'ui-notification',
@@ -19,6 +20,8 @@ var app = angular
     lockProvider.init({
       clientID: 'BCL0BYCBdbFUmrJh16lG2CB1MZsxz7ex',
       domain: 'marchionnelattenero.auth0.com',
+      responseType: 'token id_token',
+      redirectUri: window.location.href,
       options: {
         theme: {
           logo: './assets/images/virtualkiosklogo.png',
