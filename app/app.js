@@ -115,8 +115,8 @@ var app = angular
         return localStorage.getItem('id_token');
       },
       whiteListedDomains: ['marchionnelattenero.auth0.com', 'localhost', 'virtual-kiosk-argentina.herokuapp.com'],
-      authenticatedRedirectPath: '/#/main',
-      unauthenticatedRedirectPath: '/#/login'
+      authenticatedRedirectPath: '/main',
+      unauthenticatedRedirectPath: '/login'
     });
 
     //To force jwtInterceptor call tokenGetter for each request set
