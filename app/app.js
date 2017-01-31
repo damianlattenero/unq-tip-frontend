@@ -11,7 +11,8 @@ var app = angular
     'auth0.lock',
     'angular-jwt',
     'ui-notification',
-    'ui.router'
+    'ui.router',
+    'auth0'
   ])
   .config(function ($routeProvider, lockProvider) {
 
@@ -30,8 +31,7 @@ var app = angular
         },
         language: 'es',
         rememberLastLogin: false,
-        params: {scope: 'openid email user_metadata app_metadata picture'},
-        redirectUrl: '/#!/main/'
+        params: {scope: 'openid email user_metadata app_metadata picture'}
       }
     });
 
