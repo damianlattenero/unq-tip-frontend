@@ -30,7 +30,7 @@ var app = angular
         },
         language: 'es',
         rememberLastLogin: false,
-        params: {scope: 'openid'},
+        params: {scope: 'openid email user_metadata app_metadata picture'}
       }
     });
 
