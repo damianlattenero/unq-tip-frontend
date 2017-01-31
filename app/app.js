@@ -17,10 +17,10 @@ var app = angular
 
 
     lockProvider.init({
-      clientID: 'BCL0BYCBdbFUmrJh16lG2CB1MZsxz7ex',
-      domain: 'marchionnelattenero.auth0.com',
+      clientID: 'x0qTPe30Wze9vt5lfq3tbD3GxW2YWUe6',
+      domain: 'app62768062.auth0.com',
       responseType: 'token id_token',
-      redirectUri: window.location.href + '!/',
+      redirectUri: window.location.href,
       options: {
         theme: {
           logo: './assets/images/virtualkiosklogo.png',
