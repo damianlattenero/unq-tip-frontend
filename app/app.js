@@ -20,7 +20,7 @@ var app = angular
       clientID: 'BCL0BYCBdbFUmrJh16lG2CB1MZsxz7ex',
       domain: 'marchionnelattenero.auth0.com',
       responseType: 'token id_token',
-      redirectUri: window.location.href,
+      redirectUri: window.location.href + '#!/',
       options: {
         theme: {
           logo: './assets/images/virtualkiosklogo.png',
