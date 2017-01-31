@@ -11,8 +11,7 @@ var app = angular
     'auth0.lock',
     'angular-jwt',
     'ui-notification',
-    'ui.router',
-    'auth0'
+    'ui.router'
   ])
   .config(function ($routeProvider, lockProvider) {
 
